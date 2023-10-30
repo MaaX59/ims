@@ -3,7 +3,7 @@ import React from 'react'
 
 const NewProject = () => {
   return (
-    <div></div>
+    <div>New Project</div>
   )
 }
 
