@@ -1,0 +1,16 @@
+.app__navbar{
+    display: flex;
+    font-size: 30px;
+    background:  #1e1b27;
+    color: azure;
+    text-decoration: none;
+    width: 175px;
+    height: 100vh;
+}
+.app__navbar ul{
+    text-decoration: none;
+}
+.app__navbar li{
+    font-size: 20px;
+    list-style: none;
+}

@@ -1,0 +1,6 @@
+.app__viewproject{
+    display: flex;
+    flex-direction: row;
+    background: #2a2438;
+    color: rgb(227, 227, 227);
+}

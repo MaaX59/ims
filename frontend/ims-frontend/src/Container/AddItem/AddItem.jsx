@@ -1,9 +1,17 @@
 import React from 'react'
 import './AddItem.css'
+import Navbar from '../Navbar/Navbar'
 
 const AddItem = () => {
   return (
-    <div>AddItem</div>
+    <div className='app__additem'>
+        <Navbar />
+        <div>
+            <h1>Add items</h1> 
+        </div>
+       
+    </div>
+
   )
 }
 
