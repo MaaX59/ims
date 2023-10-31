@@ -6,7 +6,7 @@ const AddItem = () => {
   return (
     <div className='app__additem'>
         <Navbar />
-        <div>
+        <div className='app__additem-content'>
             <h1>Add items</h1> 
         </div>
        

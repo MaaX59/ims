@@ -7,7 +7,7 @@ const Homepage = () => {
      
     <div className='app__homepage'>
         <Navbar />
-        <div>
+        <div className='app__homepage-content'>
             <h1>Homepage</h1> 
         </div>
        

@@ -6,7 +6,7 @@ const ViewProject = () => {
   return (
     <div className='app__viewproject'>
         <Navbar />
-        <div>
+        <div className='app__viewproject-content'>
             <h1>Viewproject</h1> 
         </div>
        

@@ -6,7 +6,7 @@ const NewProject = () => {
   return (
     <div className='app__newproject'>
         <Navbar />
-        <div>
+        <div className='app__newproject-content'>
             <h1>New project</h1> 
         </div>
        

@@ -1,13 +1,17 @@
 .app__navbar{
     display: flex;
-    font-size: 30px;
     background:  #1e1b27;
     color: azure;
-    text-decoration: none;
-    width: 175px;
+    width: 250px;
     height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
 }
-.app__navbar ul{
+.app__navbar ul a{
+    text-decoration: none;
+    color: azure;
+}
+.app__navbar ul a:visited{
     text-decoration: none;
 }
 .app__navbar li{
