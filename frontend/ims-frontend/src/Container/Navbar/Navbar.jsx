@@ -10,7 +10,7 @@ const Navbar = () => {
             <a href="/">Homepage</a>
           </li>
           <li>
-            <a href="/viewproject">View Project</a>
+            <a href="/viewproject">View Projects</a>
           </li>
           <li>
             <a href="/newproject">Start Project</a>
