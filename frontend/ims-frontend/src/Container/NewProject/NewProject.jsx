@@ -1,12 +1,15 @@
 import "./NewProject.css";
 import React from "react";
 import Navbar from "../Navbar/Navbar";
+import NewProjectForm from "../../Components/NewProjectForm";
 
 const NewProject = () => {
+
   return (
     <div className="app__newproject">
       <Navbar />
-      <div className="app__newproject-content">
+<NewProjectForm />
+      {/* <div className="form">
         <div className="title">Start Project</div>
         <div className="subtitle">Let's create a new project!</div>
         <div className="input-container ic1">
@@ -16,7 +19,7 @@ const NewProject = () => {
             type="text"
             placeholder=" "
           />
-          <div className="cut"></div>
+         
           <label for="project-name" className="placeholder">
             Project Name
           </label>
@@ -28,7 +31,7 @@ const NewProject = () => {
             type="text"
             placeholder=" "
           />
-          <div className="cut"></div>
+         
           <label for="project-description" className="placeholder">
             Description
           </label>
@@ -36,7 +39,7 @@ const NewProject = () => {
         <button type="text" className="submit">
           Create
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

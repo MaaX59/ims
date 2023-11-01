@@ -3,9 +3,6 @@
     flex-direction: row;
     background: #191521;
     color: rgb(227, 227, 227);
-}
-.app__additem-content{
-    display: flex;
-    justify-content: center;
     width: 100vw;
+    height: 100vh;
 }

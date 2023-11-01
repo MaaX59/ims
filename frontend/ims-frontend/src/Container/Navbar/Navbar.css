@@ -2,26 +2,38 @@
   display: flex;
   background: #1e1b27;
   color: azure;
-  width: 350px;
+  width: min-content;
   height: 100vh;
+ display: flex;
+ flex-direction: column;
   font-family: "Courier New", Courier, monospace;
   font-size: 30px;
+}
+.app__navbar-smallscreen{
+    
+margin: 1rem;
+display: flex;
+
 }
 .app__navbar ul :first-child {
   margin-bottom: 4rem;
 }
+
 .app__navbar ul a {
   text-decoration: none;
   color: azure;
 }
+
 .app__navbar ul a:visited {
   text-decoration: none;
 }
+
 .app__navbar li {
   font-size: 20px;
   list-style: none;
   margin-bottom: 1rem;
 }
+
 .app__navbar ul a:hover {
   color: rgb(219, 219, 198);
 }
