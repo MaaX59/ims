@@ -1,4 +1,5 @@
 import React from 'react'
+import './AddItemForm.css'
 
 const AddItemForm = () => {
   return (
@@ -50,6 +51,7 @@ const AddItemForm = () => {
         className="input"
         type="number"
         placeholder=" "
+        min="1"
         required
       />
       <label for="item-amount" className="placeholder">
