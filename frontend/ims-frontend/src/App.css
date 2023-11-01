@@ -118,6 +118,18 @@
 .submit:active {
   background-color: #06b;
 }
+@media screen and (max-width: 1300px) {
+  .title {
+    font-size: 20px;
+  }
+  .subtitle {
+   display: none;
+       
+  }
+  .form-required{
+    font-size: 12px;
+  }
+}
 
 /* form styles end */
 

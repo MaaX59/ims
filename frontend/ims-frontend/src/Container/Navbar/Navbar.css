@@ -4,16 +4,34 @@
   color: azure;
   width: min-content;
   height: 100vh;
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
   font-family: "Courier New", Courier, monospace;
   font-size: 30px;
 }
-.app__navbar-smallscreen{
-    
-margin: 1rem;
-display: flex;
-
+.app__navbar-smallscreen {
+  margin: 1rem 0 0 1rem;
+}
+.app__navbar-menu-popup{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+  align-items: center;
+}
+.app__navbar-smallscreen {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.app__navbar-menu-popup-links{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 20px;
 }
 .app__navbar ul :first-child {
   margin-bottom: 4rem;

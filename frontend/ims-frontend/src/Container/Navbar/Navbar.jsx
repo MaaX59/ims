@@ -10,7 +10,8 @@ const Navbar = () => {
       <div className="app__navbar-smallscreen">
         <Hamburger toggled={open} toggle={setOpen} />
         {open && (
-          <div className="app__navbar-menu-popup slide-bottom">
+          <div className="app__navbar-menu-popup">
+            <h3>IMS</h3>
             <ul className="app__navbar-menu-popup-links">
               <li>
                 <a href="/">Homepage</a>
