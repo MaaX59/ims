@@ -8,6 +8,7 @@ const NewProjectForm = () => {
   const [project_description, setProject_description] = useState("");
 
   const createProject = () => {
+    console.log(project_name);
     axios.post(`${server}/create`, {
       project_name: project_name,
       project_description: project_description,
