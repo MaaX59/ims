@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "1234",
+  password: "password",
   database: "project",
 });
 
@@ -23,11 +23,11 @@ app.post("/create_project", (req, res) => {
   console.log(`info in the backend`,project_name);
 
   db.query(
-    "INSERT INTO project(name, description) VALUES(?,?)",
+    "INSERT INTO project(project_name, project_description) VALUES(?,?)",
     [project_name, project_description],
     (err, result) => {
       if (err) {
-        console.log(err);
+        console.log(`error when sending to db`,err);
       } else {
         res.send("values sent to db");
       }
