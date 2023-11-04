@@ -1,7 +1,7 @@
 .app__newproject {
   display: flex;
   flex-direction: row;
-  background: #191521;
+  background: black;
   color: rgb(227, 227, 227);
   width: 100vw;
   height: 100vh;

@@ -9,18 +9,18 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "password",
-  database: "IMS",
+  password: "1234",
+  database: "project",
 });
 
 app.listen(3001, () => {
   console.log("server running at port 3001");
 });
 
-app.post("/create", (req, res) => {
+app.post("/create_project", (req, res) => {
   const project_name = req.body.project_name;
   const project_description = req.body.project_description;
-  console.log(project_name);
+  console.log(`info in the backend`,project_name);
 
   db.query(
     "INSERT INTO project(name, description) VALUES(?,?)",

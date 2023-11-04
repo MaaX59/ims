@@ -99,9 +99,9 @@
       font-weight: 100;
   }
   .submit {
-    background-color: #08d;
+    background: black;
     border-radius: 12px;
-    border: 0;
+    border: 2px solid rgb(1, 1, 100);
     box-sizing: border-box;
     color: #eee;
     cursor: pointer;
@@ -114,10 +114,11 @@
     font-family: 'Courier New', Courier, monospace;
   }
   .submit:hover {
-    background-color: rgb(3, 112, 201);
+    border: 3px solid rgb(1, 1, 100);
+    
   }
   .submit:active {
-    background-color: #06b;
+    border: 5px solid rgb(1, 1, 100);
   }
   @media screen and (max-width: 1300px) {
     .title {

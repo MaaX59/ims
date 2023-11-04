@@ -9,12 +9,14 @@ const NewProjectForm = () => {
 
   const createProject = () => {
     console.log(project_name);
-    axios.post(`${server}/create`, {
-      project_name: project_name,
-      project_description: project_description,
-    }).then(()=>{
-      console.log("sending info from frontend")
-    })
+    axios
+      .post(`${server}/create_project`, {
+        project_name: project_name,
+        project_description: project_description,
+      })
+      .then(() => {
+        console.log("sending info from frontend");
+      });
   };
 
   return (

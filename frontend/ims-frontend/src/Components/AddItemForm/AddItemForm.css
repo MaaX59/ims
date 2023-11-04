@@ -102,8 +102,8 @@ input[type=number]
       font-size: 15px;
       font-weight: 100;
   }
-  .submit {
-    background-color: #08d;
+  /* .submit {
+    
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
@@ -116,13 +116,8 @@ input[type=number]
     text-align: center;
     width: 130px;
     font-family: 'Courier New', Courier, monospace;
-  }
-  .submit:hover {
-    background-color: rgb(3, 112, 201);
-  }
-  .submit:active {
-    background-color: #06b;
-  }
+  } */
+ 
   @media screen and (max-width: 1300px) {
     .title {
       font-size: 20px;
