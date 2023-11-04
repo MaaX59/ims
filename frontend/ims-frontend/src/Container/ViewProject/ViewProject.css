@@ -1,12 +1,11 @@
-.app__viewproject{
-    display: flex;
-    flex-direction: row;
-    background: #191521;
-    color: rgb(227, 227, 227);
-    
-} 
-.app__viewproject-content{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
+.app__viewproject {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-black);
+  color: rgb(227, 227, 227);
+}
+.app__viewproject-content {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }

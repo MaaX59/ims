@@ -1,7 +1,7 @@
 .app__navbar {
   display: flex;
-  background: #0e0d13;
-  color: azure;
+  background: var(--color-grey);
+  color: var(--color-white);
   width: min-content;
   height: 100vh;
   display: flex;
@@ -12,21 +12,20 @@
 .app__navbar-smallscreen {
   margin: 1rem 0 0 1rem;
 }
-.app__navbar-menu-popup{
+.app__navbar-menu-popup {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
+
   align-items: center;
 }
 .app__navbar-smallscreen {
-  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.app__navbar-menu-popup-links{
+.app__navbar-menu-popup-links {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -55,4 +54,3 @@
 .app__navbar ul a:hover {
   color: rgb(219, 219, 198);
 }
-

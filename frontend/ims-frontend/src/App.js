@@ -8,17 +8,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/newproject" element={<NewProject />} />
-      <Route path="/additem" element={<AddItem />} />
-      <Route path="/viewproject" element={<ViewProject />} />
-
-
-
+        <Route path="/" element={<Homepage />} />
+        <Route path="/newproject" element={<NewProject />} />
+        <Route path="/additem" element={<AddItem />} />
+        <Route path="/viewproject" element={<ViewProject />} />
       </Routes>
-
-      </BrowserRouter>
-  )
+    </BrowserRouter>
+  );
 }
 
 export default App;
