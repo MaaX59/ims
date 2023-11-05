@@ -34,3 +34,15 @@ app.post("/create_project", (req, res) => {
     }
   );
 });
+
+app.get("/getprojectlist", (req, res) =>{
+  db.query("SELECT * FROM project", (error, data) =>
+  {
+    if (error) {
+      console.log(`error when getting projects from db`,error);
+    } else {
+      res.send(data);
+    }
+  }
+   )
+})

@@ -14,7 +14,11 @@ const ViewProject = () => {
 
   const getProjects = async () => {
     try{
-       setProjectList(await axios.get(`${server}/getprojectlist`)) 
+      
+      const response = await axios.get(`${server}/getprojectlist`)
+       setProjectList(response.data) ;
+       console.log("this is the projects", response.data)
+       
   
 
     }catch (error){
@@ -30,6 +34,8 @@ const ViewProject = () => {
         <h1>View projects</h1>
       </div>
       <div className="app__viewproject-projects">
+      
+
 
 
       </div>
