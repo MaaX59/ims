@@ -4,8 +4,42 @@
   background: var(--color-black);
   color: rgb(227, 227, 227);
 }
+.app__viewproject-content{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  
+  
+}
 .app__viewproject-title {
   display: flex;
   justify-content: center;
   width: 100vw;
+}
+.app__viewproject-projects{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.app__viewproject-singleproject{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-grey);
+  height: 50px;
+  width: 500px;
+  color: azure;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  
+
+}
+.app__viewproject-singleproject a {
+  text-decoration: none;
+  color: azure;
+}
+
+.app__viewproject-singleproject a:visited {
+  text-decoration: none;
 }
