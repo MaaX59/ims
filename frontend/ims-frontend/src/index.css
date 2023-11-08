@@ -6,7 +6,7 @@ body {
 :root {
   --font-base: "Cormorant Upright", serif;
   --font-alt: "Open Sans", sans-serif;
-
+  --color-blue: rgb(1, 1, 100);
   --color-golden: #dcca87;
   --color-black: #080808;
   --color-grey: #0f0f0f;

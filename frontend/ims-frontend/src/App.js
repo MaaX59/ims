@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ViewProject, NewProject, AddItem, Homepage } from "./Container/index";
+import { ViewProject, NewProject, AddItem, Homepage, } from "./Container/index";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
         <Route path="/newproject" element={<NewProject />} />
         <Route path="/additem" element={<AddItem />} />
         <Route path="/viewproject" element={<ViewProject />} />
+        <Route path="/project" element={<ViewProject />} />
       </Routes>
     </BrowserRouter>
   );

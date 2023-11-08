@@ -26,34 +26,27 @@ const ViewProject = () => {
     <div className="app__viewproject">
       <Navbar />
       <div className="app__viewproject-content">
-      <div className="app__viewproject-title">
-        <h1>View projects</h1>
-      </div>
-      <div className="app__viewproject-projects">
-        {
-          projectList.length > 0 ? (
-          projectList.map((project) => 
-            <div className="app__viewproject-singleproject"> 
-             
-            <Link to={`/project/${project.id}`}>
-          <h1>{project.project_name}</h1>
-        </Link>
-          
-          
-            </div>
-            
-
-          ) 
+        <div className="app__viewproject-title">
+          <h1>View projects</h1>
+        </div>
+        <div className="app__viewproject-projects">
+          {projectList.length > 0 ? (
+            projectList.map((project) => (
+              <div className="app__viewproject-singleproject">
+                <Link to={`/project/${project.id}`} style={{ textDecoration: 'none' }}>
+                  <h1>{project.project_name}</h1>
+                </Link>
+              </div>
+            ))
           ) : (
-            <div className="app__viewproject-noproject"> 
-          <h1>There are no projects to display</h1>
-          <button>
-          <a href="/newproject">Start Project</a>
-          </button>
-           </div>)
-        
-          }
-      </div>
+            <div className="app__viewproject-noproject">
+              <h1>There are no projects to display</h1>
+              <button>
+                <a href="/newproject">Start Project</a>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
