@@ -31,9 +31,12 @@ const ViewProject = () => {
         </div>
         <div className="app__viewproject-projects">
           {projectList.length > 0 ? (
-            projectList.map((project) => (
-              <div className="app__viewproject-singleproject">
-                <Link to={`/project/${project.id}`} style={{ textDecoration: 'none' }}>
+            projectList.map((project, index) => (
+              <div className="app__viewproject-singleproject" key={index}>
+                <Link
+                  to={`${server}/project/${project._id}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <h1>{project.project_name}</h1>
                 </Link>
               </div>
