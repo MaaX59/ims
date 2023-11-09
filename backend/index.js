@@ -25,7 +25,7 @@ app.listen(3001, () => {
 app.post("/create_project", (req, res) => {
   const project_name = req.body.project_name;
   const project_description = req.body.project_description;
-  console.log(`info in the backend`, project_name);
+  console.log(`created `, project_name);
 
   db.query(
     "INSERT INTO project(project_name, project_description) VALUES(?,?)",
@@ -60,9 +60,9 @@ app.get("/project/:id", (req, res) => {
         console.log(error, "error getting specific project from db");
       } else {
         const test = JSON.parse(JSON.stringify(data[0]))
-        const name =  data[0].project_name;
-        const description = data[0].project_description;
-        const projectId = data[0].id;
+        // const name =  data[0].project_name;
+        // const description = data[0].project_description;
+        // const projectId = data[0].id;
          console.log(test)
         // res.status(200).json({test});
         res.send(test)

@@ -1,6 +1,21 @@
-.app__projectpage{
-        display: flex;
-        flex-direction: row;
-        background: var(--color-black);
-        color: rgb(227, 227, 227);
+.app__projectpage {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-black);
+  color: rgb(227, 227, 227);
+  width: 100vw;
+  height: 100vh;
 }
+.app__projectpage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 100;
+  height: 100%;
+    width: 100%;
+}
+.app__projectpage-content h1{
+   font-weight: 300;     
+}
+

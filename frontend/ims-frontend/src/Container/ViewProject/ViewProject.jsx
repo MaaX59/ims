@@ -4,6 +4,8 @@ import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import { server } from "../../server";
 import { Link } from "react-router-dom";
+// import ProjectPage from "../ProjectPage/ProjectPage";
+
 
 const ViewProject = () => {
   useEffect(() => {
@@ -33,12 +35,12 @@ const ViewProject = () => {
           {projectList.length > 0 ? (
             projectList.map((project, index) => (
               <div className="app__viewproject-singleproject" key={index}>
-                <Link
-                  to={`${server}/project/${project.id}`}
-                  style={{ textDecoration: "none" }}
-                >
+              {/* {console.log(project)} */}
+              
+              
+                <a href={`/project/${project.id}`} project={{project}}>
                   <h1>{project.project_name}</h1>
-                </Link>
+                </a>
               </div>
             ))
           ) : (
