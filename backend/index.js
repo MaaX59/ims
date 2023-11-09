@@ -4,7 +4,11 @@ const mysql = require("mysql");
 const cors = require("cors");
 const router = express.Router();
 
-app.use(cors());
+const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
+
+app.use(cors({
+  origin: [FRONTEND_URL]
+}));
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -55,8 +59,13 @@ app.get("/project/:id", (req, res) => {
       if (error) {
         console.log(error, "error getting specific project from db");
       } else {
-        res.render(data);
-        
+        const test = JSON.parse(JSON.stringify(data[0]))
+        const name =  data[0].project_name;
+        const description = data[0].project_description;
+        const projectId = data[0].id;
+         console.log(test)
+        // res.status(200).json({test});
+        res.send(test)
       }
     });
   } catch (error) {

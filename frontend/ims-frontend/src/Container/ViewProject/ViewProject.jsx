@@ -33,7 +33,6 @@ const ViewProject = () => {
           {projectList.length > 0 ? (
             projectList.map((project, index) => (
               <div className="app__viewproject-singleproject" key={index}>
-              {console.log(project.id)}
                 <Link
                   to={`${server}/project/${project.id}`}
                   style={{ textDecoration: "none" }}
