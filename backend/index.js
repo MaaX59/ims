@@ -14,8 +14,6 @@ const db = mysql.createConnection({
   database: "project",
 });
 
-
-
 app.listen(3001, () => {
   console.log("server running at port 3001");
 });
@@ -49,21 +47,19 @@ app.get("/getprojectlist", (req, res) => {
 });
 
 app.get("/project/:id", (req, res) => {
-  try{
-    console.log('test',req.params);
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  db.query("SELECT * FROM project WHERE id = 1", (error, data) => {
-    if (error) {
-      console.log(error, "error getting specific project from db");
-    } else {
-      console.log(data);
-      res.send(data);
-    }
-  });
+// the following code works but can be "infected", should use db.escape(id) but throws error//
+    db.query("SELECT * FROM project WHERE id = ?", + id, (error, data) => {
+      if (error) {
+        console.log(error, "error getting specific project from db");
+      } else {
+        res.render(data);
+        
+      }
+    });
+  } catch (error) {
+    console.log("error while getting project if from req params", error);
   }
-  catch(error){
-    console.log('error while getting project if from req params', error)
-  }
-  
 });
