@@ -13,6 +13,9 @@ function App() {
         <Route path="/additem" element={<AddItem />} />
         <Route path="/viewproject" element={<ViewProject />} />
         <Route path="/project/:id" element={<ProjectPage />} />
+        <Route path="/test" element={<ProjectPage />} />
+
+
       </Routes>
     </BrowserRouter>
   );
