@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import "./NewProjectForm.css";
 import axios from "axios";
 import { server } from "../../server";
+import { redirect } from "react-router-dom";
 
 const NewProjectForm = () => {
   const [project_name, setProject_name] = useState("");
@@ -15,7 +16,8 @@ const NewProjectForm = () => {
         project_description: project_description,
       })
       .then(() => {
-        console.log("sending info from frontend");
+        
+        redirect("/viewproject");
       });
   };
 

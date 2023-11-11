@@ -11,9 +11,9 @@ const ProjectPage = () => {
   
 
   // useEffect(() => {
-  //  GetProjectById());
+  //  GetProjectById();
   // }, []);
-  console.log(id)
+  console.log("id on project page",id.id)
   
 
   return (
@@ -24,7 +24,7 @@ const ProjectPage = () => {
         {/* <h1>{params}</h1> */}
         <div className="app__projectpage-content-additem">
         <h1>Add Item</h1>
-        <AddItemForm />
+        <AddItemForm id={id.id}/>
         
       </div>
       </div>

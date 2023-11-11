@@ -6,9 +6,11 @@ const router = express.Router();
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
-app.use(cors({
-  origin: [FRONTEND_URL]
-}));
+app.use(
+  cors({
+    origin: [FRONTEND_URL],
+  })
+);
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -22,6 +24,7 @@ app.listen(3001, () => {
   console.log("server running at port 3001");
 });
 
+// start a project
 app.post("/create_project", (req, res) => {
   const project_name = req.body.project_name;
   const project_description = req.body.project_description;
@@ -40,6 +43,30 @@ app.post("/create_project", (req, res) => {
   );
 });
 
+// add item to project
+app.post("/add_item", (req, res) => {
+  const item_name = req.body.item_name;
+  const item_location = req.body.item_location;
+  const item_amount = req.body.item_amount;
+  const item_description = req.body.item_description;
+  const item_projectid = req.body.item_projectid;
+
+  console.log(`created `, item_name);
+
+  db.query(
+    "INSERT INTO item(item_name, item_location, item_amount, item_description , item_projectid) VALUES(?,?,?,?,?)",
+    [item_name, item_location, item_amount, item_description, item_projectid],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.send("item sent to db");
+      }
+    }
+  );
+});
+
+// list all the projects
 app.get("/getprojectlist", (req, res) => {
   db.query("SELECT * FROM project", (error, data) => {
     if (error) {
@@ -50,22 +77,23 @@ app.get("/getprojectlist", (req, res) => {
   });
 });
 
+// dont remember if this code does anything
 app.get("/project/:id", (req, res) => {
   try {
     const { id } = req.params;
 
-// the following code works but can be "infected", should use db.escape(id) but throws error//
-    db.query("SELECT * FROM project WHERE id = ?", + id, (error, data) => {
+    // the following code works but can be "infected", should use db.escape(id) but throws error//
+    db.query("SELECT * FROM project WHERE id = ?", +id, (error, data) => {
       if (error) {
         console.log(error, "error getting specific project from db");
       } else {
-        const test = JSON.parse(JSON.stringify(data[0]))
+        const test = JSON.parse(JSON.stringify(data[0]));
         // const name =  data[0].project_name;
         // const description = data[0].project_description;
         // const projectId = data[0].id;
-         console.log(test)
+        console.log(test);
         // res.status(200).json({test});
-        res.send(test)
+        res.send(test);
       }
     });
   } catch (error) {
