@@ -2,11 +2,13 @@ import { React, useState } from "react";
 import "./NewProjectForm.css";
 import axios from "axios";
 import { server } from "../../server";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NewProjectForm = () => {
   const [project_name, setProject_name] = useState("");
   const [project_description, setProject_description] = useState("");
+
+  const navigate = useNavigate();
 
   const createProject = () => {
     console.log(project_name);
@@ -16,8 +18,7 @@ const NewProjectForm = () => {
         project_description: project_description,
       })
       .then(() => {
-        
-        redirect("/viewproject");
+        navigate("/viewproject");
       });
   };
 
