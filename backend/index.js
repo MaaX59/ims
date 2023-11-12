@@ -77,13 +77,39 @@ app.get("/getprojectlist", (req, res) => {
   });
 });
 
+//get items from a specific project
+app.get("/getitems", (req, res) => {
+const {projectId} = req.body;
+
+console.log("project id for items in backend",req.body)
+
+  // db.query("SELECT * FROM item WHERE item_projectid = ?",+ projectId.id, (error, data) => {
+  //   if (error) {
+  //     console.log(`error when getting projects from db`, error);
+  //   } else {
+  //     res.send(data);
+  //   }
+  // });
+
+});
+
+app.delete("/delete_project", (req, res) => {
+  const projectid = req.body.id
+  console.log(projectid)
+  
+  db.query("DELETE FROM project WHERE id = ?", + projectid ,(error, data) => {
+   
+  });
+
+})
+
 // dont remember if this code does anything
 app.get("/project/:id", (req, res) => {
   try {
     const { id } = req.params;
 
     // the following code works but can be "infected", should use db.escape(id) but throws error//
-    db.query("SELECT * FROM project WHERE id = ?", +id, (error, data) => {
+    db.query("SELECT * FROM project WHERE id = ?", + id, (error, data) => {
       if (error) {
         console.log(error, "error getting specific project from db");
       } else {
