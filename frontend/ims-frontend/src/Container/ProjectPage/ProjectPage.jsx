@@ -10,14 +10,14 @@ import { server } from "../../server";
 const ProjectPage = () => {
   const id = useParams();
   const [items, setItems] = useState([]);
-
+const test = "test"
   useEffect(() => {
     getItems();
   }, []);
 
   const getItems = async () => {
     try {
-      const response = await axios.get(`${server}/getitems`, {id:id} );
+      const response = await axios.get(`${server}/getitems`, {test:test} );
       setItems(response.data);
       console.log("this is the items", response.data);
     } catch (error) {

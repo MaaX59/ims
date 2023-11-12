@@ -3,6 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const router = express.Router();
+const bodyParser = require('body-parser')
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
@@ -51,7 +52,7 @@ app.post("/add_item", (req, res) => {
   const item_description = req.body.item_description;
   const item_projectid = req.body.item_projectid;
 
-  console.log(`created `, item_name);
+  console.log(`created `, );
 
   db.query(
     "INSERT INTO item(item_name, item_location, item_amount, item_description , item_projectid) VALUES(?,?,?,?,?)",
@@ -79,7 +80,7 @@ app.get("/getprojectlist", (req, res) => {
 
 //get items from a specific project
 app.get("/getitems", (req, res) => {
-const {projectId} = req.body;
+const projectId = req.body;
 
 console.log("project id for items in backend",req.body)
 
