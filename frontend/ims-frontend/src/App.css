@@ -5,4 +5,18 @@
   margin: 0;
   background: var(--color-black);
 }
-
+.remove_button{
+  background-color: brown;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+}
+.remove_button:hover{
+  background-color: rgb(185, 39, 39);
+  
+}
+.remove_button:active{
+  background-color: rgb(216, 34, 34);
+  
+}

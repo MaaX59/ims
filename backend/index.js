@@ -78,19 +78,16 @@ app.get("/getprojectlist", (req, res) => {
   });
 });
 
-//get items from a specific project
+//get items 
 app.get("/getitems", (req, res) => {
-const projectId = req.body;
 
-console.log("project id for items in backend",req.body)
-
-  // db.query("SELECT * FROM item WHERE item_projectid = ?",+ projectId.id, (error, data) => {
-  //   if (error) {
-  //     console.log(`error when getting projects from db`, error);
-  //   } else {
-  //     res.send(data);
-  //   }
-  // });
+  db.query("SELECT * FROM item ", (error, data) => {
+    if (error) {
+      console.log(`error when getting projects from db`, error);
+    } else {
+      res.send(data);
+    }
+  });
 
 });
 
