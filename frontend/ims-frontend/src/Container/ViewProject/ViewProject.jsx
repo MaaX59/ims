@@ -6,7 +6,6 @@ import { server } from "../../server";
 import { Link } from "react-router-dom";
 // import ProjectPage from "../ProjectPage/ProjectPage";
 
-
 const ViewProject = () => {
   useEffect(() => {
     getProjects();
@@ -35,10 +34,9 @@ const ViewProject = () => {
           {projectList.length > 0 ? (
             projectList.map((project, index) => (
               <div className="app__viewproject-singleproject" key={index}>
-              {/* {console.log(project)} */}
-              
-              
-                <a href={`/project/${project.id}`} project={{project}}>
+                {/* {console.log(project)} */}
+
+                <a href={`/project/${project.id}`} project={{ project }}>
                   <h1>{project.project_name}</h1>
                 </a>
               </div>

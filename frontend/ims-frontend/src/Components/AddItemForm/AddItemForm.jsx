@@ -35,7 +35,7 @@ const AddItemForm = (props) => {
         item_projectid: item_projectid,
       })
       .then(() => {
-        console.log("item added", item_name)
+        console.log("item added", item_name);
         // navigate(`/project/${props.id}`);
       });
   };

@@ -42,7 +42,10 @@ const ProjectPage = () => {
                   <h3>Description:{item.item_description}</h3>
                   <h3>Location:{item.item_location}</h3>
                   <h3>Amount:{item.item_amount}</h3>
-                  <button className="remove_button">Remove</button>
+                  <div className="app__projectpage-singleitem-buttons">
+                    <button className="update_button">UPDATE</button>
+                    <button className="remove_button">REMOVE</button>
+                  </div>
                 </div>
               ) : null
             )

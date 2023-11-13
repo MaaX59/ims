@@ -3,7 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const router = express.Router();
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
@@ -52,7 +52,7 @@ app.post("/add_item", (req, res) => {
   const item_description = req.body.item_description;
   const item_projectid = req.body.item_projectid;
 
-  console.log(`created `, );
+  console.log(`created `);
 
   db.query(
     "INSERT INTO item(item_name, item_location, item_amount, item_description , item_projectid) VALUES(?,?,?,?,?)",
@@ -78,9 +78,8 @@ app.get("/getprojectlist", (req, res) => {
   });
 });
 
-//get items 
+//get items
 app.get("/getitems", (req, res) => {
-
   db.query("SELECT * FROM item ", (error, data) => {
     if (error) {
       console.log(`error when getting projects from db`, error);
@@ -88,18 +87,14 @@ app.get("/getitems", (req, res) => {
       res.send(data);
     }
   });
-
 });
 
 app.delete("/delete_project", (req, res) => {
-  const projectid = req.body.id
-  console.log(projectid)
-  
-  db.query("DELETE FROM project WHERE id = ?", + projectid ,(error, data) => {
-   
-  });
+  const projectid = req.body.id;
+  console.log(projectid);
 
-})
+  db.query("DELETE FROM project WHERE id = ?", +projectid, (error, data) => {});
+});
 
 // dont remember if this code does anything
 app.get("/project/:id", (req, res) => {
@@ -107,7 +102,7 @@ app.get("/project/:id", (req, res) => {
     const { id } = req.params;
 
     // the following code works but can be "infected", should use db.escape(id) but throws error//
-    db.query("SELECT * FROM project WHERE id = ?", + id, (error, data) => {
+    db.query("SELECT * FROM project WHERE id = ?", +id, (error, data) => {
       if (error) {
         console.log(error, "error getting specific project from db");
       } else {
