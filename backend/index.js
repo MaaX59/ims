@@ -104,7 +104,7 @@ app.delete("/delete_item/:itemid", (req, res) => {
   console.log("delete item req params",req.params.itemid);
 
    db.query("DELETE FROM item WHERE id = ?", + req.params.itemid, (error, data) => {
-   
+    res.status(200).json({ message: 'item deleted successfully' });
     console.log("Number of records deleted: " + data.affectedRows);
   });
 });

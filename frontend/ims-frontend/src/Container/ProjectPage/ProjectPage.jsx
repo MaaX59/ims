@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProjectPage.css";
 import Navbar from "../Navbar/Navbar";
-import GetProjectById from "../../Components/GetProjectById";
 import AddItemForm from "../../Components/AddItemForm/AddItemForm";
 import axios from "axios";
 import { server } from "../../server";
@@ -28,11 +27,14 @@ const ProjectPage = () => {
   const deleteItem = async (itemId) => {
     console.log(itemId)
     try {
-      const response = await axios.delete(`${server}/delete_item/${itemId}`);
-      console.log("response from delete data", response.data)    
+      const response = await axios.delete(`${server}/delete_item/${itemId}`)  
+      if (response.status === 200) {
+        getItems()
+      } ;
     } catch (error) {
-      console.log(`error deleting items`, error);
+      console.log(`error deleting items`, error)
     }
+    
   };
   // console.log("id on project page", id.id);
 
