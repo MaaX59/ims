@@ -13,18 +13,14 @@ const Navbar = () => {
           <div className="app__navbar-menu-popup">
             <h3>IMS</h3>
             <ul className="app__navbar-menu-popup-links">
-              <li>
-                <a href="/">Homepage</a>
-              </li>
+            
               <li>
                 <a href="/viewproject">View Projects</a>
               </li>
               <li>
                 <a href="/newproject">Start Project</a>
               </li>
-              <li>
-                <a href="/additem">Add Items</a>
-              </li>
+              
             </ul>
           </div>
         )}

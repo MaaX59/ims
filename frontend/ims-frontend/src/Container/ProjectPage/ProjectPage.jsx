@@ -68,7 +68,7 @@ const ProjectPage = () => {
           )}
         </div>
         <div className="app__projectpage-content-additem">
-          <AddItemForm id={id.id} />
+          <AddItemForm id={id.id} getItems={getItems} />
         </div>
       </div>
     </div>
