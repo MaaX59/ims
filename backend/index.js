@@ -90,23 +90,29 @@ app.get("/getitems", (req, res) => {
 });
 
 //delete project
-app.delete("/delete_project", (req, res) => {
-  const projectid = req.body.id;
-  console.log(projectid);
-
-  db.query("DELETE FROM project WHERE id = ?", +projectid, (error, data) => {});
+app.delete("/delete_project/:project_id", (req, res) => {
+  db.query(
+    "DELETE FROM project WHERE id = ?",
+    +req.params.project_id,
+    (error, data) => {
+      res.status(200).json({ message: "project deleted successfully" });
+    }
+  );
 });
 
 //delete item
 app.delete("/delete_item/:itemid", (req, res) => {
-  
   const { id } = req.params.itemid;
-  console.log("delete item req params",req.params.itemid);
+  // console.log("delete item req params",req.params.itemid);
 
-   db.query("DELETE FROM item WHERE id = ?", + req.params.itemid, (error, data) => {
-    res.status(200).json({ message: 'item deleted successfully' });
-    console.log("Number of records deleted: " + data.affectedRows);
-  });
+  db.query(
+    "DELETE FROM item WHERE id = ?",
+    +req.params.itemid,
+    (error, data) => {
+      res.status(200).json({ message: "item deleted successfully" });
+      // console.log("Number of records deleted: " + data.affectedRows);
+    }
+  );
 });
 
 // dont remember if this code does anything

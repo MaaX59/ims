@@ -32,4 +32,19 @@
 .update_button:active {
   background-color: rgb(175, 135, 3);
 }
+.remove_project{
+  background-color: brown;
+  border: none;
+  margin-top: 3rem;
+  height: 25px;
+  border-radius: 3px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+.remove_project:hover {
+  background-color: rgb(185, 39, 39);
+}
+.remove_project:active {
+  background-color: rgb(216, 34, 34);
+}
 

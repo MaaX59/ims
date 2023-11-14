@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, redirect } from "react-router-dom";
 import "./ProjectPage.css";
 import Navbar from "../Navbar/Navbar";
 import AddItemForm from "../../Components/AddItemForm/AddItemForm";
@@ -18,25 +18,36 @@ const ProjectPage = () => {
     try {
       const response = await axios.get(`${server}/getitems`);
       setItems(response.data);
-      
     } catch (error) {
       console.log(`error fetching items`, error);
     }
   };
 
   const deleteItem = async (itemId) => {
-    console.log(itemId)
+    console.log(itemId);
     try {
-      const response = await axios.delete(`${server}/delete_item/${itemId}`)  
+      const response = await axios.delete(`${server}/delete_item/${itemId}`);
       if (response.status === 200) {
-        getItems()
-      } ;
+        getItems();
+      }
     } catch (error) {
-      console.log(`error deleting items`, error)
+      console.log(`error deleting items`, error);
     }
-    
   };
-  // console.log("id on project page", id.id);
+
+  const deleteProject = async (project_id) => {
+    console.log(project_id);
+    try {
+      const response = await axios.delete(
+        `${server}/delete_project/${project_id}`
+      );
+      if (response.status === 200) {
+        return redirect ("/viewproject")
+      }
+    } catch (error) {
+      console.log(`error deleting items`, error);
+    }
+  };
 
   return (
     <div className="app__projectpage">
@@ -54,9 +65,15 @@ const ProjectPage = () => {
                   <h3>Location:{item.item_location}</h3>
                   <h3>Amount:{item.item_amount}</h3>
                   <div className="app__projectpage-singleitem-buttons">
-                    <button className="update_button" >UPDATE</button>
-                    <button className="remove_button"onClick={()=> {deleteItem(item.id)}}>REMOVE</button>
-                  
+                    <button className="update_button">UPDATE</button>
+                    <button
+                      className="remove_button"
+                      onClick={() => {
+                        deleteItem(item.id);
+                      }}
+                    >
+                      REMOVE
+                    </button>
                   </div>
                 </div>
               ) : null
@@ -69,6 +86,17 @@ const ProjectPage = () => {
         </div>
         <div className="app__projectpage-content-additem">
           <AddItemForm id={id.id} getItems={getItems} />
+        </div>
+        <div className="app__projectpage-delete-project">
+          <button
+            className="remove_project"
+            onClick={() => {
+              deleteProject(id.id);
+            }}
+          >
+            {" "}
+            DELETE PROJECT
+          </button>
         </div>
       </div>
     </div>
