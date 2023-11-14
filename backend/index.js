@@ -89,11 +89,24 @@ app.get("/getitems", (req, res) => {
   });
 });
 
+//delete project
 app.delete("/delete_project", (req, res) => {
   const projectid = req.body.id;
   console.log(projectid);
 
   db.query("DELETE FROM project WHERE id = ?", +projectid, (error, data) => {});
+});
+
+//delete item
+app.delete("/delete_item/:itemid", (req, res) => {
+  
+  const { id } = req.params.itemid;
+  console.log("delete item req params",req.params.itemid);
+
+   db.query("DELETE FROM item WHERE id = ?", + req.params.itemid, (error, data) => {
+   
+    console.log("Number of records deleted: " + data.affectedRows);
+  });
 });
 
 // dont remember if this code does anything

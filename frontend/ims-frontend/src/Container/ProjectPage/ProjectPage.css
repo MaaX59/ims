@@ -39,3 +39,37 @@
 .app__projectpage-content-additem {
   display: flex;
 }
+
+@media screen and (max-width:1000px){
+  .app__projectpage-singleitem {
+   font-size: 12px;
+    height: 30px;
+    width: 600px;
+  }
+}
+@media screen and (max-width:750px){
+  .app__projectpage-singleitem {
+   font-size: 10px;
+    width: 550px;
+  }
+}
+@media screen and (max-width:680px){
+  .app__projectpage-singleitem {
+   font-size: 8px;
+    width: 500px;
+  }
+}
+@media screen and (max-width:630px){
+  .app__projectpage-singleitem {
+    flex-direction: column;
+    align-items: flex-start;
+   font-size: 12px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 7px;
+  }
+  .app__projectpage-singleitem-buttons{
+    align-self: center;
+    margin: 0.5rem;
+  }
+}

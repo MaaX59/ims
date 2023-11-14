@@ -19,12 +19,21 @@ const ProjectPage = () => {
     try {
       const response = await axios.get(`${server}/getitems`);
       setItems(response.data);
-      // console.log("this is the items", response.data);
+      
     } catch (error) {
       console.log(`error fetching items`, error);
     }
   };
 
+  const deleteItem = async (itemId) => {
+    console.log(itemId)
+    try {
+      const response = await axios.delete(`${server}/delete_item/${itemId}`);
+      console.log("response from delete data", response.data)    
+    } catch (error) {
+      console.log(`error deleting items`, error);
+    }
+  };
   // console.log("id on project page", id.id);
 
   return (
@@ -43,8 +52,9 @@ const ProjectPage = () => {
                   <h3>Location:{item.item_location}</h3>
                   <h3>Amount:{item.item_amount}</h3>
                   <div className="app__projectpage-singleitem-buttons">
-                    <button className="update_button">UPDATE</button>
-                    <button className="remove_button">REMOVE</button>
+                    <button className="update_button" >UPDATE</button>
+                    <button className="remove_button"onClick={()=> {deleteItem(item.id)}}>REMOVE</button>
+                  
                   </div>
                 </div>
               ) : null
