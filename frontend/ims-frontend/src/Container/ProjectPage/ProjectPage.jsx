@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { useParams, redirect } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ProjectPage.css";
 import Navbar from "../Navbar/Navbar";
 import AddItemForm from "../../Components/AddItemForm/AddItemForm";
@@ -9,6 +9,7 @@ import { server } from "../../server";
 const ProjectPage = () => {
   const id = useParams();
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getItems();
@@ -42,7 +43,8 @@ const ProjectPage = () => {
         `${server}/delete_project/${project_id}`
       );
       if (response.status === 200) {
-        return redirect ("/viewproject")
+        console.log("project deleted")
+         navigate("/viewproject")
       }
     } catch (error) {
       console.log(`error deleting items`, error);
