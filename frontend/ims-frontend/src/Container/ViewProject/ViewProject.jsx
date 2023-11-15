@@ -1,16 +1,15 @@
 import { React, useState, useEffect } from "react";
+import { MdAddCircle } from "react-icons/md";
 import "./ViewProject.css";
-import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import { server } from "../../server";
-import { Link } from "react-router-dom";
-// import ProjectPage from "../ProjectPage/ProjectPage";
+import { useNavigate } from "react-router-dom";
 
 const ViewProject = () => {
   useEffect(() => {
     getProjects();
   }, []);
-
+  const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
 
   const getProjects = async () => {
@@ -25,10 +24,15 @@ const ViewProject = () => {
 
   return (
     <div className="app__viewproject">
-      <Navbar />
       <div className="app__viewproject-content">
         <div className="app__viewproject-title">
           <h1>View projects</h1>
+          <MdAddCircle
+            className="app__viewproject-startproject"
+            title="Add Project"
+            size={25}
+            onClick={() => navigate("/newproject")}
+          />
         </div>
         <div className="app__viewproject-projects">
           {projectList.length > 0 ? (
@@ -44,9 +48,6 @@ const ViewProject = () => {
           ) : (
             <div className="app__viewproject-noproject">
               <h1>There are no projects to display</h1>
-              <button>
-                <a href="/newproject">Start Project</a>
-              </button>
             </div>
           )}
         </div>

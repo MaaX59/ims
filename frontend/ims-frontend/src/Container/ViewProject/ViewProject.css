@@ -12,7 +12,12 @@
 .app__viewproject-title {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100vw;
+}
+.app__viewproject-title svg {
+  height: 50px;
+  margin-left: 1rem;
 }
 .app__viewproject-projects {
   display: flex;
@@ -29,19 +34,21 @@
   width: 500px;
   margin-bottom: 10px;
   border-radius: 5px;
+  text-decoration: none;
 }
-.app__viewproject-singleproject link
-
-.app__viewproject-singleproject:hover {
-  color: var(--color-blue);
+.app__viewproject-startproject {
+  cursor: pointer;
+  display: flex;
 }
-
-.app__viewproject-singleproject h1 {
-  /* text-decoration: none; */
+.app__viewproject-singleproject a {
+  text-decoration: none;
   color: var(--color-white);
 }
-
-.app__viewproject-singleproject h1:visited {
-  /* text-decoration: none; */
+.app__viewproject-singleproject:hover {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.app__viewproject-singleproject a:visited {
+  text-decoration: none;
   color: var(--color-white);
 }

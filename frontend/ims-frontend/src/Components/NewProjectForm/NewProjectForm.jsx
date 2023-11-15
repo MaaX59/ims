@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 import "./NewProjectForm.css";
 import axios from "axios";
 import { server } from "../../server";
@@ -18,14 +19,20 @@ const NewProjectForm = () => {
         project_description: project_description,
       })
       .then(() => {
-        navigate("/viewproject");
+        navigate("/");
       });
   };
 
   return (
     <div className="form">
+      <FaArrowLeft
+        className="goBackButton"
+        title="Go back"
+        size={20}
+        onClick={() => navigate("/")}
+      />
+
       <div className="title">Start Project</div>
-      <div className="subtitle">Let's create a new project!</div>
       <div className="input-container ic1">
         <input
           id="project-name"

@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProjectPage.css";
-import Navbar from "../Navbar/Navbar";
 import AddItemForm from "../../Components/AddItemForm/AddItemForm";
 import axios from "axios";
 import { server } from "../../server";
@@ -43,8 +43,8 @@ const ProjectPage = () => {
         `${server}/delete_project/${project_id}`
       );
       if (response.status === 200) {
-        console.log("project deleted")
-         navigate("/viewproject")
+        console.log("project deleted");
+        navigate("/viewproject");
       }
     } catch (error) {
       console.log(`error deleting items`, error);
@@ -53,7 +53,12 @@ const ProjectPage = () => {
 
   return (
     <div className="app__projectpage">
-      <Navbar />
+      <FaArrowLeft
+        className="goBackButton"
+        title="Go back"
+        size={20}
+        onClick={() => navigate("/")}
+      />
       <div className="app__projectpage-content">
         <h1>Manage Your Project</h1>
         {/* <h1>{params}</h1> */}

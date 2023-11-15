@@ -1,9 +1,0 @@
-.app__additem {
-  display: flex;
-  flex-direction: row;
-  background: var(--color-black);
-  color: rgb(227, 227, 227);
-  width: 100vw;
-  height: 100vh;
-  overflow-x: 0;
-}
