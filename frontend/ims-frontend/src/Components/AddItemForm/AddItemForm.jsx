@@ -1,12 +1,9 @@
 import { React, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./AddItemForm.css";
 import axios from "axios";
 import { server } from "../../server";
 
 const AddItemForm = (props) => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     setItem_projectid(props.id);
   }, []);
@@ -35,8 +32,11 @@ const AddItemForm = (props) => {
         item_projectid: item_projectid,
       })
       .then(() => {
-        props.getItems()
-      });
+        props.getItems();
+      })
+      .then(()=>{
+        
+      })
   };
 
   return (

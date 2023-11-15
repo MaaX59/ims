@@ -44,7 +44,7 @@ const ProjectPage = () => {
       );
       if (response.status === 200) {
         console.log("project deleted");
-        navigate("/viewproject");
+        navigate("/");
       }
     } catch (error) {
       console.log(`error deleting items`, error);
