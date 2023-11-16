@@ -97,7 +97,10 @@ app.put("/update/:id", (req, res) => {
   const item_projectid = req.body.item_projectid;
   db.query(
     "UPDATE item SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, item_projectid=? WHERE id=? ",
-    [item_name, item_location, item_amount, item_description, item_projectid]
+    [item_name, item_location, item_amount, item_description, item_projectid],
+    (error, data) => {
+      res.status(200).json({ message: "item updated successfully" });
+    }
   );
 });
 //delete project
@@ -119,6 +122,21 @@ app.delete("/delete_item/:itemid", (req, res) => {
   db.query(
     "DELETE FROM item WHERE id = ?",
     +req.params.itemid,
+    (error, data) => {
+      res.status(200).json({ message: "item deleted successfully" });
+      // console.log("Number of records deleted: " + data.affectedRows);
+    }
+  );
+});
+
+//delete items based on project
+app.delete("/delete_items/:projectid", (req, res) => {
+  const { id } = req.params.projectid;
+  console.log("delete items req params",req.params.id);
+
+  db.query(
+    "DELETE FROM item WHERE item_projectid = ?",
+    +req.params.projectid,
     (error, data) => {
       res.status(200).json({ message: "item deleted successfully" });
       // console.log("Number of records deleted: " + data.affectedRows);

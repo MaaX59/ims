@@ -24,12 +24,26 @@ const ProjectPage = () => {
     }
   };
 
+  //delete a single item
   const deleteItem = async (itemId) => {
     console.log(itemId);
     try {
       const response = await axios.delete(`${server}/delete_item/${itemId}`);
       if (response.status === 200) {
         getItems();
+      }
+    } catch (error) {
+      console.log(`error deleting item`, error);
+    }
+  };
+
+  // delete all items in the project
+  const deleteItems = async (projectid) => {
+    try {
+      const response = await axios.delete(
+        `${server}/delete_items/${projectid}`
+      );
+      if (response.status === 200) {
       }
     } catch (error) {
       console.log(`error deleting items`, error);
@@ -99,6 +113,7 @@ const ProjectPage = () => {
             className="remove_project"
             onClick={() => {
               deleteProject(id.id);
+              deleteItems(id.id);
             }}
           >
             {" "}
