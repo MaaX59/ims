@@ -34,9 +34,11 @@ const AddItemForm = (props) => {
       .then(() => {
         props.getItems();
       })
-      .then(()=>{
-        
-      })
+      
+      setItem_name("");
+      setItem_description("");
+      setItem_location("");
+      setItem_amount("");
   };
 
   return (
@@ -47,6 +49,7 @@ const AddItemForm = (props) => {
           id="item-name"
           className="input"
           type="text"
+          value={item_name}
           placeholder=" "
           onChange={(event) => {
             setItem_name(event.target.value);
@@ -63,6 +66,7 @@ const AddItemForm = (props) => {
           id="item-description"
           className="input"
           type="text"
+          value={item_description}
           placeholder=" "
           onChange={(event) => {
             setItem_description(event.target.value);
@@ -79,6 +83,7 @@ const AddItemForm = (props) => {
           id="item-location"
           className="input"
           type="text"
+          value={item_location}
           placeholder=" "
           onChange={(event) => {
             setItem_location(event.target.value);
@@ -94,6 +99,7 @@ const AddItemForm = (props) => {
           id="item-amount"
           className="input"
           type="number"
+          value={item_amount}
           placeholder=" "
           min="1"
           onChange={(event) => {
