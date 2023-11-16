@@ -88,7 +88,18 @@ app.get("/getitems", (req, res) => {
     }
   });
 });
-
+app.put("/update/:id", (req, res) => {
+  const id = req.params.id;
+  const item_name = req.body.item_name;
+  const item_description = req.body.item_description;
+  const item_location = req.body.item_location;
+  const item_amount = req.body.item_amount;
+  const item_projectid = req.body.item_projectid;
+  db.query(
+    "UPDATE item SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, item_projectid=? WHERE id=? ",
+    [item_name, item_location, item_amount, item_description, item_projectid]
+  );
+});
 //delete project
 app.delete("/delete_project/:project_id", (req, res) => {
   db.query(
