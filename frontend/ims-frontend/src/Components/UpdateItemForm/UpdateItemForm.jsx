@@ -10,6 +10,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
     setItem_location(itemsToUpdate ? itemsToUpdate.item.item_location : null);
     setItem_amount(itemsToUpdate ? itemsToUpdate.item.item_amount: null);
     setItem_projectid(itemsToUpdate ? itemsToUpdate.item.item_projectid : null);
+    setItemid(itemsToUpdate ? itemsToUpdate.item.id : null);
   }, []);
 
   const [item_name, setItem_name] = useState("");
@@ -17,6 +18,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
   const [item_location, setItem_location] = useState("");
   const [item_amount, setItem_amount] = useState();
   const [item_projectid, setItem_projectid] = useState();
+  const [item_id, setItemid] = useState();
 
   const updateItem = () => {
     console.log(
@@ -28,7 +30,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
       item_projectid
     );
     axios
-      .put(`${server}/update/${itemsToUpdate.id}`, {
+      .put(`${server}/update/${item_id}`, {
         item_name: item_name,
         item_description: item_description,
         item_location: item_location,

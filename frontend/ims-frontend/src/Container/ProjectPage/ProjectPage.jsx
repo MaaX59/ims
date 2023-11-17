@@ -130,13 +130,16 @@ const ProjectPage = () => {
         >
           <AddItemForm id={id.id} getItems={getItems} />
         </div>
-        <div
+        { !update ? <div
           className="app__projectpage-content-updateitem"
-          style={{ display: !update ? "flex" : "none" }}
+          // style={{ display: !update ? "flex" : "none" }}
         >
         {/* getItems={getItems} */}
           <UpdateItemForm item={itemToUpdate}  />
         </div>
+        :
+        null}
+        
         <div className="app__projectpage-delete-project">
           <button
             className="remove_project"

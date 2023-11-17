@@ -88,17 +88,21 @@ app.get("/getitems", (req, res) => {
     }
   });
 });
+
+//update an item
 app.put("/update/:id", (req, res) => {
   const id = req.params.id;
+  console.log(req.body)
   const item_name = req.body.item_name;
   const item_description = req.body.item_description;
   const item_location = req.body.item_location;
   const item_amount = req.body.item_amount;
   const item_projectid = req.body.item_projectid;
   db.query(
-    "UPDATE item SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, item_projectid=? WHERE id=? ",
-    [item_name, item_location, item_amount, item_description, item_projectid],
+    "UPDATE item SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, item_projectid= ? WHERE id= ?",
+    [item_name, item_description, item_location, item_amount, item_projectid, id],
     (error, data) => {
+      error ? console.log("error updating item",error):
       res.status(200).json({ message: "item updated successfully" });
     }
   );
