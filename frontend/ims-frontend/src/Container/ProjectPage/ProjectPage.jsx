@@ -9,12 +9,11 @@ import { server } from "../../server";
 
 const ProjectPage = () => {
   const id = useParams();
+
   const [items, setItems] = useState([]);
   const [itemToUpdate, setItemToUpdate] = useState([]);
   const [update, setUpdate] = useState(true);
   const navigate = useNavigate();
-
-  
 
   useEffect(() => {
     getItems();
@@ -76,8 +75,8 @@ const ProjectPage = () => {
   const updateItem = (item) => {
     setItemToUpdate(item);
     setUpdate(!update);
-    // console.log(itemToUpdate)
   };
+
   return (
     <div className="app__projectpage">
       <FaArrowLeft

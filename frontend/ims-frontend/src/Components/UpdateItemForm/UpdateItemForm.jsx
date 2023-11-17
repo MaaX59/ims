@@ -1,8 +1,9 @@
 import { React, useState, useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 import "./UpdateItemForm.css";
 import axios from "axios";
 import { server } from "../../server";
-// , getItems
+
 const UpdateItemForm = ( itemsToUpdate ) => {
   useEffect(() => {
     setItem_name(itemsToUpdate ? itemsToUpdate.item.item_name : null);
@@ -19,6 +20,8 @@ const UpdateItemForm = ( itemsToUpdate ) => {
   const [item_amount, setItem_amount] = useState();
   const [item_projectid, setItem_projectid] = useState();
   const [item_id, setItemid] = useState();
+
+  const navigate = useNavigate();
 
   const updateItem = () => {
     console.log(
@@ -38,7 +41,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
         item_projectid: item_projectid,
       })
       .then(() => {
-        // getItems();
+       navigate(`/project/${item_projectid}`)
       });
 
     setItem_name("");

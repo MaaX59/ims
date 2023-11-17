@@ -92,7 +92,6 @@ app.get("/getitems", (req, res) => {
 //update an item
 app.put("/update/:id", (req, res) => {
   const id = req.params.id;
-  console.log(req.body)
   const item_name = req.body.item_name;
   const item_description = req.body.item_description;
   const item_location = req.body.item_location;
