@@ -2,10 +2,14 @@ import { React, useState, useEffect } from "react";
 import "./UpdateItemForm.css";
 import axios from "axios";
 import { server } from "../../server";
-
-const UpdateItemForm = (props) => {
+// , getItems
+const UpdateItemForm = ( itemsToUpdate ) => {
   useEffect(() => {
-    setItem_projectid(props.id);
+    setItem_name(itemsToUpdate ? itemsToUpdate.item.item_name : null);
+    setItem_description(itemsToUpdate ? itemsToUpdate.item.item_description : null);
+    setItem_location(itemsToUpdate ? itemsToUpdate.item.item_location : null);
+    setItem_amount(itemsToUpdate ? itemsToUpdate.item.item_amount: null);
+    setItem_projectid(itemsToUpdate ? itemsToUpdate.item.item_projectid : null);
   }, []);
 
   const [item_name, setItem_name] = useState("");
@@ -24,7 +28,7 @@ const UpdateItemForm = (props) => {
       item_projectid
     );
     axios
-      .put(`${server}/update/${props.id}`, {
+      .put(`${server}/update/${itemsToUpdate.id}`, {
         item_name: item_name,
         item_description: item_description,
         item_location: item_location,
@@ -32,13 +36,13 @@ const UpdateItemForm = (props) => {
         item_projectid: item_projectid,
       })
       .then(() => {
-        props.getItems();
-      })
-      
-      setItem_name("");
-      setItem_description("");
-      setItem_location("");
-      setItem_amount("");
+        // getItems();
+      });
+
+    setItem_name("");
+    setItem_description("");
+    setItem_location("");
+    setItem_amount("");
   };
 
   return (
@@ -50,14 +54,14 @@ const UpdateItemForm = (props) => {
           className="input"
           type="text"
           value={item_name}
-          placeholder=" "
+          placeholder={itemsToUpdate.item ? itemsToUpdate.item.item_name : null}
           onChange={(event) => {
             setItem_name(event.target.value);
           }}
           required
         />
 
-        <label for="item-name" className="placeholder">
+        <label for="item-name" className="update-placeholder">
           Item Name*
         </label>
       </div>
@@ -67,13 +71,13 @@ const UpdateItemForm = (props) => {
           className="input"
           type="text"
           value={item_description}
-          placeholder=" "
+          placeholder={itemsToUpdate ? itemsToUpdate.item.item_description : null}
           onChange={(event) => {
             setItem_description(event.target.value);
           }}
         />
 
-        <label for="item-description" className="placeholder">
+        <label for="item-description" className="update-placeholder">
           Item description
         </label>
       </div>
@@ -84,12 +88,12 @@ const UpdateItemForm = (props) => {
           className="input"
           type="text"
           value={item_location}
-          placeholder=" "
+          placeholder={itemsToUpdate ? itemsToUpdate.item.item_location: null}
           onChange={(event) => {
             setItem_location(event.target.value);
           }}
         />
-        <label for="item-location" className="placeholder">
+        <label for="item-location" className="update-placeholder">
           Item Location
         </label>
       </div>
@@ -100,14 +104,14 @@ const UpdateItemForm = (props) => {
           className="input"
           type="number"
           value={item_amount}
-          placeholder=" "
+          placeholder={itemsToUpdate ? itemsToUpdate.item.item_amount : null}
           min="1"
           onChange={(event) => {
             setItem_amount(event.target.value);
           }}
           required
         />
-        <label for="item-amount" className="placeholder">
+        <label for="item-amount" className="update-placeholder">
           Amount*
         </label>
       </div>

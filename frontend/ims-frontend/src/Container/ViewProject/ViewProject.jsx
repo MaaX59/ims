@@ -26,7 +26,7 @@ const ViewProject = () => {
     <div className="app__viewproject">
       <div className="app__viewproject-content">
         <div className="app__viewproject-title">
-          <h1>View projects</h1>
+          <h1>Inventory Manegment System</h1>
           <MdAddCircle
             className="app__viewproject-startproject"
             title="Add Project"

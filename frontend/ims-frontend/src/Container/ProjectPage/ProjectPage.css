@@ -40,6 +40,9 @@
 .app__projectpage-content-additem {
   display: flex;
 }
+.app__projectpage-content-updateitem {
+  display: flex;
+}
 
 
 @media screen and (max-width:1000px){
