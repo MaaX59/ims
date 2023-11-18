@@ -1,27 +1,33 @@
 import { React, useState, useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
 import "./UpdateItemForm.css";
 import axios from "axios";
 import { server } from "../../server";
 
-const UpdateItemForm = ( itemsToUpdate ) => {
+const UpdateItemForm = (props) => {
+  
+const itemsToUpdate = props.item;
+
   useEffect(() => {
-    setItem_name(itemsToUpdate ? itemsToUpdate.item.item_name : null);
-    setItem_description(itemsToUpdate ? itemsToUpdate.item.item_description : null);
-    setItem_location(itemsToUpdate ? itemsToUpdate.item.item_location : null);
-    setItem_amount(itemsToUpdate ? itemsToUpdate.item.item_amount: null);
-    setItem_projectid(itemsToUpdate ? itemsToUpdate.item.item_projectid : null);
-    setItemid(itemsToUpdate ? itemsToUpdate.item.id : null);
+    
+    setItem_name( itemsToUpdate.item_name );
+    setItem_description( itemsToUpdate.item_description );
+    setItem_location( itemsToUpdate.item_location );
+    setItem_amount( itemsToUpdate.item_amount );
+    setItem_projectid( itemsToUpdate.item_projectid );
+    setItemid( itemsToUpdate.id );
+    
+
   }, []);
 
+  const [item_id, setItemid] = useState();
   const [item_name, setItem_name] = useState("");
   const [item_description, setItem_description] = useState("");
   const [item_location, setItem_location] = useState("");
   const [item_amount, setItem_amount] = useState();
   const [item_projectid, setItem_projectid] = useState();
-  const [item_id, setItemid] = useState();
+ 
 
-  const navigate = useNavigate();
+  
 
   const updateItem = () => {
     console.log(
@@ -41,7 +47,8 @@ const UpdateItemForm = ( itemsToUpdate ) => {
         item_projectid: item_projectid,
       })
       .then(() => {
-       navigate(`/project/${item_projectid}`)
+        props.getItems()
+        props.setUpdate(true)
       });
 
     setItem_name("");
@@ -59,7 +66,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
           className="input"
           type="text"
           value={item_name}
-          placeholder={itemsToUpdate.item ? itemsToUpdate.item.item_name : null}
+          placeholder={itemsToUpdate ? itemsToUpdate.item_name : null}
           onChange={(event) => {
             setItem_name(event.target.value);
           }}
@@ -76,7 +83,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
           className="input"
           type="text"
           value={item_description}
-          placeholder={itemsToUpdate ? itemsToUpdate.item.item_description : null}
+          placeholder={itemsToUpdate ? itemsToUpdate.item_description : null}
           onChange={(event) => {
             setItem_description(event.target.value);
           }}
@@ -93,7 +100,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
           className="input"
           type="text"
           value={item_location}
-          placeholder={itemsToUpdate ? itemsToUpdate.item.item_location: null}
+          placeholder={itemsToUpdate ? itemsToUpdate.item_location : null}
           onChange={(event) => {
             setItem_location(event.target.value);
           }}
@@ -109,7 +116,7 @@ const UpdateItemForm = ( itemsToUpdate ) => {
           className="input"
           type="number"
           value={item_amount}
-          placeholder={itemsToUpdate ? itemsToUpdate.item.item_amount : null}
+          placeholder={itemsToUpdate ? itemsToUpdate.item_amount : null}
           min="1"
           onChange={(event) => {
             setItem_amount(event.target.value);

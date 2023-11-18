@@ -102,7 +102,7 @@ const ProjectPage = () => {
                       className="update_button"
                       onClick={() => updateItem(item)}
                     >
-                     {update? "UPDATE" : "X"} 
+                      {update ? "UPDATE" : "X"}
                     </button>
                     <button
                       className="remove_button"
@@ -129,16 +129,20 @@ const ProjectPage = () => {
         >
           <AddItemForm id={id.id} getItems={getItems} />
         </div>
-        { !update ? <div
-          className="app__projectpage-content-updateitem"
-          // style={{ display: !update ? "flex" : "none" }}
-        >
-        {/* getItems={getItems} */}
-          <UpdateItemForm item={itemToUpdate}  />
-        </div>
-        :
-        null}
-        
+        {!update ? (
+          <div
+            className="app__projectpage-content-updateitem"
+            // style={{ display: !update ? "flex" : "none" }}
+          >
+            {/* getItems={getItems} */}
+            <UpdateItemForm
+              item={itemToUpdate}
+              getItems={getItems}
+              setUpdate={setUpdate}
+            />
+          </div>
+        ) : null}
+
         <div className="app__projectpage-delete-project">
           <button
             className="remove_project"
