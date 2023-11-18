@@ -4,19 +4,15 @@ import axios from "axios";
 import { server } from "../../server";
 
 const UpdateItemForm = (props) => {
-  
-const itemsToUpdate = props.item;
+  const itemsToUpdate = props.item;
 
   useEffect(() => {
-    
-    setItem_name( itemsToUpdate.item_name );
-    setItem_description( itemsToUpdate.item_description );
-    setItem_location( itemsToUpdate.item_location );
-    setItem_amount( itemsToUpdate.item_amount );
-    setItem_projectid( itemsToUpdate.item_projectid );
-    setItemid( itemsToUpdate.id );
-    
-
+    setItem_name(itemsToUpdate.item_name);
+    setItem_description(itemsToUpdate.item_description);
+    setItem_location(itemsToUpdate.item_location);
+    setItem_amount(itemsToUpdate.item_amount);
+    setItem_projectid(itemsToUpdate.item_projectid);
+    setItemid(itemsToUpdate.id);
   }, []);
 
   const [item_id, setItemid] = useState();
@@ -25,9 +21,6 @@ const itemsToUpdate = props.item;
   const [item_location, setItem_location] = useState("");
   const [item_amount, setItem_amount] = useState();
   const [item_projectid, setItem_projectid] = useState();
- 
-
-  
 
   const updateItem = () => {
     console.log(
@@ -47,8 +40,8 @@ const itemsToUpdate = props.item;
         item_projectid: item_projectid,
       })
       .then(() => {
-        props.getItems()
-        props.setUpdate(true)
+        props.getItems();
+        props.setUpdate(false);
       });
 
     setItem_name("");

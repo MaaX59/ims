@@ -12,12 +12,11 @@ const ProjectPage = () => {
 
   const [items, setItems] = useState([]);
   const [itemToUpdate, setItemToUpdate] = useState([]);
-  const [update, setUpdate] = useState(true);
+  const [update, setUpdate] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     getItems();
-    // setUpdate(true)
   }, []);
 
   //get all items for project
@@ -86,7 +85,7 @@ const ProjectPage = () => {
         onClick={() => navigate("/")}
       />
       <div className="app__projectpage-content">
-        <h1>Manage Your project_name</h1>
+        <h1>Manage Your Project</h1>
 
         <div className="app__projectpage-items">
           {items.length > 0 ? (
@@ -102,7 +101,7 @@ const ProjectPage = () => {
                       className="update_button"
                       onClick={() => updateItem(item)}
                     >
-                      {update ? "UPDATE" : "X"}
+                      {update ? "X" : "UPDATE"}
                     </button>
                     <button
                       className="remove_button"
@@ -125,16 +124,12 @@ const ProjectPage = () => {
 
         <div
           className="app__projectpage-content-additem"
-          style={{ display: update ? "flex" : "none" }}
+          style={{ display: !update ? "flex" : "none" }}
         >
           <AddItemForm id={id.id} getItems={getItems} />
         </div>
-        {!update ? (
-          <div
-            className="app__projectpage-content-updateitem"
-            // style={{ display: !update ? "flex" : "none" }}
-          >
-            {/* getItems={getItems} */}
+        {update ? (
+          <div className="app__projectpage-content-updateitem">
             <UpdateItemForm
               item={itemToUpdate}
               getItems={getItems}
