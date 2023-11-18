@@ -3,7 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const router = express.Router();
-const bodyParser = require("body-parser");
+
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
