@@ -1,1 +1,1 @@
-export const server = "http://localhost:3001";
+export const server =  "https://ims-pkhu.onrender.com"||"http://localhost:3001";
