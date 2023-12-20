@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "./NewProjectForm.css";
 import axios from "axios";
-import { server } from "../../server";
+import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
 
 const NewProjectForm = () => {

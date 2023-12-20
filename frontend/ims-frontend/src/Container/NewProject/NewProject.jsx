@@ -1,6 +1,6 @@
 import "./NewProject.css";
 import React from "react";
-import NewProjectForm from "../../Components/NewProjectForm/NewProjectForm";
+import NewProjectForm from "../../Components/Personal/NewProjectForm/NewProjectForm";
 const NewProject = () => {
 
   return (

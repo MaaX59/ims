@@ -2,8 +2,8 @@ import { React, useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProjectPage.css";
-import AddItemForm from "../../Components/AddItemForm/AddItemForm";
-import UpdateItemForm from "../../Components/UpdateItemForm/UpdateItemForm";
+import AddItemForm from "../../Components/Personal/AddItemForm/AddItemForm";
+import UpdateItemForm from "../../Components/Personal/UpdateItemForm/UpdateItemForm";
 import axios from "axios";
 import { server } from "../../server";
 

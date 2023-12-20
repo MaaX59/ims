@@ -1,30 +1,22 @@
 import { React, useState, useEffect } from "react";
-import "./UpdateItemForm.css";
+import "./AddItemForm.css";
 import axios from "axios";
-import { server } from "../../server";
+import { server } from "../../../server";
 
-const UpdateItemForm = (props) => {
-  const itemsToUpdate = props.item;
-
+const AddItemForm = (props) => {
   useEffect(() => {
-    setItem_name(itemsToUpdate.item_name);
-    setItem_description(itemsToUpdate.item_description);
-    setItem_location(itemsToUpdate.item_location);
-    setItem_amount(itemsToUpdate.item_amount);
-    setItem_projectid(itemsToUpdate.item_projectid);
-    setItemid(itemsToUpdate.id);
+    setItem_projectid(props.id);
   }, []);
 
-  const [item_id, setItemid] = useState();
   const [item_name, setItem_name] = useState("");
   const [item_description, setItem_description] = useState("");
   const [item_location, setItem_location] = useState("");
   const [item_amount, setItem_amount] = useState();
   const [item_projectid, setItem_projectid] = useState();
 
-  const updateItem = () => {
+  const addItem = () => {
     console.log(
-      "updated items",
+      "added items",
       item_name,
       item_description,
       item_location,
@@ -32,7 +24,7 @@ const UpdateItemForm = (props) => {
       item_projectid
     );
     axios
-      .put(`${server}/update/${item_id}`, {
+      .post(`${server}/add_item`, {
         item_name: item_name,
         item_description: item_description,
         item_location: item_location,
@@ -41,32 +33,31 @@ const UpdateItemForm = (props) => {
       })
       .then(() => {
         props.getItems();
-        props.setUpdate(false);
-      });
-
-    setItem_name("");
-    setItem_description("");
-    setItem_location("");
-    setItem_amount("");
+      })
+      
+      setItem_name("");
+      setItem_description("");
+      setItem_location("");
+      setItem_amount("");
   };
 
   return (
     <div className="form">
-      <div className="title">Update an item!</div>
+      <div className="title">Add an item!</div>
       <div className="input-container ic1">
         <input
           id="item-name"
           className="input"
           type="text"
           value={item_name}
-          placeholder={itemsToUpdate ? itemsToUpdate.item_name : null}
+          placeholder=" "
           onChange={(event) => {
             setItem_name(event.target.value);
           }}
           required
         />
 
-        <label for="item-name" className="update-placeholder">
+        <label for="item-name" className="placeholder">
           Item Name*
         </label>
       </div>
@@ -76,13 +67,13 @@ const UpdateItemForm = (props) => {
           className="input"
           type="text"
           value={item_description}
-          placeholder={itemsToUpdate ? itemsToUpdate.item_description : null}
+          placeholder=" "
           onChange={(event) => {
             setItem_description(event.target.value);
           }}
         />
 
-        <label for="item-description" className="update-placeholder">
+        <label for="item-description" className="placeholder">
           Item description
         </label>
       </div>
@@ -93,12 +84,12 @@ const UpdateItemForm = (props) => {
           className="input"
           type="text"
           value={item_location}
-          placeholder={itemsToUpdate ? itemsToUpdate.item_location : null}
+          placeholder=" "
           onChange={(event) => {
             setItem_location(event.target.value);
           }}
         />
-        <label for="item-location" className="update-placeholder">
+        <label for="item-location" className="placeholder">
           Item Location
         </label>
       </div>
@@ -109,23 +100,23 @@ const UpdateItemForm = (props) => {
           className="input"
           type="number"
           value={item_amount}
-          placeholder={itemsToUpdate ? itemsToUpdate.item_amount : null}
+          placeholder=" "
           min="1"
           onChange={(event) => {
             setItem_amount(event.target.value);
           }}
           required
         />
-        <label for="item-amount" className="update-placeholder">
+        <label for="item-amount" className="placeholder">
           Amount*
         </label>
       </div>
       <div className="form-required"> * field is required</div>
-      <button type="text" className="submit" onClick={updateItem}>
-        Update
+      <button type="text" className="submit" onClick={addItem}>
+        Create
       </button>
     </div>
   );
 };
 
-export default UpdateItemForm;
+export default AddItemForm;
