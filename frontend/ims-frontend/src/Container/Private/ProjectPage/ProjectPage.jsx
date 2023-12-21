@@ -64,14 +64,14 @@ const ProjectPage = () => {
       );
       if (response.status === 200) {
         console.log("project deleted");
-        navigate("/");
+        navigate("/viewproject");
       }
     } catch (error) {
       console.log(`error deleting items`, error);
     }
   };
 
-  //button press that changes state to update
+  //button press that changes state to update item
   const updateItem = (item) => {
     setItemToUpdate(item);
     setUpdate(!update);
@@ -83,7 +83,7 @@ const ProjectPage = () => {
         className="goBackButton"
         title="Go back"
         size={20}
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/viewproject")}
       />
       <div className="app__projectpage-content">
         <h1>Manage Your Project</h1>

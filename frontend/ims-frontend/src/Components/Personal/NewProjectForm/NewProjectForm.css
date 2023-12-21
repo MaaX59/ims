@@ -96,7 +96,7 @@
   font-size: 15px;
   font-weight: 100;
 }
-.submit {
+/* .submit {
   background: black;
   border-radius: 12px;
   border: 2px solid rgb(1, 1, 100);
@@ -116,7 +116,8 @@
 }
 .submit:active {
   border: 5px solid rgb(1, 1, 100);
-}
+} */
+
 @media screen and (max-width: 1300px) {
   .title {
     font-size: 20px;

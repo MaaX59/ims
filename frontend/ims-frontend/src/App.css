@@ -52,3 +52,24 @@
   top: 20px;
   left: 20px;
 }
+.submit {
+  background: black;
+  border-radius: 12px;
+  border: 2px solid rgb(1, 1, 100);
+  box-sizing: border-box;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  outline: 0;
+  text-align: center;
+  width: 130px;
+  font-family: "Courier New", Courier, monospace;
+}
+.submit:hover {
+  border: 3px solid rgb(1, 1, 100);
+}
+.submit:active {
+  border: 5px solid rgb(1, 1, 100);
+}
