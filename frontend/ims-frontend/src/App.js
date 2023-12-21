@@ -1,7 +1,13 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ViewProject, NewProject, ProjectPage, Start } from "./Container/index";
+import {
+  ViewProject,
+  NewProject,
+  ProjectPage,
+  Start,
+  Login,
+} from "./Container/index";
 
 function App() {
   return (
@@ -11,6 +17,7 @@ function App() {
         <Route path="/viewproject" element={<ViewProject />} />
         <Route path="/newproject" element={<NewProject />} />
         <Route path="/project/:id" element={<ProjectPage />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
