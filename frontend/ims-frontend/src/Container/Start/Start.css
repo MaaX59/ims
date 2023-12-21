@@ -1,0 +1,38 @@
+.app__start {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+.app__start-private,
+.app__start-company {
+  background-color: var(--color-grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-white);
+  font-family: "Courier New", Courier, monospace;
+  border: none;
+  border-radius: 3px;
+  border: 1px transparent blue;
+  line-height: 1rem;
+  cursor: pointer;
+}
+.app__start-private:hover {
+  border: 1px solid blue;
+  margin: -1px;
+}
+.app__start-company:hover {
+  border: 1px solid blue;
+  margin: -1px;
+}
+.app__start h1,
+h2 {
+  display: flex;
+  justify-content: center;
+  font-weight: 200;
+  margin: 1rem;
+}
+.app__start h2 {
+  font-size: 18px;
+}
