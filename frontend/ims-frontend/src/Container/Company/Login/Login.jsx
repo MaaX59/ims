@@ -43,7 +43,7 @@ const Login = () => {
           <button type="submit" className="submit">
             Login
           </button>
-          <button type="text" className="submit">
+          <button type="text" className="create-user">
             Create User
           </button>
         </div>
