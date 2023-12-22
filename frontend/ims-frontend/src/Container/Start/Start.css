@@ -1,12 +1,14 @@
 .app__start {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   height: 100vh;
 }
 .app__start-private,
 .app__start-company {
   background: black;
+  padding-left: 2rem;
+  padding-right: 2rem;
   border-radius: 12px;
   border: 2px solid var(--color-blue);
   box-sizing: border-box;
@@ -17,17 +19,12 @@
   font-family: "Courier New", Courier, monospace;
   line-height: 1rem;
   cursor: pointer;
+  text-decoration: none;
 }
-.app__start-private:hover {
-  border: 3px solid var(--color-blue);
-  margin: -1px;
-}
+.app__start-private:hover,
 .app__start-company:hover {
   border: 3px solid var(--color-blue);
   margin: -1px;
-}
-.app__start-company h1:visited {
-  color: var(--color-white);
 }
 
 .app__start h1,
@@ -35,8 +32,7 @@ h2 {
   display: flex;
   justify-content: center;
   font-weight: 200;
-  margin: 1rem;
 }
 .app__start h2 {
-  font-size: 18px;
+  font-size: 15px;
 }

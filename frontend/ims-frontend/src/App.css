@@ -5,6 +5,9 @@
   margin: 0;
   background: var(--color-black);
 }
+a {
+  text-decoration: none;
+}
 .remove_button {
   background-color: brown;
   border: none;
