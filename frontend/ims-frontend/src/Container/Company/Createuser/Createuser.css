@@ -1,0 +1,17 @@
+.app__createuser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.app__createuser-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  height: 40vh;
+  border-radius: 14px;
+  background: var(--color-grey);
+  color: var(--color-white);
+}

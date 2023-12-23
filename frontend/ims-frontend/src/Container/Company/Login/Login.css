@@ -8,10 +8,50 @@
 .app__login-content {
   display: flex;
   justify-content: center;
-
-  background-color: var(--color-grey);
-  border-radius: 3px;
-  height: 50vh;
-  width: 600px;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: var(--color-grey); */
+  /* border-radius: 5px;
+  height: 40vh;
+  width: 300px; */
   color: var(--color-white);
+}
+.app__login-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-login {
+  background: rgb(0, 0, 61);
+  border-radius: 12px;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  width: 100px;
+  border: none;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  margin: 28px 10px;
+}
+.submit-createuser {
+  background: black;
+  border-radius: 12px;
+  border: 2px solid rgb(1, 1, 100);
+  box-sizing: border-box;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  width: 100px;
+  margin: 28px 10px;
+  outline: 0;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+.submit-login:hover {
+  background: rgb(0, 0, 48);
+}
+.submit-createuser:hover {
+  border: 3px solid rgb(1, 1, 94);
 }

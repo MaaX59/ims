@@ -1,17 +1,15 @@
-import { React, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { server } from "../../../server";
-import "./Login.css";
+import React from "react";
+import "./Createuser.css";
 
-const Login = () => {
+const Createuser = () => {
   return (
-    <div className="app__login">
-      <div className="app__login-content">
-        <div className="app__login-content-title">
-          <h1>Login</h1>
-        </div>
-        <div className="app__login-content-form">
+    <div className="app__createuser">
+      <div className="app__createuser-content">
+        <div className="app__createuser-form">
+          <div className="app__createuser-form-title">
+            {" "}
+            <h1>Create User</h1>
+          </div>
           <div className="input-container ic1">
             <input
               id="email"
@@ -43,20 +41,13 @@ const Login = () => {
             </label>
           </div>
 
-          <div className="app__login-buttons">
-            <button type="submit" className="submit-login">
-              Login
-            </button>
-            <Link to="/create-user">
-              <button type="text" className="submit-createuser">
-                Create User
-              </button>
-            </Link>
-          </div>
+          <button type="submit" className="submit">
+            Login
+          </button>
         </div>
-      </div>
+      </div>{" "}
     </div>
   );
 };
 
-export default Login;
+export default Createuser;
