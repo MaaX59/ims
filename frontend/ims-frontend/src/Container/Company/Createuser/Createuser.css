@@ -9,9 +9,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
-  height: 40vh;
+  width: 800px;
+  height: 500px;
   border-radius: 14px;
   background: var(--color-grey);
   color: var(--color-white);
+}
+.app__createuser-form-title {
+  display: flex;
+  align-items: center;
+}
+.app__createuser-content-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.app_createuser-form-firstrow,
+.app_createuser-form-secondrow,
+.app_createuser-form-thirdrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app_createuser-form-firstrow :first-child,
+.app_createuser-form-secondrow :first-child,
+.app_createuser-form-thirdrow :first-child {
+  margin-right: 1rem;
 }
