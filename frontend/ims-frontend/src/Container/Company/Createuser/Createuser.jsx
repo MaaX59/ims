@@ -1,15 +1,23 @@
-import React from "react";
+import { React, useState } from "react";
 import "./Createuser.css";
 
 const Createuser = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [companyid, setCompanyid] = useState(null);
+  const [companyPassword, setCompanyPassword] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [confirmedPassword, setConfirmedPassword] = useState(null);
+
   return (
     <div className="app__createuser">
       <div className="app__createuser-content">
+        <div className="app__createuser-content-title">
+          {" "}
+          <h1>Create User</h1>
+        </div>
         <div className="app__createuser-form">
-          <div className="app__createuser-form-title">
-            {" "}
-            <h1>Create User</h1>
-          </div>
           <div className="app_createuser-form-firstrow">
             <div className="input-container ic1">
               <input
@@ -18,7 +26,7 @@ const Createuser = () => {
                 type="text"
                 placeholder=" "
                 onChange={(event) => {
-                  // setProject_name(event.target.value);
+                  setFirstName(event.target.value);
                 }}
                 required
               />
@@ -35,7 +43,7 @@ const Createuser = () => {
                 type="text"
                 placeholder=" "
                 onChange={(event) => {
-                  // setProject_description(event.target.value);
+                  setLastName(event.target.value);
                 }}
               />
               <label for="lastname" className="placeholder">
@@ -52,7 +60,7 @@ const Createuser = () => {
                 type="email"
                 placeholder=" "
                 onChange={(event) => {
-                  // setProject_name(event.target.value);
+                  setEmail(event.target.value);
                 }}
                 required
               />
@@ -61,7 +69,7 @@ const Createuser = () => {
                 Email*
               </label>
             </div>
-            <div className="input-container ic1">
+            {/* <div className="input-container ic1">
               <input
                 id="project-description"
                 className="input"
@@ -74,7 +82,7 @@ const Createuser = () => {
               <label for="password" className="placeholder">
                 Password*
               </label>
-            </div>
+            </div> */}
           </div>
 
           <div className="app_createuser-form-thirdrow">
@@ -85,9 +93,8 @@ const Createuser = () => {
                 type="number"
                 placeholder=" "
                 onChange={(event) => {
-                  // setProject_name(event.target.value);
+                  setCompanyid(event.target.value);
                 }}
-                required
               />
 
               <label for="company_id" className="placeholder">
@@ -102,11 +109,45 @@ const Createuser = () => {
                 type="password"
                 placeholder=" "
                 onChange={(event) => {
-                  // setProject_description(event.target.value);
+                  setCompanyPassword(event.target.value);
                 }}
               />
               <label for="company_password" className="placeholder">
                 Company Password
+              </label>
+            </div>
+          </div>
+
+          <div className="app_createuser-form-fourthrow">
+            <div className="input-container ic1">
+              <input
+                id="password"
+                className="input"
+                type="password"
+                placeholder=" "
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+                required
+              />
+
+              <label for="password" className="placeholder">
+                Personal Password*
+              </label>
+            </div>
+
+            <div className="input-container ic1">
+              <input
+                id="confirm_password"
+                className="input"
+                type="password"
+                placeholder=" "
+                onChange={(event) => {
+                  setConfirmedPassword(event.target.value);
+                }}
+              />
+              <label for="confirm_password" className="placeholder">
+                Confirm Personal Password*
               </label>
             </div>
           </div>

@@ -9,15 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 800px;
-  height: 500px;
+  height: 580px;
   border-radius: 14px;
   background: var(--color-grey);
+  font-family: "Courier New", Courier, monospace;
   color: var(--color-white);
-}
-.app__createuser-form-title {
-  display: flex;
-  align-items: center;
 }
 .app__createuser-content-form {
   display: flex;
@@ -25,15 +23,19 @@
   align-items: center;
   flex-direction: column;
 }
+.app__createuser-content-title h1 {
+  font-weight: 300;
+}
 .app_createuser-form-firstrow,
 .app_createuser-form-secondrow,
-.app_createuser-form-thirdrow {
+.app_createuser-form-thirdrow,
+.app_createuser-form-fourthrow {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .app_createuser-form-firstrow :first-child,
-.app_createuser-form-secondrow :first-child,
-.app_createuser-form-thirdrow :first-child {
+.app_createuser-form-thirdrow :first-child,
+.app_createuser-form-fourthrow :first-child {
   margin-right: 1rem;
 }

@@ -5,6 +5,9 @@ import { server } from "../../../server";
 import "./Login.css";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="app__login">
       <div className="app__login-content">
@@ -19,13 +22,13 @@ const Login = () => {
               type="email"
               placeholder=" "
               onChange={(event) => {
-                // setProject_name(event.target.value);
+                setEmail(event.target.value);
               }}
               required
             />
 
             <label for="email" className="placeholder">
-              Email
+              Email*
             </label>
           </div>
           <div className="input-container ic2">
@@ -35,11 +38,11 @@ const Login = () => {
               type="password"
               placeholder=" "
               onChange={(event) => {
-                // setProject_description(event.target.value);
+                setPassword(event.target.value);
               }}
             />
             <label for="password" className="placeholder">
-              Password
+              Password*
             </label>
           </div>
 
