@@ -151,6 +151,7 @@ const Createuser = () => {
               </label>
             </div>
           </div>
+          <div className="form-required">* field is required</div>
 
           <button type="submit" className="submit">
             Create
