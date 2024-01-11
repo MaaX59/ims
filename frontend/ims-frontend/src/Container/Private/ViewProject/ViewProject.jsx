@@ -1,9 +1,10 @@
 import { React, useState, useEffect } from "react";
 import { MdAddCircle } from "react-icons/md";
-import "./ViewProject.css";
 import axios from "axios";
 import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
+
+import "./ViewProject.css";
 
 const ViewProject = () => {
   useEffect(() => {
