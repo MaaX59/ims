@@ -19,7 +19,7 @@ const NewProjectForm = () => {
         project_description: project_description,
       })
       .then(() => {
-        navigate("/");
+        navigate("/viewproject");
       });
   };
 
@@ -29,7 +29,7 @@ const NewProjectForm = () => {
         className="goBackButton"
         title="Go back"
         size={20}
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/viewproject")}
       />
 
       <div className="title">Start Project</div>
