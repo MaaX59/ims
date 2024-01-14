@@ -4,7 +4,6 @@ const mysql = require("mysql");
 const cors = require("cors");
 const router = express.Router();
 
-
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
 app.use(
@@ -24,6 +23,8 @@ const db = mysql.createConnection({
 app.listen(3001, () => {
   console.log("server running at port 3001");
 });
+
+//single user
 
 // start a project
 app.post("/create_project", (req, res) => {
@@ -99,10 +100,18 @@ app.put("/update/:id", (req, res) => {
   const item_projectid = req.body.item_projectid;
   db.query(
     "UPDATE item SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, item_projectid= ? WHERE id= ?",
-    [item_name, item_description, item_location, item_amount, item_projectid, id],
+    [
+      item_name,
+      item_description,
+      item_location,
+      item_amount,
+      item_projectid,
+      id,
+    ],
     (error, data) => {
-      error ? console.log("error updating item",error):
-      res.status(200).json({ message: "item updated successfully" });
+      error
+        ? console.log("error updating item", error)
+        : res.status(200).json({ message: "item updated successfully" });
     }
   );
 });
@@ -135,7 +144,7 @@ app.delete("/delete_item/:itemid", (req, res) => {
 //delete items based on project
 app.delete("/delete_items/:projectid", (req, res) => {
   const { id } = req.params.projectid;
-  console.log("delete items req params",req.params.id);
+  console.log("delete items req params", req.params.id);
 
   db.query(
     "DELETE FROM item WHERE item_projectid = ?",
@@ -169,4 +178,16 @@ app.get("/project/:id", (req, res) => {
   } catch (error) {
     console.log("error while getting project if from req params", error);
   }
+});
+
+// company User
+app.post("/createuser", (req, res) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const companyid = req.body.companyid;
+  const companyPassword = req.body.companyPassword;
+  const password = req.body.password;
+  const confirmPassword = req.body.confirmPassword;
+  console.log(req.body);
 });

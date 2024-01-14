@@ -25,6 +25,7 @@ const Createuser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(`${server}/createuser`, {
         firstName: firstName,
@@ -38,7 +39,7 @@ const Createuser = () => {
     } catch (err) {
       console.log(`error creating user`, err);
     }
-    console.log(firstName, password);
+    // console.log(firstName, password);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -183,8 +184,10 @@ const Createuser = () => {
                   placeholder=" "
                   onChange={(event) => {
                     setConfirmedPassword(event.target.value);
-                    pwdMatch();
+
+                    // pwdMatch();
                   }}
+                  required
                 />
                 <label for="confirm_password" className="placeholder">
                   Confirm Personal Password*
