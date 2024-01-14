@@ -1,4 +1,6 @@
 import { React, useState } from "react";
+import axios from "axios";
+import { server } from "../../../server";
 import "./Createuser.css";
 
 const Createuser = () => {
@@ -10,8 +12,32 @@ const Createuser = () => {
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
 
+  const [pwdMismatch, setPwdMismatch] = useState(false);
+
+  const pwdMatch = () => {
+    console.log(password, confirmedPassword);
+    if (password !== confirmedPassword) {
+      setPwdMismatch(true);
+    } else {
+      setPwdMismatch(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(`${server}/createuser`, {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        companyid: companyid,
+        companyPassword: companyPassword,
+        password: password,
+        confirmedPassword: confirmedPassword,
+      });
+    } catch (err) {
+      console.log(`error creating user`, err);
+    }
     console.log(firstName, password);
     setFirstName("");
     setLastName("");
@@ -157,11 +183,13 @@ const Createuser = () => {
                   placeholder=" "
                   onChange={(event) => {
                     setConfirmedPassword(event.target.value);
+                    pwdMatch();
                   }}
                 />
                 <label for="confirm_password" className="placeholder">
                   Confirm Personal Password*
                 </label>
+                {pwdMismatch && <h3>Passwords do not match</h3>}
               </div>
             </div>
             <div className="form-required">* field is required</div>

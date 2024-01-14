@@ -17,7 +17,10 @@ const Login = () => {
       const response = await axios.post(
         `${server}/login`,
         JSON.stringify({ email, password }),
-        { headers: { "Content-Type": "application/json" } }
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
       );
     } catch (err) {}
     setEmail("");
