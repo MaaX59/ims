@@ -214,8 +214,8 @@ app.post("/login", (req, res) => {
       }
       if (data.length > 0) {
         const id = data[0].id;
-        jwt.sign({ id });
-        return res.json("success");
+        const token = jwt.sign({ id }, "jwtKey", { expiresIn: 300 });
+        return res.json(token, data);
       } else {
         return res.json("fail");
       }
