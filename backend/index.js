@@ -3,6 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
@@ -180,7 +181,11 @@ app.get("/project/:id", (req, res) => {
   }
 });
 
-// company User
+//
+// Company User
+//
+
+//createuser aka signup -.-
 app.post("/createuser", (req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
@@ -189,5 +194,31 @@ app.post("/createuser", (req, res) => {
   const companyPassword = req.body.companyPassword;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
+  "INSERT INTO users() VALUES(?,?,?,?,?)",
+    [item_name, item_location, item_amount, item_description, item_projectid],
+    console.log(req.body);
+});
+
+// Log In
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
   console.log(req.body);
+
+  db.query(
+    "SELECT * FROM users WHERE `email` = ? AND `password` = ? ",
+    [email, password],
+    (err, data) => {
+      if (err) {
+        return res.json("error");
+      }
+      if (data.length > 0) {
+        const id = data[0].id;
+        jwt.sign({ id });
+        return res.json("success");
+      } else {
+        return res.json("fail");
+      }
+    }
+  );
 });

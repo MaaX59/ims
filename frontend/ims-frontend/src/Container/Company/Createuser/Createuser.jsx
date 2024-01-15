@@ -36,6 +36,7 @@ const Createuser = () => {
         password: password,
         confirmedPassword: confirmedPassword,
       });
+      console.log(response.data);
     } catch (err) {
       console.log(`error creating user`, err);
     }
