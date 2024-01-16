@@ -22,7 +22,9 @@ const Login = () => {
           withCredentials: true,
         }
       );
-    } catch (err) {}
+    } catch (err) {
+      console.log(err, "error loggin in");
+    }
     setEmail("");
     setPassword("");
   };

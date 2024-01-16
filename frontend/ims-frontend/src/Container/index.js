@@ -4,5 +4,14 @@ import ProjectPage from "./Private/ProjectPage/ProjectPage";
 import Start from "./Start/Start";
 import Login from "./Company/Login/Login";
 import Createuser from "./Company/Createuser/Createuser";
+import ViewUser from "./Company/ViewUser/ViewUser";
 
-export { ViewProject, NewProject, ProjectPage, Start, Login, Createuser };
+export {
+  ViewProject,
+  NewProject,
+  ProjectPage,
+  Start,
+  Login,
+  Createuser,
+  ViewUser,
+};

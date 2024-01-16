@@ -38,6 +38,7 @@ const ViewUser = () => {
       <div className="app__view_user-content">
         <div className="app__view_user-title">
           <h1>Inventory Manegment System</h1>
+          <h2>Welcome USER</h2>
         </div>
         <div className="app__view_user-projects">
           {companyId ? (
@@ -52,14 +53,25 @@ const ViewUser = () => {
             ))
           ) : (
             <div className="app__view_user-noproject">
-              <h1>You are not connected to a Company IMS </h1>
-              <h1>Would you like to start one?</h1>
-              <MdAddCircle
-                className="app__view_user-startcompany"
-                title="Start Company IMS "
-                size={25}
-                onClick={() => navigate("/newcompany")}
-              />
+              <h2>You are not connected to a company IMS </h2>
+              <div className="app__view_user-noproject-options">
+                <button
+                  className="company_button"
+                  onClick={() => navigate("/create_company")}
+                >
+                  Start company IMS
+                </button>
+                {/* <MdAddCircle
+                  className="app__view_user-startcompany"
+                  title="Start Company IMS "
+                  size={25}
+                  onClick={() => navigate("/newcompany")}
+                /> */}
+
+                <button onClick={() => navigate("/connect_company")}>
+                  Connect to company IMS
+                </button>
+              </div>
             </div>
           )}
         </div>

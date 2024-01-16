@@ -8,6 +8,7 @@ import {
   Start,
   Login,
   Createuser,
+  ViewUser,
 } from "./Container/index";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/project/:id" element={<ProjectPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-user" element={<Createuser />} />
+        <Route path="/viewuser" element={<ViewUser />} />
       </Routes>
     </BrowserRouter>
   );
