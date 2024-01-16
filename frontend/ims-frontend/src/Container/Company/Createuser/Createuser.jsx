@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import "./Createuser.css";
+import { useNavigate } from "react-router-dom";
 
 const Createuser = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,6 +14,9 @@ const Createuser = () => {
   const [confirmedPassword, setConfirmedPassword] = useState("");
 
   const [pwdMismatch, setPwdMismatch] = useState(false);
+  const navigate = useNavigate();
+
+  const [error, setError] = useState("");
 
   // const pwdMatch = () => {
   //   console.log(password, confirmedPassword);
@@ -27,16 +31,23 @@ const Createuser = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${server}/createuser`, {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        companyid: companyid,
-        companyPassword: companyPassword,
-        password: password,
-        confirmedPassword: confirmedPassword,
-      });
-      console.log(response.data);
+      await axios
+        .post(`${server}/createuser`, {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          companyid: companyid,
+          companyPassword: companyPassword,
+          password: password,
+          confirmedPassword: confirmedPassword,
+        })
+        .then((res) => {
+          if (res.data === "User created") {
+            navigate("/login");
+          } else if (res.data === "Email already exist") {
+            setError("Email already exist");
+          }
+        });
     } catch (err) {
       console.log(`error creating user`, err);
     }
@@ -197,6 +208,11 @@ const Createuser = () => {
               </div>
             </div>
             <div className="form-required">* field is required</div>
+            {
+              <div>
+                <span>{error && error}</span>
+              </div>
+            }
 
             <button type="submit" className="submit">
               Create

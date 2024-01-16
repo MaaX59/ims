@@ -195,26 +195,37 @@ app.post("/createuser", (req, res) => {
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
   console.log(req.body);
-
-  //  try{
-  // "SELECT * FROM users WHERE `email` = ? ",[email],
-  // (err, data) => {
-  //   if (err) {
-  //     return res.json("error");
-  //   }
-  //   if (data.length > 0)}
-
-  db.query(
-    "INSERT INTO users(first_name, last_name, email, company_id, company_password, password) VALUES(?,?,?,?,?,?)",
-    [first_name, last_name, email, company_id, company_password, password],
-    (err, result) => {
-      if (err) {
-        console.log(`error when sending to db`, err);
-      } else {
-        res.send("user sent to db");
+  try {
+    //see if email already exist
+    db.query("SELECT * FROM users WHERE `email` = ? ", [email], (err, data) => {
+      //if email dosent exist in db, create user
+      if (data.length == 0) {
+        db.query(
+          "INSERT INTO users(first_name, last_name, email, company_id, company_password, password) VALUES(?,?,?,?,?,?)",
+          [
+            first_name,
+            last_name,
+            email,
+            company_id,
+            company_password,
+            password,
+          ],
+          (err, result) => {
+            if (err) {
+              console.log(`error when sending to db`, err);
+            } else {
+              res.send("User created");
+            }
+          }
+        );
+      } else if (data.length > 0) {
+        console.log(data);
+        res.send("Email already exist");
       }
-    }
-  );
+    });
+  } catch (err) {
+    console.log("error creating new user", err);
+  }
 });
 
 // Log In
