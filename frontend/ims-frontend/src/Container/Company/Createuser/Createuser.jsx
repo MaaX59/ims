@@ -42,8 +42,18 @@ const Createuser = () => {
           confirmedPassword: confirmedPassword,
         })
         .then((res) => {
+          //the backend will check for errors before creating user
           if (res.data === "User created") {
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setCompanyid("");
+            setCompanyPassword("");
+            setPassword("");
+            setConfirmedPassword("");
             navigate("/login");
+          } else if (res.data === "no pwd match") {
+            setError("Password and Confirm password need to match!");
           } else if (res.data === "Email already exist") {
             setError("Email already exist");
           }
@@ -52,13 +62,6 @@ const Createuser = () => {
       console.log(`error creating user`, err);
     }
     // console.log(firstName, password);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setCompanyid("");
-    setCompanyPassword("");
-    setPassword("");
-    setConfirmedPassword("");
   };
 
   return (

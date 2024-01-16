@@ -193,36 +193,45 @@ app.post("/createuser", (req, res) => {
   const company_id = req.body.companyid;
   const company_password = req.body.companyPassword;
   const password = req.body.password;
-  const confirmPassword = req.body.confirmPassword;
+  const confirmPassword = req.body.confirmedPassword;
   console.log(req.body);
   try {
-    //see if email already exist
-    db.query("SELECT * FROM users WHERE `email` = ? ", [email], (err, data) => {
-      //if email dosent exist in db, create user
-      if (data.length == 0) {
-        db.query(
-          "INSERT INTO users(first_name, last_name, email, company_id, company_password, password) VALUES(?,?,?,?,?,?)",
-          [
-            first_name,
-            last_name,
-            email,
-            company_id,
-            company_password,
-            password,
-          ],
-          (err, result) => {
-            if (err) {
-              console.log(`error when sending to db`, err);
-            } else {
-              res.send("User created");
-            }
+    //check if pwds match
+    if (password !== confirmPassword) {
+      res.send("no pwd match");
+    } else {
+      //see if email already exist
+      db.query(
+        "SELECT * FROM users WHERE `email` = ? ",
+        [email],
+        (err, data) => {
+          //if email dosent exist in db, create user
+          if (data.length == 0) {
+            db.query(
+              "INSERT INTO users(first_name, last_name, email, company_id, company_password, password) VALUES(?,?,?,?,?,?)",
+              [
+                first_name,
+                last_name,
+                email,
+                company_id,
+                company_password,
+                password,
+              ],
+              (err, result) => {
+                if (err) {
+                  console.log(`error when sending to db`, err);
+                } else {
+                  res.send("User created");
+                }
+              }
+            );
+          } else if (data.length > 0) {
+            console.log(data);
+            res.send("Email already exist");
           }
-        );
-      } else if (data.length > 0) {
-        console.log(data);
-        res.send("Email already exist");
-      }
-    });
+        }
+      );
+    }
   } catch (err) {
     console.log("error creating new user", err);
   }
