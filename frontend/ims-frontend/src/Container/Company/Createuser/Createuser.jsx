@@ -7,21 +7,21 @@ const Createuser = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [companyid, setCompanyid] = useState("");
+  const [companyid, setCompanyid] = useState(null);
   const [companyPassword, setCompanyPassword] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
 
   const [pwdMismatch, setPwdMismatch] = useState(false);
 
-  const pwdMatch = () => {
-    console.log(password, confirmedPassword);
-    if (password !== confirmedPassword) {
-      setPwdMismatch(true);
-    } else {
-      setPwdMismatch(false);
-    }
-  };
+  // const pwdMatch = () => {
+  //   console.log(password, confirmedPassword);
+  //   if (password !== confirmedPassword) {
+  //     setPwdMismatch(true);
+  //   } else {
+  //     setPwdMismatch(false);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

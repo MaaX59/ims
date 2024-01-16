@@ -187,16 +187,34 @@ app.get("/project/:id", (req, res) => {
 
 //createuser aka signup -.-
 app.post("/createuser", (req, res) => {
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
+  const first_name = req.body.firstName;
+  const last_name = req.body.lastName;
   const email = req.body.email;
-  const companyid = req.body.companyid;
-  const companyPassword = req.body.companyPassword;
+  const company_id = req.body.companyid;
+  const company_password = req.body.companyPassword;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
-  "INSERT INTO users() VALUES(?,?,?,?,?)",
-    [item_name, item_location, item_amount, item_description, item_projectid],
-    console.log(req.body);
+  console.log(req.body);
+
+  //  try{
+  // "SELECT * FROM users WHERE `email` = ? ",[email],
+  // (err, data) => {
+  //   if (err) {
+  //     return res.json("error");
+  //   }
+  //   if (data.length > 0)}
+
+  db.query(
+    "INSERT INTO users(first_name, last_name, email, company_id, company_password, password) VALUES(?,?,?,?,?,?)",
+    [first_name, last_name, email, company_id, company_password, password],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.send("user sent to db");
+      }
+    }
+  );
 });
 
 // Log In
@@ -214,7 +232,7 @@ app.post("/login", (req, res) => {
       }
       if (data.length > 0) {
         const id = data[0].id;
-        const token = jwt.sign({ id }, "jwtKey", { expiresIn: 300 });
+        const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
         return res.json(token, data);
       } else {
         return res.json("fail");
