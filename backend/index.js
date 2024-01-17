@@ -256,17 +256,15 @@ app.post("/login", (req, res) => {
       if (err) {
         return res.json("error");
       }
+      //check if data exist
       if (data[0]) {
-        if (data[0].length > 0) {
-          if (data[0].password === password) {
-            const id = data[0].id;
-            const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
-            return res.status(200).json({ token });
-          } else {
-            return res.json("no match");
-          }
+        //check if passwords match
+        if (data[0].password === password) {
+          const id = data[0].id;
+          const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
+          return res.status(200).json({ token });
         } else {
-          return res.json("fail");
+          return res.json("no match");
         }
       } else {
         return res.json("no email");

@@ -39,7 +39,7 @@ const Login = () => {
         console.log(response.data);
         setError("This email dosen´t exist");
       } else {
-        console.log(response.data.token);
+        console.log("token -->", response.data.token);
         const token = response?.data?.token;
         setAuth(token);
         setEmail("");
