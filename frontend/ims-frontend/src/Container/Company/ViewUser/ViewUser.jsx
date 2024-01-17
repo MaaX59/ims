@@ -13,6 +13,8 @@ const ViewUser = () => {
   const [companyId, setCompanyId] = useState(null);
   const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
+
+  //find company connected to user
   const findCompany = async () => {
     try {
       const response = await axios.get(`${server}/findcompany`);
@@ -23,9 +25,11 @@ const ViewUser = () => {
       console.log(`error fetching company`, error);
     }
   };
+  //find company projects
   const getProjects = async () => {
     try {
       const response = await axios.get(`${server}/getprojects/${companyId}`);
+      console.log(response.data, "<-- company projects data");
       setProjectList(response.data);
       console.log("this is the projects", response.data);
     } catch (error) {
