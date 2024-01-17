@@ -245,21 +245,31 @@ app.post("/login", (req, res) => {
 
   db.query(
     "SELECT * FROM users WHERE `email` = ? ",
-    // "SELECT * FROM users WHERE `email` = ? AND `password` = ? ",
     [email],
+    // "SELECT * FROM users WHERE `email` = ? AND `password` = ? ",
     // [email, password],
     (err, data) => {
-      console.log(data[0].password, " <-- password from db");
+      console.log(data, "<--data");
+      data[0] ? console.log(data[0].password, " <-- password from db") : null;
+      console.log(password, "<---pwd from form");
+
       if (err) {
         return res.json("error");
       }
-      if (data[0].length > 0 && data[0].password === password) {
-        const id = data[0].id;
-        const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
-
-        return res.status(200).json({ token });
+      if (data[0]) {
+        if (data[0].length > 0) {
+          if (data[0].password === password) {
+            const id = data[0].id;
+            const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
+            return res.status(200).json({ token });
+          } else {
+            return res.json("no match");
+          }
+        } else {
+          return res.json("fail");
+        }
       } else {
-        return res.json("fail");
+        return res.json("no email");
       }
     }
   );
