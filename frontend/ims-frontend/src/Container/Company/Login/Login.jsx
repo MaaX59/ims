@@ -4,9 +4,12 @@ import axios from "axios";
 import { server } from "../../../server";
 import "./Login.css";
 import AuthContext from "../../../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { setAuth } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,19 +17,25 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const userToLogin = { email, password };
       const response = await axios.post(
         `${server}/login`,
-        JSON.stringify({ email, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
+        userToLogin
+        // JSON.stringify({ email, password })
+        // {
+        //   headers: { "Content-Type": "application/json" },
+        //   withCredentials: true,
+        // }
       );
+      console.log(response.data.token);
+      const token = response?.data?.token;
+      setAuth(token);
+      setEmail("");
+      setPassword("");
+      navigate("/viewuser");
     } catch (err) {
       console.log(err, "error loggin in");
     }
-    setEmail("");
-    setPassword("");
   };
 
   return (

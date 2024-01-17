@@ -241,19 +241,23 @@ app.post("/createuser", (req, res) => {
 app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  console.log(req.body);
+  // console.log(email, password);
 
   db.query(
-    "SELECT * FROM users WHERE `email` = ? AND `password` = ? ",
-    [email, password],
+    "SELECT * FROM users WHERE `email` = ? ",
+    // "SELECT * FROM users WHERE `email` = ? AND `password` = ? ",
+    [email],
+    // [email, password],
     (err, data) => {
+      console.log(data[0].password, " <-- password from db");
       if (err) {
         return res.json("error");
       }
-      if (data.length > 0) {
+      if (data[0].length > 0 && data[0].password === password) {
         const id = data[0].id;
         const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
-        return res.json(token, data);
+
+        return res.status(200).json({ token });
       } else {
         return res.json("fail");
       }
