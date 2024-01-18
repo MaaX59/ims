@@ -9,6 +9,7 @@ import {
   Login,
   Createuser,
   ViewUser,
+  CreateCompany,
 } from "./Container/index";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/create-user" element={<Createuser />} />
         <Route path="/viewuser" element={<ViewUser />} />
+        <Route path="/create_company" element={<CreateCompany />} />
       </Routes>
     </BrowserRouter>
   );

@@ -272,3 +272,44 @@ app.post("/login", (req, res) => {
     }
   );
 });
+
+//Create Company
+app.post("/creat_company", (req, res) => {
+  const company_name = req.body.companyName;
+  const password = req.body.password;
+  const confirmPassword = req.body.confirmedPassword;
+  console.log(req.body);
+  try {
+    //check if pwds match
+    if (password !== confirmPassword) {
+      res.send("no pwd match");
+    } else {
+      //see if company already exist
+      db.query(
+        "SELECT * FROM company WHERE `company_name` = ? ",
+        [email],
+        (err, data) => {
+          //if email dosent exist in db, create user
+          if (data.length == 0) {
+            db.query(
+              "INSERT INTO company(company_name, password) VALUES(?,?)",
+              [company_name, password],
+              (err, result) => {
+                if (err) {
+                  console.log(`error when sending to db`, err);
+                } else {
+                  res.send("Company created");
+                }
+              }
+            );
+          } else if (data.length > 0) {
+            console.log(data);
+            res.send("Name already exist");
+          }
+        }
+      );
+    }
+  } catch (err) {
+    console.log("error creating new company", err);
+  }
+});

@@ -5,6 +5,7 @@ import Start from "./Start/Start";
 import Login from "./Company/Login/Login";
 import Createuser from "./Company/Createuser/Createuser";
 import ViewUser from "./Company/ViewUser/ViewUser";
+import CreateCompany from "./Company/CreateCompany/CreateCompany";
 
 export {
   ViewProject,
@@ -14,4 +15,5 @@ export {
   Login,
   Createuser,
   ViewUser,
+  CreateCompany,
 };
