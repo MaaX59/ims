@@ -14,6 +14,8 @@ const ViewUser = () => {
   const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
 
+  //get user info from context
+
   //find company connected to user
   const findCompany = async () => {
     try {
