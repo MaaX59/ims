@@ -1,8 +1,8 @@
-import { React, useState, useEffect } from "react";
-import { MdAddCircle } from "react-icons/md";
+import { React, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../../context/AuthProvider";
 
 import "./ViewUser.css";
 
@@ -10,11 +10,13 @@ const ViewUser = () => {
   useEffect(() => {
     findCompany();
   }, []);
+
   const [companyId, setCompanyId] = useState(null);
   const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
 
   //get user info from context
+  const { userInfo } = useContext(AuthContext);
 
   //find company connected to user
   const findCompany = async () => {
@@ -43,8 +45,8 @@ const ViewUser = () => {
     <div className="app__view_user">
       <div className="app__view_user-content">
         <div className="app__view_user-title">
-          <h1>Inventory Manegment System</h1>
-          <h2>Welcome USER</h2>
+          <h1>Inventory Management System</h1>
+          <h2>Welcome {userInfo.first_name}</h2>
         </div>
         <div className="app__view_user-projects">
           {companyId ? (

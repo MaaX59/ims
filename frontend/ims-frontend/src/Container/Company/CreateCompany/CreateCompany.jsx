@@ -11,7 +11,6 @@ const CreateCompany = () => {
   const [userId, setUserId] = useState("");
 
   const [error, setError] = useState("");
-  const [pwdMismatch, setPwdMismatch] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -111,7 +110,7 @@ const CreateCompany = () => {
                 <label for="confirm_password" className="placeholder">
                   Confirm Password*
                 </label>
-                {pwdMismatch && <h3>Passwords do not match</h3>}
+                {error && error}
               </div>
             </div>
             <div className="form-required">* field is required</div>

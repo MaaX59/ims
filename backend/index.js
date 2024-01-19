@@ -280,7 +280,8 @@ app.post("/creat_company", (req, res) => {
   const company_name = req.body.companyName;
   const password = req.body.password;
   const confirmPassword = req.body.confirmedPassword;
-  console.log(req.body);
+  const created_by_user_id = req.body.userId;
+  console.log("company req body -->", req.body);
   try {
     //check if pwds match
     if (password !== confirmPassword) {
@@ -289,13 +290,13 @@ app.post("/creat_company", (req, res) => {
       //see if company already exist
       db.query(
         "SELECT * FROM company WHERE `company_name` = ? ",
-        [email],
+        [company_name],
         (err, data) => {
-          //if email dosent exist in db, create user
+          //if name dosent exist in db, create company
           if (data.length == 0) {
             db.query(
-              "INSERT INTO company(company_name, password) VALUES(?,?)",
-              [company_name, password],
+              "INSERT INTO company(company_name, password, created_by_user_id) VALUES(?,?,?)",
+              [company_name, password, created_by_user_id],
               (err, result) => {
                 if (err) {
                   console.log(`error when sending to db`, err);
