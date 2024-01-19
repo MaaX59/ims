@@ -299,7 +299,7 @@ app.post("/create_company", (req, res) => {
               [company_name, password, created_by_user_id],
               (err, result) => {
                 if (err) {
-                  console.log(`error when sending to db`, err);
+                  console.log(`error when sending company to db`, err);
                 } else {
                   res.send("Company created");
                 }
@@ -314,5 +314,50 @@ app.post("/create_company", (req, res) => {
     }
   } catch (err) {
     console.log("error creating new company", err);
+  }
+});
+
+//find company based on user id
+app.get("/find_company", (req, res) => {
+  console.log("req.body -->", res.body);
+  const user_id = req.body.user_id;
+  try {
+    db.query(
+      "SELECT * FROM company WHERE `user_id` = ? ",
+      [user_id],
+      (err, data) => {
+        if (err) {
+          console.log(`error when sending company to db`, err);
+        } else {
+          res.send(data);
+        }
+      }
+    );
+  } catch (err) {
+    console.log("error while finding company -->", err);
+  }
+});
+
+//add the company id to the user
+app.put("/add_company_to_user", (req, res) => {
+  console.log("req.body -->", res.body);
+  const user_id = req.body.user_id;
+  const company_id = req.body.company_id;
+
+  try {
+    //need to update not insert, google documentation tomorrow
+    db.query(
+      "INSERT INTO company WHERE `id` = ? ",
+      [company_id],
+      (err, data) => {
+        if (err) {
+          console.log(`error when sending company to db`, err);
+        } else {
+          res.send(data);
+        }
+      }
+    );
+  } catch (err) {
+    console.log("error while finding company -->", err);
   }
 });

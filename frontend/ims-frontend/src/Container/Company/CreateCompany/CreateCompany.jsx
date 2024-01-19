@@ -30,7 +30,7 @@ const CreateCompany = () => {
         .then((res) => {
           //the backend will check for errors before creating user
           if (res.data === "Company created") {
-            //findCompanyId(userId)
+            findCompanyId(userInfo.id);
             setCompanyName("");
             setPassword("");
             setConfirmedPassword("");
@@ -47,13 +47,18 @@ const CreateCompany = () => {
   };
 
   //after company is created, find the company id and add it to the user
-  const findCompanyId = async (userId) => {
+  const findCompanyId = async (user_id) => {
     try {
       const response = await axios
-        .get(`${server}/find_company`, userId)
+        .get(`${server}/find_company`, user_id)
         .then(async (res) => {
-          const companyId = response.data;
-          await axios.post(`${server}/add_company_to_user`, companyId);
+          const company_id = response.data;
+          console.log("company_id from response.data-->", company_id);
+          console.log("res.data, is this response.data ? -->", res.data);
+          await axios.put(`${server}/add_company_to_user`, {
+            company_id,
+            user_id,
+          });
         });
     } catch (err) {
       console.log("error while finding company id", err);
