@@ -7,39 +7,40 @@ import AuthContext from "../../../context/AuthProvider";
 import "./ViewUser.css";
 
 const ViewUser = () => {
-  useEffect(() => {
-    findCompany();
-  }, []);
+  // useEffect(() => {
+  //   findCompany();
+  // }, []);
 
-  const [companyId, setCompanyId] = useState(null);
   const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
+  const [companyId, setCompanyId] = useState(null);
 
   //get user info from context
+
   const { userInfo } = useContext(AuthContext);
 
   //find company connected to user
-  const findCompany = async () => {
-    try {
-      const response = await axios.get(`${server}/findcompany`);
-      setCompanyId(response.data);
-      getProjects();
-      console.log("this is the company", response.data);
-    } catch (error) {
-      console.log(`error fetching company`, error);
-    }
-  };
+  // const findCompany = async () => {
+  //   try {
+  //     const response = await axios.get(`${server}/findcompany`);
+  //     setCompanyId(response.data);
+  //     getProjects();
+  //     console.log("this is the company", response.data);
+  //   } catch (error) {
+  //     console.log(`error fetching company`, error);
+  //   }
+  // };
   //find company projects
-  const getProjects = async () => {
-    try {
-      const response = await axios.get(`${server}/getprojects/${companyId}`);
-      console.log(response.data, "<-- company projects data");
-      setProjectList(response.data);
-      console.log("this is the projects", response.data);
-    } catch (error) {
-      console.log(`error fetching projects`, error);
-    }
-  };
+  // const getProjects = async () => {
+  //   try {
+  //     const response = await axios.get(`${server}/getprojects/${companyId}`);
+  //     console.log(response.data, "<-- company projects data");
+  //     setProjectList(response.data);
+  //     console.log("this is the projects", response.data);
+  //   } catch (error) {
+  //     console.log(`error fetching projects`, error);
+  //   }
+  // };
 
   return (
     <div className="app__view_user">

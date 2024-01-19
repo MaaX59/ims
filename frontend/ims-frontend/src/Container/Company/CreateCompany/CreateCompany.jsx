@@ -1,38 +1,39 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import "./CreateCompany.css";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../../context/AuthProvider";
 
 const CreateCompany = () => {
   const [companyName, setCompanyName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
-  const [userId, setUserId] = useState("");
+
+  //get user info from context
+  const { userInfo } = useContext(AuthContext);
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  //on submit create company
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    //need to get user from context
-
     try {
       await axios
         .post(`${server}/create_company`, {
           companyName: companyName,
           password: password,
           confirmedPassword: confirmedPassword,
-          userId: userId,
+          userId: userInfo.id,
         })
         .then((res) => {
           //the backend will check for errors before creating user
           if (res.data === "Company created") {
+            //findCompanyId(userId)
             setCompanyName("");
             setPassword("");
             setConfirmedPassword("");
-            setUserId("");
             navigate("/viewuser");
           } else if (res.data === "no pwd match") {
             setError("Password and Confirm password need to match!");
@@ -42,6 +43,20 @@ const CreateCompany = () => {
         });
     } catch (err) {
       console.log(`error creating company`, err);
+    }
+  };
+
+  //after company is created, find the company id and add it to the user
+  const findCompanyId = async (userId) => {
+    try {
+      const response = await axios
+        .get(`${server}/find_company`, userId)
+        .then(async (res) => {
+          const companyId = response.data;
+          await axios.post(`${server}/add_company_to_user`, companyId);
+        });
+    } catch (err) {
+      console.log("error while finding company id", err);
     }
   };
 

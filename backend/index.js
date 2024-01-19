@@ -276,7 +276,7 @@ app.post("/login", (req, res) => {
 });
 
 //Create Company
-app.post("/creat_company", (req, res) => {
+app.post("/create_company", (req, res) => {
   const company_name = req.body.companyName;
   const password = req.body.password;
   const confirmPassword = req.body.confirmedPassword;
