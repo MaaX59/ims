@@ -7,7 +7,7 @@ import AuthContext from "../../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { setAuth } = useContext(AuthContext);
+  const { setToken, setUserInfo } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -40,8 +40,11 @@ const Login = () => {
         setError("This email dosen´t exist");
       } else {
         console.log("token -->", response.data.token);
-        const token = response?.data?.token;
-        setAuth(token);
+        const token = response.data.token;
+        const userInfoFromDb = response.data.userInfo;
+        console.log("user info -->", userInfoFromDb);
+        setUserInfo(userInfoFromDb);
+        setToken(token);
         setEmail("");
         setPassword("");
         navigate("/viewuser");

@@ -260,9 +260,11 @@ app.post("/login", (req, res) => {
       if (data[0]) {
         //check if passwords match
         if (data[0].password === password) {
-          const id = data[0].id;
-          const token = jwt.sign({ id }, "jwtKey", { expiresIn: 500 });
-          return res.status(200).json({ token });
+          const { id, email, first_name, last_name, company_id } = data[0];
+          const userInfo = { id, email, first_name, last_name, company_id };
+          // const { id } = data[0].id;
+          const token = jwt.sign(userInfo, "jwtKey", { expiresIn: 500 });
+          return res.status(200).json({ token, userInfo });
         } else {
           return res.json("no match");
         }
