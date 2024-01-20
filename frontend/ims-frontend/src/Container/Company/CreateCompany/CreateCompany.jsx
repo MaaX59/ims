@@ -31,7 +31,6 @@ const CreateCompany = () => {
           //the backend will check for errors before creating user
           //and also connect company id to user
           if (res.data === "Company created") {
-            console.log(" test 1 company created", res);
             navigate("/viewuser");
             setCompanyName("");
             setPassword("");

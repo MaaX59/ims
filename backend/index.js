@@ -281,7 +281,7 @@ app.post("/create_company", (req, res) => {
   const password = req.body.password;
   const confirmPassword = req.body.confirmedPassword;
   const created_by_user_id = req.body.userId;
-  console.log("company req body -->", req.body);
+
   try {
     //check if pwds match
     if (password !== confirmPassword) {
@@ -317,7 +317,6 @@ app.post("/create_company", (req, res) => {
               }
             );
           } else if (data.length > 0) {
-            console.log(data);
             res.send("Name already exist");
           }
         }
