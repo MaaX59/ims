@@ -29,12 +29,13 @@ const CreateCompany = () => {
         })
         .then((res) => {
           //the backend will check for errors before creating user
+          //and also connect company id to user
           if (res.data === "Company created") {
-            findCompanyId(userInfo.id);
+            console.log(" test 1 company created", res);
+            navigate("/viewuser");
             setCompanyName("");
             setPassword("");
             setConfirmedPassword("");
-            navigate("/viewuser");
           } else if (res.data === "no pwd match") {
             setError("Password and Confirm password need to match!");
           } else if (res.data === "Name already exist") {
@@ -43,25 +44,6 @@ const CreateCompany = () => {
         });
     } catch (err) {
       console.log(`error creating company`, err);
-    }
-  };
-
-  //after company is created, find the company id and add it to the user
-  const findCompanyId = async (user_id) => {
-    try {
-      const response = await axios
-        .get(`${server}/find_company`, user_id)
-        .then(async (res) => {
-          const company_id = response.data;
-          console.log("company_id from response.data-->", company_id);
-          console.log("res.data, is this response.data ? -->", res.data);
-          await axios.put(`${server}/add_company_to_user`, {
-            company_id,
-            user_id,
-          });
-        });
-    } catch (err) {
-      console.log("error while finding company id", err);
     }
   };
 
