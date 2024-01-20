@@ -326,3 +326,22 @@ app.post("/create_company", (req, res) => {
     console.log("error creating new company", err);
   }
 });
+
+//find company based on id
+
+app.get("/find_company/:company_id", (req, res) => {
+  console.log("req params-->", req.params.company_id);
+
+  db.query(
+    "SELECT * FROM company WHERE `id` = ? ",
+    req.params.company_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting projects from db`, error);
+      } else {
+        console.log(data);
+        res.send(data);
+      }
+    }
+  );
+});

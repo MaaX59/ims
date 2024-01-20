@@ -7,29 +7,36 @@ import AuthContext from "../../../context/AuthProvider";
 import "./ViewUser.css";
 
 const ViewUser = () => {
-  // useEffect(() => {
-  //   findCompany();
-  // }, []);
+  useEffect(() => {
+    findCompany();
+  }, []);
 
   const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
-  const [companyId, setCompanyId] = useState(null);
+  const [company, setCompany] = useState(null);
 
   //get user info from context
 
   const { userInfo } = useContext(AuthContext);
 
   //find company connected to user
-  // const findCompany = async () => {
-  //   try {
-  //     const response = await axios.get(`${server}/findcompany`);
-  //     setCompanyId(response.data);
-  //     getProjects();
-  //     console.log("this is the company", response.data);
-  //   } catch (error) {
-  //     console.log(`error fetching company`, error);
-  //   }
-  // };
+  const findCompany = async () => {
+    try {
+      const company_id = userInfo.company_id;
+      console.log("company id-->", company_id);
+      await axios.get(`${server}/find_company/${company_id}`).then((res) => {
+        setCompany(res.data[0]);
+        // getProjects();
+        // console.log("this is the company", res.data[0]);
+        console.log("this is the company", company);
+      });
+    } catch (error) {
+      console.log(`error fetching company`, error);
+    }
+  };
+
+  //next, create projects related to the company, update model
+
   //find company projects
   // const getProjects = async () => {
   //   try {
@@ -50,16 +57,8 @@ const ViewUser = () => {
           <h2>Welcome {userInfo.first_name}</h2>
         </div>
         <div className="app__view_user-projects">
-          {companyId ? (
-            projectList.map((project, index) => (
-              <div className="app__view_user-singleproject" key={index}>
-                {/* {console.log(project)} */}
-
-                <a href={`/project/${project.id}`} project={{ project }}>
-                  <h1>{project.project_name}</h1>
-                </a>
-              </div>
-            ))
+          {company ? (
+            <span>You are connected to {company.company_name}</span>
           ) : (
             <div className="app__view_user-noproject">
               <h2>You are not connected to a company IMS </h2>
