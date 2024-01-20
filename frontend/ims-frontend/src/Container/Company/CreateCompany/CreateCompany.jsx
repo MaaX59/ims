@@ -3,17 +3,18 @@ import axios from "axios";
 import { server } from "../../../server";
 import "./CreateCompany.css";
 import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import AuthContext from "../../../context/AuthProvider";
 
 const CreateCompany = () => {
   const [companyName, setCompanyName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [error, setError] = useState("");
 
   //get user info from context
   const { userInfo } = useContext(AuthContext);
 
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   //on submit create company
@@ -31,10 +32,10 @@ const CreateCompany = () => {
           //the backend will check for errors before creating user
           //and also connect company id to user
           if (res.data === "Company created") {
-            navigate("/viewuser");
             setCompanyName("");
             setPassword("");
             setConfirmedPassword("");
+            navigate("/viewuser");
           } else if (res.data === "no pwd match") {
             setError("Password and Confirm password need to match!");
           } else if (res.data === "Name already exist") {
