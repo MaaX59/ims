@@ -3,7 +3,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import "./NewProject.css";
 import axios from "axios";
 import { server } from "../../../server";
-import AuthContext from "../../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const NewCompanyProject = () => {
@@ -11,11 +10,10 @@ const NewCompanyProject = () => {
   const [project_description, setProject_description] = useState("");
 
   const navigate = useNavigate();
-  const { userInfo } = useContext(AuthContext);
 
   const createProject = () => {
     console.log(project_name);
-    console.log(userInfo);
+
     axios
       .post(`${server}/create_company_project`, {
         project_name: project_name,
@@ -36,7 +34,7 @@ const NewCompanyProject = () => {
       />
 
       <div className="title">Start Project</div>
-      <div className="input-container ic1">
+      <div className="input-container-company ic1">
         <input
           id="project-name"
           className="input"
@@ -52,7 +50,7 @@ const NewCompanyProject = () => {
           Project Name*
         </label>
       </div>
-      <div className="input-container ic2">
+      <div className="input-container-company ic2">
         <input
           id="project-description"
           className="input"

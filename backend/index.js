@@ -364,3 +364,22 @@ app.get("/get/:company_id", (req, res) => {
     }
   );
 });
+
+// start a company project
+app.post("/create_company_project", (req, res) => {
+  const project_name = req.body.project_name;
+  const project_description = req.body.project_description;
+  console.log(`recived on backend  `, project_name);
+
+  db.query(
+    "INSERT INTO company_project(project_name, project_description) VALUES(?,?)",
+    [project_name, project_description],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.send("values sent to db");
+      }
+    }
+  );
+});
