@@ -1,18 +1,21 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "./NewProject.css";
 import axios from "axios";
 import { server } from "../../../server";
+import AuthContext from "../../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-const NewProject = () => {
+const NewCompanyProject = () => {
   const [project_name, setProject_name] = useState("");
   const [project_description, setProject_description] = useState("");
 
   const navigate = useNavigate();
+  const { userInfo } = useContext(AuthContext);
 
   const createProject = () => {
     console.log(project_name);
+    console.log(userInfo);
     axios
       .post(`${server}/create_company_project`, {
         project_name: project_name,
@@ -73,4 +76,4 @@ const NewProject = () => {
   );
 };
 
-export default NewProject;
+export default NewCompanyProject;

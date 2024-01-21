@@ -10,6 +10,7 @@ import {
   Createuser,
   ViewUser,
   CreateCompany,
+  NewCompanyProject,
 } from "./Container/index";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/create-user" element={<Createuser />} />
         <Route path="/viewuser" element={<ViewUser />} />
         <Route path="/create_company" element={<CreateCompany />} />
+        <Route path="/new_company_project" element={<NewCompanyProject />} />
       </Routes>
     </BrowserRouter>
   );

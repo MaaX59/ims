@@ -6,6 +6,7 @@ import Login from "./Company/Login/Login";
 import Createuser from "./Company/Createuser/Createuser";
 import ViewUser from "./Company/ViewUser/ViewUser";
 import CreateCompany from "./Company/CreateCompany/CreateCompany";
+import NewCompanyProject from "./Company/NewProject/NewCompanyProject";
 
 export {
   ViewProject,
@@ -16,4 +17,5 @@ export {
   Createuser,
   ViewUser,
   CreateCompany,
+  NewCompanyProject,
 };
