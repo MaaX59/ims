@@ -1,4 +1,5 @@
 import { React, useState, useContext } from "react";
+import AuthContext from "../../../context/AuthProvider";
 import { FaArrowLeft } from "react-icons/fa";
 import "./NewProject.css";
 import axios from "axios";
@@ -10,14 +11,17 @@ const NewCompanyProject = () => {
   const [project_description, setProject_description] = useState("");
 
   const navigate = useNavigate();
+  const { userInfo } = useContext(AuthContext);
 
   const createProject = () => {
     console.log(project_name);
+    console.log("user info -->", userInfo);
 
     axios
       .post(`${server}/create_company_project`, {
         project_name: project_name,
         project_description: project_description,
+        company_id: userInfo.company_id,
       })
       .then(() => {
         navigate("/viewuser");

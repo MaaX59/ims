@@ -369,11 +369,12 @@ app.get("/get/:company_id", (req, res) => {
 app.post("/create_company_project", (req, res) => {
   const project_name = req.body.project_name;
   const project_description = req.body.project_description;
-  console.log(`recived on backend  `, project_name);
+  const company_id = req.body.company_id;
+  console.log(`req.body on backend  `, req.body);
 
   db.query(
-    "INSERT INTO company_project(project_name, project_description) VALUES(?,?)",
-    [project_name, project_description],
+    "INSERT INTO company_project(project_name, project_description, company_id) VALUES(?,?,?)",
+    [project_name, project_description, company_id],
     (err, result) => {
       if (err) {
         console.log(`error when sending to db`, err);
