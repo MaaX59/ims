@@ -18,6 +18,9 @@
   width: 100vw;
   margin: 2rem 0;
 }
+.app__view_user-company-connected {
+  font-size: 22px;
+}
 .app__view_user-company {
   display: flex;
   justify-content: center;
@@ -57,6 +60,18 @@
   align-items: center;
   flex-direction: column;
 }
+.app__view_user-projects-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  font-size: 20px;
+}
+.app__view_user-projects-create svg {
+  height: 50px;
+  margin-left: 1rem;
+}
+
 .app_view_user-singleproject {
   display: flex;
   justify-content: center;
@@ -83,4 +98,9 @@
 .app_view_user-singleproject a:visited {
   text-decoration: none;
   color: var(--color-white);
+}
+.app__view_user-noprojects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

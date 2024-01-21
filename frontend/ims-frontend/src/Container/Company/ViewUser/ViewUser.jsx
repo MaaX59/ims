@@ -3,6 +3,7 @@ import axios from "axios";
 import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthProvider";
+import { MdAddCircle } from "react-icons/md";
 
 import "./ViewUser.css";
 
@@ -65,7 +66,9 @@ const ViewUser = () => {
         </div>
         <div className="app__view_user-company">
           {company ? (
-            <span>You are connected to {company.company_name}</span>
+            <div className="app__view_user-company-connected">
+              <span>You are connected to {company.company_name}</span>{" "}
+            </div>
           ) : (
             <div className="app__view_user-nocompany">
               <h2>You are not connected to a company IMS </h2>
@@ -83,6 +86,17 @@ const ViewUser = () => {
             </div>
           )}
         </div>
+
+        <div className="app__view_user-projects-create">
+          <span>Create a project</span>
+          <MdAddCircle
+            className="app__viewproject-startproject"
+            title="Add Project"
+            size={25}
+            onClick={() => navigate("/new_company_project")}
+          />
+        </div>
+
         <div className="app__view_user-projects">
           {projectList.length > 0 ? (
             projectList.map((project, index) => (
@@ -93,7 +107,7 @@ const ViewUser = () => {
               </div>
             ))
           ) : (
-            <div className="app__view_user-noproject">
+            <div className="app__view_user-noprojects">
               <h1>There are no projects to display</h1>
             </div>
           )}
