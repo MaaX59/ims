@@ -18,22 +18,22 @@
   width: 100vw;
   margin: 2rem 0;
 }
-.app__view_user-projects {
+.app__view_user-company {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.app__view_user-noproject h1 {
+.app__view_user-nocompany h1 {
   display: flex;
   justify-content: center;
 }
-.app__view_user-noproject-options {
+.app__view_user-nocompany-options {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
 }
-.app__view_user-noproject-options button {
+.app__view_user-nocompany-options button {
   background: black;
   border-radius: 12px;
   border: 2px solid rgb(1, 1, 100);
@@ -48,6 +48,39 @@
   text-align: center;
   font-family: "Courier New", Courier, monospace;
 }
-.app__view_user-noproject-options button:hover {
+.app__view_user-nocompany-options button:hover {
   background: rgb(1, 1, 100);
+}
+.app_view_user-projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.app_view_user-singleproject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-grey);
+  height: 50px;
+  width: 500px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.app_view_user-startproject {
+  cursor: pointer;
+  display: flex;
+}
+.app_view_user-singleproject a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+.app_view_user-singleproject:hover {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.app_view_user-singleproject a:visited {
+  text-decoration: none;
+  color: var(--color-white);
 }

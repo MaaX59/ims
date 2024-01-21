@@ -12,6 +12,7 @@ const ViewUser = () => {
   }, []);
 
   const navigate = useNavigate();
+
   const [projectList, setProjectList] = useState([]);
   const [company, setCompany] = useState(null);
 
@@ -29,6 +30,9 @@ const ViewUser = () => {
         // getProjects();
         // console.log("this is the company", res.data[0]);
         console.log("this is the company", company);
+        if (company) {
+          getProjects();
+        }
       });
     } catch (error) {
       console.log(`error fetching company`, error);
@@ -38,16 +42,19 @@ const ViewUser = () => {
   //next, create projects related to the company, update model
 
   //find company projects
-  // const getProjects = async () => {
-  //   try {
-  //     const response = await axios.get(`${server}/getprojects/${companyId}`);
-  //     console.log(response.data, "<-- company projects data");
-  //     setProjectList(response.data);
-  //     console.log("this is the projects", response.data);
-  //   } catch (error) {
-  //     console.log(`error fetching projects`, error);
-  //   }
-  // };
+  const getProjects = async () => {
+    try {
+      const company_id = company.id;
+      const response = await axios.get(
+        `${server}/get_company_projects/${company_id}`
+      );
+      console.log(response.data, "<-- company projects data");
+      setProjectList(response.data);
+      console.log("this is the projects", response.data);
+    } catch (error) {
+      console.log(`error fetching projects`, error);
+    }
+  };
 
   return (
     <div className="app__view_user">
@@ -56,30 +63,38 @@ const ViewUser = () => {
           <h1>Inventory Management System</h1>
           <h2>Welcome {userInfo.first_name}</h2>
         </div>
-        <div className="app__view_user-projects">
+        <div className="app__view_user-company">
           {company ? (
             <span>You are connected to {company.company_name}</span>
           ) : (
-            <div className="app__view_user-noproject">
+            <div className="app__view_user-nocompany">
               <h2>You are not connected to a company IMS </h2>
-              <div className="app__view_user-noproject-options">
+              <div className="app__view_user-nocompany-options">
                 <button
                   className="company_button"
                   onClick={() => navigate("/create_company")}
                 >
                   Start company IMS
                 </button>
-                {/* <MdAddCircle
-                  className="app__view_user-startcompany"
-                  title="Start Company IMS "
-                  size={25}
-                  onClick={() => navigate("/newcompany")}
-                /> */}
-
                 <button onClick={() => navigate("/connect_company")}>
                   Connect to company IMS
                 </button>
               </div>
+            </div>
+          )}
+        </div>
+        <div className="app__view_user-projects">
+          {projectList.length > 0 ? (
+            projectList.map((project, index) => (
+              <div className="app__view_user-singleproject" key={index}>
+                <a href={`/project/${project.id}`} project={{ project }}>
+                  <h1>{project.project_name}</h1>
+                </a>
+              </div>
+            ))
+          ) : (
+            <div className="app__view_user-noproject">
+              <h1>There are no projects to display</h1>
             </div>
           )}
         </div>

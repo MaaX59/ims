@@ -345,3 +345,22 @@ app.get("/find_company/:company_id", (req, res) => {
     }
   );
 });
+
+//find company projects
+
+app.get("/get/:company_id", (req, res) => {
+  console.log("req params-->", req.params.company_id);
+
+  db.query(
+    "SELECT * FROM company_projects WHERE `company_id` = ? ",
+    req.params.company_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting projects from db`, error);
+      } else {
+        console.log(data);
+        res.send(data);
+      }
+    }
+  );
+});
