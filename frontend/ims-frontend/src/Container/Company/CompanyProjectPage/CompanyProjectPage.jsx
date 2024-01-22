@@ -130,11 +130,11 @@ export const CompanyProjectPage = () => {
           className="app__company_project_page-content-additem"
           style={{ display: !update ? "flex" : "none" }}
         >
-          <AddItemForm id={id.id} getItems={getItems} />
+          <AddCompanyItemForm id={id.id} getItems={getItems} />
         </div>
         {update ? (
           <div className="app__company_project_page-content-updateitem">
-            <UpdateItemForm
+            <UpdateCompanyItemForm
               item={itemToUpdate}
               getItems={getItems}
               setUpdate={setUpdate}
