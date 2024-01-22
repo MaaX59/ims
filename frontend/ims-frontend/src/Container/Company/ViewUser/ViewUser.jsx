@@ -30,28 +30,28 @@ const ViewUser = () => {
         setCompany(res.data[0]);
         // getProjects();
         // console.log("this is the company", res.data[0]);
-        console.log("this is the company", company);
-        if (company) {
-          getProjects();
-        }
+        // console.log("this is the company", company);
+
+        getProjects();
       });
     } catch (error) {
       console.log(`error fetching company`, error);
     }
   };
 
-  //next, create projects related to the company, update model
-
   //find company projects
   const getProjects = async () => {
+    console.log("get projects function is triggered");
     try {
-      const company_id = company.id;
-      const response = await axios.get(
-        `${server}/get_company_projects/${company_id}`
-      );
-      console.log(response.data, "<-- company projects data");
-      setProjectList(response.data);
-      console.log("this is the projects", response.data);
+      const company_id = userInfo.company_id;
+      console.log("company id in get projects", company_id);
+      await axios
+        .get(`${server}/get_company_projects/${company_id}`)
+        .then((res) => {
+          console.log(res.data, "<-- company projects data");
+          setProjectList(res.data);
+          console.log("this is the projects", res.data);
+        });
     } catch (error) {
       console.log(`error fetching projects`, error);
     }

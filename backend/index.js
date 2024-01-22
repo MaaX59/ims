@@ -327,44 +327,6 @@ app.post("/create_company", (req, res) => {
   }
 });
 
-//find company based on id
-
-app.get("/find_company/:company_id", (req, res) => {
-  console.log("req params-->", req.params.company_id);
-
-  db.query(
-    "SELECT * FROM company WHERE `id` = ? ",
-    req.params.company_id,
-    (error, data) => {
-      if (error) {
-        console.log(`error when getting projects from db`, error);
-      } else {
-        console.log(data);
-        res.send(data);
-      }
-    }
-  );
-});
-
-//find company projects
-
-app.get("/get/:company_id", (req, res) => {
-  console.log("req params-->", req.params.company_id);
-
-  db.query(
-    "SELECT * FROM company_projects WHERE `company_id` = ? ",
-    req.params.company_id,
-    (error, data) => {
-      if (error) {
-        console.log(`error when getting projects from db`, error);
-      } else {
-        console.log(data);
-        res.send(data);
-      }
-    }
-  );
-});
-
 // start a company project
 app.post("/create_company_project", (req, res) => {
   const project_name = req.body.project_name;
@@ -380,6 +342,44 @@ app.post("/create_company_project", (req, res) => {
         console.log(`error when sending to db`, err);
       } else {
         res.send("values sent to db");
+      }
+    }
+  );
+});
+
+//find company based on id
+
+app.get("/find_company/:company_id", (req, res) => {
+  console.log("req params-->", req.params.company_id);
+
+  db.query(
+    "SELECT * FROM company WHERE `id` = ? ",
+    req.params.company_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting projects from db`, error);
+      } else {
+        // console.log(data);
+        res.send(data);
+      }
+    }
+  );
+});
+
+//find company projects
+
+app.get("/get_company_projects/:company_id", (req, res) => {
+  console.log("req params when find projects-->", req.params.company_id);
+  const company_id = req.params.company_id;
+  db.query(
+    "SELECT * FROM company_project WHERE `company_id` = ? ",
+    req.params.company_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting projects from db`, error);
+      } else {
+        console.log("data from get company projects", data);
+        res.send(data);
       }
     }
   );
