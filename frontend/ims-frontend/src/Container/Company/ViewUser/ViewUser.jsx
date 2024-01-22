@@ -6,6 +6,7 @@ import AuthContext from "../../../context/AuthProvider";
 import { MdAddCircle } from "react-icons/md";
 
 import "./ViewUser.css";
+import { DisplayProjects } from "../../../Components/Company/DisplayProjects/DisplayProjects";
 
 const ViewUser = () => {
   useEffect(() => {
@@ -99,13 +100,7 @@ const ViewUser = () => {
 
         <div className="app__view_user-projects">
           {projectList.length > 0 ? (
-            projectList.map((project, index) => (
-              <div className="app__view_user-singleproject" key={index}>
-                <a href={`/project/${project.id}`} project={{ project }}>
-                  <h1>{project.project_name}</h1>
-                </a>
-              </div>
-            ))
+            <DisplayProjects data={projectList} />
           ) : (
             <div className="app__view_user-noprojects">
               <h1>There are no projects to display</h1>
@@ -118,3 +113,13 @@ const ViewUser = () => {
 };
 
 export default ViewUser;
+
+{
+  /* projectList.map((project, index) => (
+              <div className="app__view_user-singleproject" key={index}>
+                <a href={`/project/${project.id}`} project={{ project }}>
+                  <h1>{project.project_name}</h1>
+                </a>
+              </div>
+            )) */
+}

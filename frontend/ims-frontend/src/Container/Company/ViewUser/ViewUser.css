@@ -72,17 +72,6 @@
   margin-left: 1rem;
 }
 
-.app_view_user-singleproject {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--color-grey);
-  height: 50px;
-  width: 500px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-}
 .app_view_user-startproject {
   cursor: pointer;
   display: flex;

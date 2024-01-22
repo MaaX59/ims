@@ -7,6 +7,7 @@ import Createuser from "./Company/Createuser/Createuser";
 import ViewUser from "./Company/ViewUser/ViewUser";
 import CreateCompany from "./Company/CreateCompany/CreateCompany";
 import NewCompanyProject from "./Company/NewProject/NewCompanyProject";
+import { CompanyProjectPage } from "./Company/CompanyProjectPage/CompanyProjectPage";
 
 export {
   ViewProject,
@@ -18,4 +19,5 @@ export {
   ViewUser,
   CreateCompany,
   NewCompanyProject,
+  CompanyProjectPage,
 };
