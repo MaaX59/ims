@@ -17,3 +17,21 @@
   border-radius: 5px;
   text-decoration: none;
 }
+.app__display-projects-singleproject h1 {
+  color: var(--color-white);
+  font-size: 28px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 500;
+}
+.app_display-projects-singleproject a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+.app_display-projects-singleproject a:hover {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+.app_display-projects-singleproject a:visited {
+  text-decoration: none;
+  color: var(--color-white);
+}
