@@ -5,7 +5,7 @@ import { server } from "../../../server";
 
 const AddCompanyItemForm = (props) => {
   useEffect(() => {
-    setItem_projectid(props.id);
+    setProject_id(props.id);
   }, []);
 
   const [item_name, setItem_name] = useState("");
@@ -16,11 +16,11 @@ const AddCompanyItemForm = (props) => {
   const [inStock, setInStock] = useState(false);
   const [notes, setNotes] = useState("");
   const [item_amount, setItem_amount] = useState();
-  const [item_projectid, setItem_projectid] = useState();
+  const [project_id, setProject_id] = useState();
 
   const addItem = () => {
     console.log(
-      "added items",
+      "added item",
       item_name,
       item_description,
       item_location,
@@ -29,7 +29,7 @@ const AddCompanyItemForm = (props) => {
       inStock,
       notes,
       item_amount,
-      item_projectid
+      project_id
     );
     axios
       .post(`${server}/add_company_item`, {
@@ -41,7 +41,7 @@ const AddCompanyItemForm = (props) => {
         inStock: inStock,
         notes: notes,
         item_amount: item_amount,
-        item_projectid: item_projectid,
+        project_id: project_id,
       })
       .then(() => {
         props.getItems();
@@ -51,6 +51,10 @@ const AddCompanyItemForm = (props) => {
     setItem_description("");
     setItem_location("");
     setItem_amount("");
+    setInStock(false);
+    setNotes("");
+    setPurchased_from("");
+    setPurchased_price();
   };
 
   return (

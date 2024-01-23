@@ -384,3 +384,39 @@ app.get("/get_company_projects/:company_id", (req, res) => {
     }
   );
 });
+
+//add items to company project
+app.post("/add_company_item", (req, res) => {
+  const item_name = req.body.item_name;
+  const item_description = req.body.item_description;
+  const item_location = req.body.item_location;
+  const purchased_from = req.body.purchased_from;
+  const purchased_price = req.body.purchased_price;
+  const in_stock = req.body.inStock;
+  const notes = req.body.notes;
+  const item_amount = req.body.item_amount;
+  const project_id = req.body.project_id;
+  console.log(`req.body on backend  `, req.body);
+
+  db.query(
+    "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id) VALUES(?,?,?,?,?,?,?,?,?)",
+    [
+      item_name,
+      item_description,
+      item_location,
+      purchased_from,
+      purchased_price,
+      in_stock,
+      notes,
+      item_amount,
+      project_id,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.send("values sent to db");
+      }
+    }
+  );
+});
