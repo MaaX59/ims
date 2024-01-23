@@ -113,13 +113,3 @@ const ViewUser = () => {
 };
 
 export default ViewUser;
-
-{
-  /* projectList.map((project, index) => (
-              <div className="app__view_user-singleproject" key={index}>
-                <a href={`/project/${project.id}`} project={{ project }}>
-                  <h1>{project.project_name}</h1>
-                </a>
-              </div>
-            )) */
-}

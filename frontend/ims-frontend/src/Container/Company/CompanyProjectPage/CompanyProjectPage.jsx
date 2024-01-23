@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./CompanyProjectPage.css";
 import axios from "axios";
 import { server } from "../../../server";
+import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/AddCompanyItemForm";
 
 export const CompanyProjectPage = () => {
   const project_id = useParams();
@@ -19,6 +20,7 @@ export const CompanyProjectPage = () => {
 
   //get all items for project
   const getItems = async () => {
+    //
     try {
       const response = await axios.get(`${server}/getitems/${project_id}`);
       setCompanyItems(response.data);
@@ -83,45 +85,40 @@ export const CompanyProjectPage = () => {
         className="goBackButton"
         title="Go back"
         size={20}
-        onClick={() => navigate("/viewproject")}
+        onClick={() => navigate("/viewuser")}
       />
       <div className="app__company_project_page-content">
-        <h1>Manage Your Project</h1>
+        <h1>Manage Project</h1>
 
         <div className="app__company_project_page-items">
           {companyItems.length > 0 ? (
-            companyItems.map((item, index) =>
-              item.item_projectid == id.id ? (
-                <div
-                  className="app__company_project_page-singleitem"
-                  key={index}
-                >
-                  <h3>Item:{item.item_name}</h3>
-                  <h3>Description:{item.item_description}</h3>
-                  <h3>Location:{item.item_location}</h3>
-                  <h3>Amount:{item.item_amount}</h3>
-                  <div className="app__company_project_page-singleitem-buttons">
-                    <button
-                      className="update_button"
-                      onClick={() => updateItem(item)}
-                    >
-                      {update ? "X" : "UPDATE"}
-                    </button>
-                    <button
-                      className="remove_button"
-                      onClick={() => {
-                        deleteItem(item.id);
-                      }}
-                    >
-                      REMOVE
-                    </button>
-                  </div>
+            companyItems.map((item, index) => (
+              <div className="app__company_project_page-singleitem" key={index}>
+                <h3>Item:{item.item_name}</h3>
+                <h3>Description:{item.item_description}</h3>
+                <h3>Location:{item.item_location}</h3>
+                <h3>Amount:{item.item_amount}</h3>
+                <div className="app__company_project_page-singleitem-buttons">
+                  <button
+                    className="update_button"
+                    onClick={() => updateItem(item)}
+                  >
+                    {update ? "X" : "UPDATE"}
+                  </button>
+                  <button
+                    className="remove_button"
+                    onClick={() => {
+                      deleteItem(item.id);
+                    }}
+                  >
+                    REMOVE
+                  </button>
                 </div>
-              ) : null
-            )
+              </div>
+            ))
           ) : (
-            <div className="app__company_project_page-singleitem">
-              <h1>There are no projects to display</h1>
+            <div className="app__projectpage-nosingleitem">
+              <h1>This project currently has no items in it</h1>
             </div>
           )}
         </div>
@@ -130,25 +127,25 @@ export const CompanyProjectPage = () => {
           className="app__company_project_page-content-additem"
           style={{ display: !update ? "flex" : "none" }}
         >
-          <AddCompanyItemForm id={id.id} getItems={getItems} />
+          <AddCompanyItemForm id={project_id.id} getItems={getItems} />
         </div>
         {update ? (
           <div className="app__company_project_page-content-updateitem">
-            <UpdateCompanyItemForm
+            {/* <UpdateCompanyItemForm
               item={itemToUpdate}
               getItems={getItems}
               setUpdate={setUpdate}
-            />
+            /> */}
           </div>
         ) : null}
 
         <div className="app__company_project_page-delete-project">
           <button
             className="remove_project"
-            onClick={() => {
-              deleteProject(id.id);
-              deleteItems(id.id);
-            }}
+            // onClick={() => {
+            //   deleteProject(id.id);
+            //   deleteItems(id.id);
+            // }}
           >
             {" "}
             DELETE PROJECT
@@ -158,3 +155,5 @@ export const CompanyProjectPage = () => {
     </div>
   );
 };
+
+export default CompanyProjectPage;

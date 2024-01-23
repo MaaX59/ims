@@ -1,7 +1,7 @@
 import { React, useState, useContext } from "react";
 import AuthContext from "../../../context/AuthProvider";
 import { FaArrowLeft } from "react-icons/fa";
-import "./NewProject.css";
+import "./NewCompanyProject.css";
 import axios from "axios";
 import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";

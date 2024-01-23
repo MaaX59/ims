@@ -117,8 +117,8 @@ const ProjectPage = () => {
               ) : null
             )
           ) : (
-            <div className="app__projectpage-singleitem">
-              <h1>There are no projects to display</h1>
+            <div className="app__projectpage-nosingleitem">
+              <h1>This project currently has no items in it</h1>
             </div>
           )}
         </div>
