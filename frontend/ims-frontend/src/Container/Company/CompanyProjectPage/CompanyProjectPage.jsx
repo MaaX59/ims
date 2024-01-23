@@ -5,6 +5,7 @@ import "./CompanyProjectPage.css";
 import axios from "axios";
 import { server } from "../../../server";
 import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/AddCompanyItemForm";
+import UpdateCompanyItemForm from "../../../Components/Company/UpdateCompanyItemForm/UpdateCompanyItemForm";
 
 export const CompanyProjectPage = () => {
   const project_id = useParams();
@@ -20,7 +21,7 @@ export const CompanyProjectPage = () => {
 
   //get all items for project
   const getItems = async () => {
-    console.log("project id -->", project_id.id);
+    // console.log("project id -->", project_id.id);
     try {
       const response = await axios.get(
         `${server}/get_company_items/${project_id.id}`
@@ -33,7 +34,7 @@ export const CompanyProjectPage = () => {
 
   //delete a single item
   const deleteItem = async (itemId) => {
-    console.log(itemId);
+    // console.log(itemId);
     try {
       const response = await axios.delete(
         `${server}/delete_company_item/${itemId}`
@@ -133,11 +134,11 @@ export const CompanyProjectPage = () => {
         </div>
         {update ? (
           <div className="app__company_project_page-content-updateitem">
-            {/* <UpdateCompanyItemForm
+            <UpdateCompanyItemForm
               item={itemToUpdate}
               getItems={getItems}
               setUpdate={setUpdate}
-            /> */}
+            />
           </div>
         ) : null}
 

@@ -442,8 +442,7 @@ app.get("/get_company_items/:project_id", (req, res) => {
 
 //delete item
 app.delete("/delete_company_item/:itemId", (req, res) => {
-  console.log("delete item req params", req.params.itemId);
-
+  // console.log("delete item req params", req.params.itemId);
   db.query(
     "DELETE FROM company_items WHERE id = ?",
     +req.params.itemId,
