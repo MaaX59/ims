@@ -48,7 +48,7 @@ const UpdateCompanyItemForm = (props) => {
         item_description: item_description,
         item_location: item_location,
         item_amount: item_amount,
-        item_projectid: item_projectid,
+        project_id: project_id,
       })
       .then(() => {
         props.getItems();
