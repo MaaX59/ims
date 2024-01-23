@@ -420,3 +420,36 @@ app.post("/add_company_item", (req, res) => {
     }
   );
 });
+
+//find company project items
+
+app.get("/get_company_items/:project_id", (req, res) => {
+  // console.log("req params when find company project items-->", req.params);
+  const project_id = req.params.project_id;
+  db.query(
+    "SELECT * FROM company_items WHERE `project_id` = ? ",
+    project_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting company items from db`, error);
+      } else {
+        // console.log("data from get company project items", data);
+        res.send(data);
+      }
+    }
+  );
+});
+
+//delete item
+app.delete("/delete_company_item/:itemId", (req, res) => {
+  console.log("delete item req params", req.params.itemId);
+
+  db.query(
+    "DELETE FROM company_items WHERE id = ?",
+    +req.params.itemId,
+    (error, data) => {
+      res.status(200).json({ message: "item deleted successfully" });
+      // console.log("Number of records deleted: " + data.affectedRows);
+    }
+  );
+});

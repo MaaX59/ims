@@ -20,9 +20,11 @@ export const CompanyProjectPage = () => {
 
   //get all items for project
   const getItems = async () => {
-    //
+    console.log("project id -->", project_id.id);
     try {
-      const response = await axios.get(`${server}/getitems/${project_id}`);
+      const response = await axios.get(
+        `${server}/get_company_items/${project_id.id}`
+      );
       setCompanyItems(response.data);
     } catch (error) {
       console.log(`error fetching items`, error);
