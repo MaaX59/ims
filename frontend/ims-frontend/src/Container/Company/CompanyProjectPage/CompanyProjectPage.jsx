@@ -48,10 +48,10 @@ export const CompanyProjectPage = () => {
   };
 
   // delete all items in the project, will run with deleteProject
-  const deleteItems = async (projectid) => {
+  const deleteItems = async (project_id) => {
     try {
       const response = await axios.delete(
-        `${server}/delete_items/${projectid}`
+        `${server}/delete_company_items/${project_id.id}`
       );
       if (response.status === 200) {
       }
@@ -65,11 +65,11 @@ export const CompanyProjectPage = () => {
     console.log(project_id);
     try {
       const response = await axios.delete(
-        `${server}/delete_project/${project_id}`
+        `${server}/delete_company_project/${project_id.id}`
       );
       if (response.status === 200) {
         console.log("project deleted");
-        navigate("/viewproject");
+        navigate("/viewuser");
       }
     } catch (error) {
       console.log(`error deleting items`, error);
@@ -145,10 +145,10 @@ export const CompanyProjectPage = () => {
         <div className="app__company_project_page-delete-project">
           <button
             className="remove_project"
-            // onClick={() => {
-            //   deleteProject(id.id);
-            //   deleteItems(id.id);
-            // }}
+            onClick={() => {
+              deleteProject(project_id);
+              deleteItems(project_id);
+            }}
           >
             {" "}
             DELETE PROJECT

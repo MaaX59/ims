@@ -183,7 +183,7 @@ app.get("/project/:id", (req, res) => {
 });
 
 //
-// Company User
+// Company
 //
 
 //createuser aka signup -.-
@@ -349,7 +349,6 @@ app.post("/create_company_project", (req, res) => {
 });
 
 //find company based on id
-
 app.get("/find_company/:company_id", (req, res) => {
   console.log("req params-->", req.params.company_id);
 
@@ -368,7 +367,6 @@ app.get("/find_company/:company_id", (req, res) => {
 });
 
 //find company projects
-
 app.get("/get_company_projects/:company_id", (req, res) => {
   console.log("req params when find projects-->", req.params.company_id);
   const company_id = req.params.company_id;
@@ -448,14 +446,18 @@ app.delete("/delete_company_item/:itemId", (req, res) => {
     "DELETE FROM company_items WHERE id = ?",
     +req.params.itemId,
     (error, data) => {
-      res.status(200).json({ message: "item deleted successfully" });
+      if (err) {
+        console.log(`error when deleting item`, err);
+      } else {
+        res.status(200).json({ message: "item deleted successfully" });
+      }
+
       // console.log("Number of records deleted: " + data.affectedRows);
     }
   );
 });
 
 //update company item
-
 app.put("/update_company_item/:item_id", (req, res) => {
   const id = req.params.item_id;
   const item_name = req.body.item_name;
@@ -487,6 +489,43 @@ app.put("/update_company_item/:item_id", (req, res) => {
       error
         ? console.log("error updating item", error)
         : res.status(200).json({ message: "item updated successfully" });
+    }
+  );
+});
+
+//delete company project
+app.delete("/delete_company_project/:project_id", (req, res) => {
+  console.log("delete company project, params -->", req.params.project_id);
+  db.query(
+    "DELETE FROM company_project WHERE id = ?",
+    +req.params.project_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when deleting company project`, err);
+      } else {
+        res
+          .status(200)
+          .json({ message: "company project deleted successfully" });
+      }
+    }
+  );
+});
+
+//delete company items based on project
+app.delete("/delete_company_items/:project_id", (req, res) => {
+  // const { id } = req.params.project_id;
+  console.log("delete items req params", req.params.project_id);
+
+  db.query(
+    "DELETE FROM company_items WHERE project_id = ?",
+    +req.params.project_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when deleting all items from company project`, err);
+      } else {
+        res.status(200).json({ message: "items deleted successfully" });
+        // console.log("Number of records deleted: " + data.affectedRows);
+      }
     }
   );
 });
