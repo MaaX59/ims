@@ -41,6 +41,7 @@ const UpdateCompanyItemForm = (props) => {
   const updateItem = () => {
     console.log(
       "updated items",
+      item_id,
       item_name,
       item_description,
       item_location,
@@ -52,7 +53,7 @@ const UpdateCompanyItemForm = (props) => {
       purchased_from
     );
     axios
-      .put(`${server}/update/${item_id}`, {
+      .put(`${server}/update_company_item/${item_id}`, {
         item_name: item_name,
         item_description: item_description,
         item_location: item_location,
@@ -227,7 +228,7 @@ const UpdateCompanyItemForm = (props) => {
 
       <div className="company-form-required"> * field is required</div>
       <button type="text" className="submit" onClick={updateItem}>
-        Create
+        Update
       </button>
     </div>
   );

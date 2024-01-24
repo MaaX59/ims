@@ -5,6 +5,7 @@
   background: var(--color-black);
   color: rgb(227, 227, 227);
   width: 99%;
+  padding-left: 1.2rem;
 }
 .app__company_project_page-content {
   display: flex;

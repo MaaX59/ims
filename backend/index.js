@@ -116,6 +116,7 @@ app.put("/update/:id", (req, res) => {
     }
   );
 });
+
 //delete project
 app.delete("/delete_project/:project_id", (req, res) => {
   db.query(
@@ -440,7 +441,7 @@ app.get("/get_company_items/:project_id", (req, res) => {
   );
 });
 
-//delete item
+//delete company item
 app.delete("/delete_company_item/:itemId", (req, res) => {
   // console.log("delete item req params", req.params.itemId);
   db.query(
@@ -449,6 +450,43 @@ app.delete("/delete_company_item/:itemId", (req, res) => {
     (error, data) => {
       res.status(200).json({ message: "item deleted successfully" });
       // console.log("Number of records deleted: " + data.affectedRows);
+    }
+  );
+});
+
+//update company item
+
+app.put("/update_company_item/:item_id", (req, res) => {
+  const id = req.params.item_id;
+  const item_name = req.body.item_name;
+  const item_description = req.body.item_description;
+  const item_location = req.body.item_location;
+  const item_amount = req.body.item_amount;
+  const purchased_from = req.body.purchased_from;
+  const purchased_price = req.body.purchased_price;
+  const in_stock = req.body.in_stock;
+  const notes = req.body.notes;
+  const project_id = req.body.project_id;
+  console.log("company item id -->", id);
+
+  db.query(
+    "UPDATE company_items SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, project_id= ?, purchased_from= ?,purchased_price= ?, in_stock= ?, notes= ? WHERE id= ?",
+    [
+      item_name,
+      item_description,
+      item_location,
+      item_amount,
+      project_id,
+      purchased_from,
+      purchased_price,
+      in_stock,
+      notes,
+      id,
+    ],
+    (error, data) => {
+      error
+        ? console.log("error updating item", error)
+        : res.status(200).json({ message: "item updated successfully" });
     }
   );
 });
