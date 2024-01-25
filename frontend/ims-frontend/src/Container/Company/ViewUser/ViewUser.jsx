@@ -60,7 +60,7 @@ const ViewUser = () => {
 
   return (
     <div className="app__view_user">
-      <NavBar />
+      <NavBar currentPage="dash" />
       <div className="app__view_user-content">
         <div className="app__view_user-title">
           <h1>Inventory Management System</h1>

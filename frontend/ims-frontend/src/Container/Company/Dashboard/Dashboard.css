@@ -1,0 +1,57 @@
+.app__dashboard {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-black);
+  color: rgb(227, 227, 227);
+  width: 100%;
+}
+.app__dashboard-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.app__dashboard-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 0.5rem;
+  width: auto;
+  margin: 2rem 0;
+}
+.app__dashboard-company-connected {
+  font-size: 22px;
+}
+.app__dashboard-company {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.app__dashboard-nocompany h1 {
+  display: flex;
+  justify-content: center;
+}
+.app__dashboard-nocompany-options {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.app__dashboard-nocompany-options button {
+  background: black;
+  border-radius: 12px;
+  border: 2px solid rgb(1, 1, 100);
+  box-sizing: border-box;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  width: 300px;
+  margin: 28px 20px;
+  outline: 0;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+.app__dashboard-nocompany-options button:hover {
+  background: rgb(1, 1, 100);
+}

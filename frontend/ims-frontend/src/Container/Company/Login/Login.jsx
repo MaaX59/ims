@@ -47,7 +47,7 @@ const Login = () => {
         setToken(token);
         setEmail("");
         setPassword("");
-        navigate("/viewuser");
+        navigate("/dashboard");
       }
     } catch (err) {
       console.log(err, "error loggin in");

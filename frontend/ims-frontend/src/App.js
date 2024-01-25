@@ -13,6 +13,7 @@ import {
   NewCompanyProject,
   CompanyProjectPage,
   SellItems,
+  Dashboard,
 } from "./Container/index";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           element={<CompanyProjectPage />}
         />
         <Route path="/sell_items/:id" element={<SellItems />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

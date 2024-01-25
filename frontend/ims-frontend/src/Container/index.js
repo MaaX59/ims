@@ -9,7 +9,7 @@ import CreateCompany from "./Company/CreateCompany/CreateCompany";
 import NewCompanyProject from "./Company/NewProject/NewCompanyProject";
 import CompanyProjectPage from "./Company/CompanyProjectPage/CompanyProjectPage";
 import SellItems from "./Company/SellItems/SellItems";
-import Dashboard from "./Company/CompanyProjectPage/Dashboard/Dashboard";
+import Dashboard from "./Company/Dashboard/Dashboard";
 
 export {
   ViewProject,

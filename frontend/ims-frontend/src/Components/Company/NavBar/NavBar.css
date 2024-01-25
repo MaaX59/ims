@@ -22,6 +22,11 @@
 }
 .link {
   color: white;
+  height: 28px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
 }
 .link :hover {
   color: white;
@@ -35,6 +40,7 @@
 .app__navbar_options-single-ims {
   display: flex;
   justify-content: baseline;
+  padding-left: 0.7rem;
 }
 .app__navbar_options-single-dash span,
 .app__navbar_options-single-inv span,
