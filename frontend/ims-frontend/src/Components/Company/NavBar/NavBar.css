@@ -1,0 +1,12 @@
+.app__navbar {
+  width: 180px;
+  height: 100vh;
+  background: rgb(35, 35, 36);
+}
+.app__navbar_title {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 35px;
+}

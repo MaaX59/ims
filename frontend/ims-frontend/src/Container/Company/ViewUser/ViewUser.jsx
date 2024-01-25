@@ -4,7 +4,7 @@ import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthProvider";
 import { MdAddCircle } from "react-icons/md";
-
+import NavBar from "../../../Components/Company/NavBar/NavBar";
 import "./ViewUser.css";
 import { DisplayProjects } from "../../../Components/Company/DisplayProjects/DisplayProjects";
 
@@ -60,6 +60,7 @@ const ViewUser = () => {
 
   return (
     <div className="app__view_user">
+      <NavBar />
       <div className="app__view_user-content">
         <div className="app__view_user-title">
           <h1>Inventory Management System</h1>

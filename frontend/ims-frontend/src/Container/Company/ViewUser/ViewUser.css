@@ -3,10 +3,11 @@
   flex-direction: row;
   background: var(--color-black);
   color: rgb(227, 227, 227);
+  width: 100%;
 }
 .app__view_user-content {
   display: flex;
-  width: 100vw;
+  width: 100%;
   flex-direction: column;
 }
 .app__view_user-title {
@@ -15,7 +16,7 @@
   align-items: center;
   flex-direction: column;
   line-height: 0.5rem;
-  width: 100vw;
+  width: auto;
   margin: 2rem 0;
 }
 .app__view_user-company-connected {
@@ -64,7 +65,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   font-size: 20px;
 }
 .app__view_user-projects-create svg {
