@@ -1,7 +1,7 @@
 .app__navbar {
-  width: 180px;
+  width: 175px;
   height: 100vh;
-  background: rgb(35, 35, 36);
+  background: rgb(28, 28, 29);
 }
 .app__navbar_title {
   display: flex;
@@ -9,4 +9,39 @@
   margin-top: 2rem;
   font-family: "Courier New", Courier, monospace;
   font-size: 35px;
+  font-style: oblique;
+}
+.app__navbar_options {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 480px;
+  font-size: 16px;
+  margin-left: 1rem;
+  color: white;
+}
+.link {
+  color: white;
+}
+.link :hover {
+  color: white;
+}
+.app__navbar_options-single-dash,
+.app__navbar_options-single-inv,
+.app__navbar_options-single-sales,
+.app__navbar_options-single-purch,
+.app__navbar_options-single-cust,
+.app__navbar_options-single-log,
+.app__navbar_options-single-ims {
+  display: flex;
+  justify-content: baseline;
+}
+.app__navbar_options-single-dash span,
+.app__navbar_options-single-inv span,
+.app__navbar_options-single-sales span,
+.app__navbar_options-single-purch span,
+.app__navbar_options-single-cust span,
+.app__navbar_options-single-log span,
+.app__navbar_options-single-ims span {
+  margin-left: 0.4rem;
 }
