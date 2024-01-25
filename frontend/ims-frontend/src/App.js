@@ -12,6 +12,7 @@ import {
   CreateCompany,
   NewCompanyProject,
   CompanyProjectPage,
+  SellItems,
 } from "./Container/index";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           path="/company_project_page/:id"
           element={<CompanyProjectPage />}
         />
+        <Route path="/sell_items/:id" element={<SellItems />} />
       </Routes>
     </BrowserRouter>
   );
