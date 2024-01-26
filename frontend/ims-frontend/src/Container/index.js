@@ -11,6 +11,7 @@ import CompanyProjectPage from "./Company/CompanyProjectPage/CompanyProjectPage"
 import SellItems from "./Company/SellItems/SellItems";
 import Dashboard from "./Company/Dashboard/Dashboard";
 import Inventory from "./Company/Inventory/Inventory";
+import Purchases from "./Company/Purchases/Purchases";
 
 export {
   ViewProject,
@@ -26,4 +27,5 @@ export {
   SellItems,
   Dashboard,
   Inventory,
+  Purchases,
 };

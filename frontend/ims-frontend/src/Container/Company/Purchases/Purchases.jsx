@@ -6,15 +6,15 @@ import { server } from "../../../server";
 import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/AddCompanyItemForm";
 import UpdateCompanyItemForm from "../../../Components/Company/UpdateCompanyItemForm/UpdateCompanyItemForm";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
-import "./SellItems.css";
+import "./Purchases.css";
 
-const SellItems = () => {
+const Purchases = () => {
   return (
-    <div className="app__sell_items_page">
-      <NavBar currentPage="sales" />
-      <div className="app__sell_items-content"></div>
+    <div className="app__purchases_page">
+      <NavBar currentPage="purch" />
+      <div className="app__purchases-content"></div>
     </div>
   );
 };
 
-export default SellItems;
+export default Purchases;

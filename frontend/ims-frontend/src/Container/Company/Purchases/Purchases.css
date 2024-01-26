@@ -1,11 +1,11 @@
-.app__sell_items_page {
+.app__purchases_page {
   display: flex;
   flex-direction: row;
   background: var(--color-black);
   color: rgb(227, 227, 227);
   width: 99%;
 }
-.app__sell_items-content {
+.app__purchases-content {
   display: flex;
   flex-direction: column;
   align-items: center;

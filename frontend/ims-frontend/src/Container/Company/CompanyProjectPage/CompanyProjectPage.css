@@ -1,7 +1,6 @@
 .app__company_project_page {
   display: flex;
   flex-direction: row;
-
   background: var(--color-black);
   color: rgb(227, 227, 227);
   width: 99%;
