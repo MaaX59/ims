@@ -10,6 +10,7 @@ import NewCompanyProject from "./Company/NewProject/NewCompanyProject";
 import CompanyProjectPage from "./Company/CompanyProjectPage/CompanyProjectPage";
 import SellItems from "./Company/SellItems/SellItems";
 import Dashboard from "./Company/Dashboard/Dashboard";
+import Inventory from "./Company/Inventory/Inventory";
 
 export {
   ViewProject,
@@ -24,4 +25,5 @@ export {
   CompanyProjectPage,
   SellItems,
   Dashboard,
+  Inventory,
 };

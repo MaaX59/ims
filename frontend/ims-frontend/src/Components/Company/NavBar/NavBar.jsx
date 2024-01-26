@@ -1,10 +1,16 @@
-import React from "react";
+import { React, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import * as Icon from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AuthContext from "../../../context/AuthProvider";
 
 const NavBar = (currentPage) => {
+  const { userInfo } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   console.log("current page", currentPage.currentPage);
+  console.log("userinfo", userInfo.company_id);
   return (
     <div className="app__navbar">
       <div className="app__navbar_title">
@@ -24,17 +30,15 @@ const NavBar = (currentPage) => {
           </div>
         </Link>
 
-        <Link
-          to="/inventory"
-          className="link"
+        <div
+          className="app__navbar_options-single-inv link"
           style={{
             background: currentPage.currentPage === "inv" ? "black" : null,
           }}
+          onClick={() => navigate(`/inventory/${userInfo.company_id}`)}
         >
-          <div className="app__navbar_options-single-inv">
-            <Icon.FaBox /> <span>Inventory</span>
-          </div>
-        </Link>
+          <Icon.FaBox /> <span>Inventory</span>
+        </div>
 
         <Link
           to="/sales"

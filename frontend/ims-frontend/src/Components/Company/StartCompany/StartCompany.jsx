@@ -1,23 +1,16 @@
-import { React, useState, useContext } from "react";
+import { React, useState } from "react";
 import axios from "axios";
 import { server } from "../../../server";
-import "./CreateCompany.css";
-import { useNavigate } from "react-router-dom";
+import "./StartCompany.css";
 
-import AuthContext from "../../../context/AuthProvider";
-
-const CreateCompany = () => {
+const StartCompany = (props) => {
   const [companyName, setCompanyName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [error, setError] = useState("");
+  const [user_id, setUser_id] = useState(props.userId);
+  console.log("props in start company -->", props);
 
-  //get user info from context
-  const { userInfo } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-
-  //on submit create company
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,7 +19,7 @@ const CreateCompany = () => {
           companyName: companyName,
           password: password,
           confirmedPassword: confirmedPassword,
-          userId: userInfo.id,
+          userId: user_id,
         })
         .then((res) => {
           //the backend will check for errors before creating user
@@ -35,7 +28,7 @@ const CreateCompany = () => {
             setCompanyName("");
             setPassword("");
             setConfirmedPassword("");
-            navigate("/viewuser");
+            props.setOpenStartCompany(!props.openStartCompany);
           } else if (res.data === "no pwd match") {
             setError("Password and Confirm password need to match!");
           } else if (res.data === "Name already exist") {
@@ -48,15 +41,15 @@ const CreateCompany = () => {
   };
 
   return (
-    <div className="app__create_company">
-      <div className="app__create_company-content">
-        <div className="app__create_company-content-title">
+    <div className="app__start_company">
+      <div className="app__start_company-content">
+        <div className="app__start_company-content-title">
           {" "}
           <h1>Create Company IMS</h1>
         </div>
-        <div className="app__create_company-form">
+        <div className="app__start_company-form">
           <form onSubmit={handleSubmit}>
-            <div className="app_create_company-form-firstrow">
+            <div className="app_start_company-form-firstrow">
               <div className="input-container ic1">
                 <input
                   id="companyName"
@@ -74,13 +67,13 @@ const CreateCompany = () => {
                 </label>
               </div>
             </div>
-            <div className="app_create_company-id">
+            <div className="app_start_company-id">
               <span>
                 Name will not be used for login, an ID will be generated
               </span>
             </div>
 
-            <div className="app_create_company-form-secondrow">
+            <div className="app_start_company-form-secondrow">
               <div className="input-container ic1">
                 <input
                   id="password"
@@ -132,4 +125,4 @@ const CreateCompany = () => {
   );
 };
 
-export default CreateCompany;
+export default StartCompany;

@@ -14,6 +14,7 @@ import {
   CompanyProjectPage,
   SellItems,
   Dashboard,
+  Inventory,
 } from "./Container/index";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/viewproject" element={<ViewProject />} />
         <Route path="/newproject" element={<NewProject />} />
         <Route path="/project/:id" element={<ProjectPage />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/create-user" element={<Createuser />} />
         <Route path="/viewuser" element={<ViewUser />} />
@@ -34,7 +36,8 @@ function App() {
           element={<CompanyProjectPage />}
         />
         <Route path="/sell_items/:id" element={<SellItems />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/inventory/:id" element={<Inventory />} />
       </Routes>
     </BrowserRouter>
   );

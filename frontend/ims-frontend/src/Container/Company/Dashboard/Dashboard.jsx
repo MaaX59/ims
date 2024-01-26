@@ -5,12 +5,14 @@ import axios from "axios";
 import { server } from "../../../server";
 import AuthContext from "../../../context/AuthProvider";
 import "./Dashboard.css";
+import StartCompany from "../../../Components/Company/StartCompany/StartCompany";
 
 const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [company, setCompany] = useState(null);
+  const [openStartCompany, setOpenStartCompany] = useState(false);
 
   useEffect(() => {
     findCompany();
@@ -40,28 +42,36 @@ const Dashboard = () => {
           <h1>Inventory Management System</h1>
           <h2>Welcome {userInfo.first_name}</h2>
         </div>
-        <div className="app__dashboard-company">
-          {company ? (
-            <div className="app__dashboard-company-connected">
-              <span>You are connected to {company.company_name}</span>{" "}
-            </div>
-          ) : (
-            <div className="app__dashboard-nocompany">
-              <h2>You are not connected to a company IMS </h2>
-              <div className="app__dashboard-nocompany-options">
-                <button
-                  className="company_button"
-                  onClick={() => navigate("/create_company")}
-                >
-                  Start company IMS
-                </button>
-                <button onClick={() => navigate("/connect_company")}>
-                  Connect to company IMS
-                </button>
+        {!openStartCompany ? (
+          <div className="app__dashboard-company">
+            {company ? (
+              <div className="app__dashboard-company-connected">
+                <span>You are connected to {company.company_name}</span>{" "}
               </div>
-            </div>
-          )}
-        </div>
+            ) : (
+              <div className="app__dashboard-nocompany">
+                <h2>You are not connected to a company IMS </h2>
+                <div className="app__dashboard-nocompany-options">
+                  <button
+                    className="company_button"
+                    onClick={() => setOpenStartCompany(!openStartCompany)}
+                  >
+                    Start company IMS
+                  </button>
+                  <button onClick={() => navigate("/connect_company")}>
+                    Connect to company IMS
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <StartCompany
+            openStartCompany={openStartCompany}
+            setOpenStartCompany={setOpenStartCompany}
+            userId={userInfo.id}
+          />
+        )}
       </div>
     </div>
   );

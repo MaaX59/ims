@@ -1,0 +1,41 @@
+.app__start_company {
+  display: flex;
+  justify-content: center;
+
+  width: 100vw;
+}
+.app__start_company-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 700px;
+  height: 450px;
+  border-radius: 14px;
+  background: var(--color-black);
+  font-family: "Courier New", Courier, monospace;
+  color: var(--color-white);
+}
+.app__start_company-content-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.app__start_company-content-title h1 {
+  font-weight: 300;
+}
+.app_start_company-id {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.app_start_company-form-firstrow,
+.app_start_company-form-secondrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app_start_company-form-secondrow :first-child {
+  margin-right: 1rem;
+}
