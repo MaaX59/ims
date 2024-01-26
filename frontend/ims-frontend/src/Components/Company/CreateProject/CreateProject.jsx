@@ -1,6 +1,7 @@
 import { React, useState, useContext } from "react";
 import axios from "axios";
 import { server } from "../../../server";
+import "./CreateProject.css";
 
 const CreateProject = (props) => {
   const [project_name, setProject_name] = useState("");
@@ -15,13 +16,15 @@ const CreateProject = (props) => {
         project_name: project_name,
         project_description: project_description,
         company_id: props.userInfo.company_id,
+        created_by_user_id: props.userInfo.id,
       })
       .then(() => {
+        props.updateProjectList();
         props.setOpenCreateProject(!props.openCreateProject);
       });
   };
   return (
-    <div className="form">
+    <div className="form create-project">
       <div className="title">Start Project</div>
       <div className="input-container-company ic1">
         <input

@@ -9,8 +9,8 @@ const NavBar = (currentPage) => {
   const { userInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  console.log("current page", currentPage.currentPage);
-  console.log("userinfo", userInfo.company_id);
+  // console.log("current page", currentPage.currentPage);
+  // console.log("userinfo", userInfo.company_id);
   return (
     <div className="app__navbar">
       <div className="app__navbar_title">
