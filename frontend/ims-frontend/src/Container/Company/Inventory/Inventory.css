@@ -1,0 +1,23 @@
+.app__inventory {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-black);
+  color: rgb(227, 227, 227);
+  width: 100%;
+}
+.app__inventory-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.app__inventory-projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.app__inventory-noprojects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
