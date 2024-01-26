@@ -6,6 +6,7 @@ import axios from "axios";
 import { server } from "../../../server";
 import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/AddCompanyItemForm";
 import UpdateCompanyItemForm from "../../../Components/Company/UpdateCompanyItemForm/UpdateCompanyItemForm";
+import NavBar from "../../../Components/Company/NavBar/NavBar";
 
 export const CompanyProjectPage = () => {
   const project_id = useParams();
@@ -84,12 +85,7 @@ export const CompanyProjectPage = () => {
 
   return (
     <div className="app__company_project_page">
-      <FaArrowLeft
-        className="goBackButton"
-        title="Go back"
-        size={20}
-        onClick={() => navigate("/viewuser")}
-      />
+      <NavBar currentPage="inv" />
       <div className="app__company_project_page-content">
         <h1>Manage Project</h1>
 
