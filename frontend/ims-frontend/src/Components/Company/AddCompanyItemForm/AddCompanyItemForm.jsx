@@ -1,9 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import "./AddCompanyItemForm.css";
 import axios from "axios";
 import { server } from "../../../server";
+import AuthContext from "../../../context/AuthProvider";
 
 const AddCompanyItemForm = (props) => {
+  const { userInfo } = useContext(AuthContext);
   const projectList = props.projectList;
   useEffect(() => {
     console.log(projectList);
@@ -18,23 +20,24 @@ const AddCompanyItemForm = (props) => {
   const [notes, setNotes] = useState("");
   const [item_amount, setItem_amount] = useState();
   const [project_id, setProject_id] = useState();
+  const added_by_user = userInfo.id;
 
   const addItem = () => {
     console.log(
-      // "added item",
-      // item_name,
-      // item_description,
-      // item_location,
-      // purchased_from,
-      // purchased_price,
-      // inStock,
-      // notes,
-      // item_amount,
+      "added item",
+      item_name,
+      item_description,
+      item_location,
+      purchased_from,
+      purchased_price,
+      inStock,
+      notes,
+      item_amount,
       "project id?",
       project_id
     );
-    axios
-      .post(`${server}/add_company_item`, {
+    try {
+      const body = {
         item_name: item_name,
         item_description: item_description,
         item_location: item_location,
@@ -44,10 +47,12 @@ const AddCompanyItemForm = (props) => {
         notes: notes,
         item_amount: item_amount,
         project_id: project_id,
-      })
-      .then(() => {
-        props.getItems();
-      });
+        added_by_user: JSON.stringify(added_by_user),
+      };
+      axios.post(`${server}/add_company_item`, body).then(() => {});
+    } catch (err) {
+      console.log(err);
+    }
 
     setItem_name("");
     setItem_description("");
@@ -67,10 +72,10 @@ const AddCompanyItemForm = (props) => {
         <select
           id="project"
           name="project"
-          onChange={(event) => console.log(event.target.options.value)}
+          onChange={(event) => setProject_id(event.target.value)}
         >
           {/* dosen´t work!! */}
-          {/* setProject_id(event.target.options.value) */}
+          {/* setProject_id(event.target.value) */}
           {projectList.map((project, index) => (
             <option key={index} value={project.id}>
               {project.project_name}{" "}

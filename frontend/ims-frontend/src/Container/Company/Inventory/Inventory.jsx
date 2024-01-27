@@ -9,8 +9,8 @@ import AuthContext from "../../../context/AuthProvider";
 import GetProjects from "../../../Components/Company/Functions/GetProjects";
 
 const Inventory = () => {
-  const company_id = useParams();
   const { userInfo } = useContext(AuthContext);
+  const company_id = userInfo.company_id;
   // console.log("page:inv, company Id -->", company_id);
 
   const [projectList, setProjectList] = useState([]);

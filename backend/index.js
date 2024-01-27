@@ -396,10 +396,11 @@ app.post("/add_company_item", (req, res) => {
   const notes = req.body.notes;
   const item_amount = req.body.item_amount;
   const project_id = req.body.project_id;
+  const added_by_user = req.body.added_by_user;
   console.log(`req.body on backend  `, req.body);
 
   db.query(
-    "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id) VALUES(?,?,?,?,?,?,?,?,?)",
+    "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id, added_by_user) VALUES(?,?,?,?,?,?,?,?,?,?)",
     [
       item_name,
       item_description,
@@ -410,6 +411,7 @@ app.post("/add_company_item", (req, res) => {
       notes,
       item_amount,
       project_id,
+      added_by_user,
     ],
     (err, result) => {
       if (err) {
