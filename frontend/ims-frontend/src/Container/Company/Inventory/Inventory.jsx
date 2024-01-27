@@ -7,8 +7,6 @@ import { DisplayProjects } from "../../../Components/Company/DisplayProjects/Dis
 import { MdAddCircle } from "react-icons/md";
 import CreateProject from "../../../Components/Company/CreateProject/CreateProject";
 import AuthContext from "../../../context/AuthProvider";
-import axios from "axios";
-import { server } from "../../../server";
 
 const Inventory = () => {
   const company_id = useParams();
@@ -19,42 +17,11 @@ const Inventory = () => {
   const [openCreateProject, setOpenCreateProject] = useState(false);
 
   useEffect(() => {
-    getProjects(company_id);
-    // console.log(getProjects(company_id));
-    // setProjectList(getProjects(company_id));
-    // updateProjectList();
+    getProjectsFunction();
   }, []);
 
-  // const get_projects = () => {
-  //   console.log(getProjects(company_id));
-  //   // const projects= getProjects(company_id)
-  //   // setProjectList(projects)
-  // };
-
-  // const updateProjectList = () => {
-  //   console.log("update project list");
-  //   setProjectList(getProjects(company_id));
-  // };
-
-  const getProjects = async (companyId) => {
-    console.log(
-      "get projects function is triggered, userinfo-->",
-      companyId.id
-    );
-    try {
-      const company_id = companyId.id;
-      console.log("company id in get projects", company_id);
-      await axios
-        .get(`${server}/get_company_projects/${company_id}`)
-        .then((res) => {
-          console.log(res.data, "<-- company projects data");
-          setProjectList(res.data);
-          console.log(projectList, "<-- company projects data");
-          console.log("this is the projects", res.data);
-        });
-    } catch (error) {
-      return error;
-    }
+  const getProjectsFunction = () => {
+    getProjects({ company_id, setProjectList });
   };
 
   return (
@@ -76,7 +43,7 @@ const Inventory = () => {
               openCreateProject={openCreateProject}
               setOpenCreateProject={setOpenCreateProject}
               userInfo={userInfo}
-              // updateProjectList={updateProjectList}
+              getProjectsFunction={getProjectsFunction}
             />
           ) : null}
         </div>

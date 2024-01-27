@@ -5,16 +5,18 @@ import { server } from "../../server";
 //this code dosent work, maybe need to use a promise
 //
 
-const getProjects = async (companyId) => {
-  console.log("get projects function is triggered, userinfo-->", companyId);
+const getProjects = async (props) => {
+  console.log("get projects function is triggered, userinfo-->", props);
   try {
-    const company_id = companyId.id;
+    const company_id = props.company_id.id;
     // console.log("company id in get projects", company_id);
     await axios
       .get(`${server}/get_company_projects/${company_id}`)
       .then((res) => {
         console.log(res.data, "<-- company projects data");
-        return res.data;
+        const data = res.data;
+
+        props.setProjectList(data);
         //   console.log("this is the projects", res.data);
       });
   } catch (error) {

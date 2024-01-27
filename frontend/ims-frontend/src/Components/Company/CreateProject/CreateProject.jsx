@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import "./CreateProject.css";
@@ -19,7 +19,7 @@ const CreateProject = (props) => {
         created_by_user_id: props.userInfo.id,
       })
       .then(() => {
-        props.updateProjectList();
+        props.getProjectsFunction();
         props.setOpenCreateProject(!props.openCreateProject);
       });
   };
