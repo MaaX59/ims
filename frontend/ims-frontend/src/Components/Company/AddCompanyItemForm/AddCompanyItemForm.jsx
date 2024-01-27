@@ -4,8 +4,9 @@ import axios from "axios";
 import { server } from "../../../server";
 
 const AddCompanyItemForm = (props) => {
+  const projectList = props.projectList;
   useEffect(() => {
-    setProject_id(props.id);
+    console.log(projectList);
   }, []);
 
   const [item_name, setItem_name] = useState("");
@@ -20,15 +21,16 @@ const AddCompanyItemForm = (props) => {
 
   const addItem = () => {
     console.log(
-      "added item",
-      item_name,
-      item_description,
-      item_location,
-      purchased_from,
-      purchased_price,
-      inStock,
-      notes,
-      item_amount,
+      // "added item",
+      // item_name,
+      // item_description,
+      // item_location,
+      // purchased_from,
+      // purchased_price,
+      // inStock,
+      // notes,
+      // item_amount,
+      "project id?",
       project_id
     );
     axios
@@ -60,6 +62,21 @@ const AddCompanyItemForm = (props) => {
   return (
     <div className="app__add-company_item_form">
       <div className="title">Add an item</div>
+      <div className="">
+        <label for="project">Choose a project:</label>
+        <select
+          id="project"
+          name="project"
+          onChange={(event) => console.log(event.target.options.value)}
+        >
+          {/* setProject_id(event.target.options.value) */}
+          {projectList.map((project, index) => (
+            <option key={index} value="blabla">
+              {project.project_name}{" "}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="form-2inRow">
         <div className="input-container ic1">
           <input
@@ -111,7 +128,7 @@ const AddCompanyItemForm = (props) => {
           />
 
           <label for="purchased_from" className="placeholder">
-            Vendor item was purchased from
+            Vendor name or ID
           </label>
         </div>
 
@@ -128,7 +145,7 @@ const AddCompanyItemForm = (props) => {
             }}
           />
           <label for="purchased_price" className="placeholder">
-            Purchase price
+            Price per item
           </label>
         </div>
       </div>

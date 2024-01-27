@@ -5,7 +5,7 @@ import { server } from "../../server";
 //this code dosent work, maybe need to use a promise
 //
 
-const getProjects = async (props) => {
+const GetProjects = async (props) => {
   console.log("get projects function is triggered, userinfo-->", props);
   try {
     const company_id = props.company_id.id;
@@ -23,4 +23,4 @@ const getProjects = async (props) => {
     return error;
   }
 };
-export default getProjects;
+export default GetProjects;

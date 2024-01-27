@@ -2,11 +2,11 @@ import { React, useEffect, useState, useContext } from "react";
 import "./Inventory.css";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import { useParams } from "react-router-dom";
-import getProjects from "../../../Components/Company/GetProjects";
 import { DisplayProjects } from "../../../Components/Company/DisplayProjects/DisplayProjects";
 import { MdAddCircle } from "react-icons/md";
 import CreateProject from "../../../Components/Company/CreateProject/CreateProject";
 import AuthContext from "../../../context/AuthProvider";
+import GetProjects from "../../../Components/Company/GetProjects";
 
 const Inventory = () => {
   const company_id = useParams();
@@ -21,7 +21,7 @@ const Inventory = () => {
   }, []);
 
   const getProjectsFunction = () => {
-    getProjects({ company_id, setProjectList });
+    GetProjects({ company_id, setProjectList });
   };
 
   return (
