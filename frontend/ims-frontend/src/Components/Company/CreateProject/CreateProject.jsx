@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import "./CreateProject.css";
+import AddToLog from "../Functions/AddToLog";
 
 const CreateProject = (props) => {
   const [project_name, setProject_name] = useState("");
@@ -10,18 +11,18 @@ const CreateProject = (props) => {
   const createProject = () => {
     console.log(project_name);
     console.log("user info -->", props.userId);
+    const body = {
+      project_name: project_name,
+      project_description: project_description,
+      company_id: props.userInfo.company_id,
+      created_by_user_id: props.userInfo.id,
+    };
 
-    axios
-      .post(`${server}/create_company_project`, {
-        project_name: project_name,
-        project_description: project_description,
-        company_id: props.userInfo.company_id,
-        created_by_user_id: props.userInfo.id,
-      })
-      .then(() => {
-        props.getProjectsFunction();
-        props.setOpenCreateProject(!props.openCreateProject);
-      });
+    axios.post(`${server}/create_company_project`, body).then((res) => {
+      AddToLog(body);
+      props.getProjectsFunction();
+      props.setOpenCreateProject(!props.openCreateProject);
+    });
   };
   return (
     <div className="form create-project">

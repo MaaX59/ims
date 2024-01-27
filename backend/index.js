@@ -330,10 +330,10 @@ app.post("/create_company", (req, res) => {
 
 // start a company project
 app.post("/create_company_project", (req, res) => {
-  const project_name = req.body.project_name;
-  const project_description = req.body.project_description;
-  const company_id = req.body.company_id;
-  const created_by_user_id = req.body.created_by_user_id;
+  const project_name = req.body.body.project_name;
+  const project_description = req.body.body.project_description;
+  const company_id = req.body.body.company_id;
+  const created_by_user_id = req.body.body.created_by_user_id;
   console.log(`req.body on backend  `, req.body);
 
   db.query(
@@ -343,7 +343,7 @@ app.post("/create_company_project", (req, res) => {
       if (err) {
         console.log(`error when sending to db`, err);
       } else {
-        res.send("values sent to db");
+        res.send("values sent to db", result);
       }
     }
   );

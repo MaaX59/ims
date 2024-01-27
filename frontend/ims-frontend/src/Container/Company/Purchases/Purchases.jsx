@@ -3,7 +3,7 @@ import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/A
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import "./Purchases.css";
 import AuthContext from "../../../context/AuthProvider";
-import GetProjects from "../../../Components/Company/GetProjects";
+import GetProjects from "../../../Components/Company/Functions/GetProjects";
 
 const Purchases = () => {
   const { userInfo } = useContext(AuthContext);

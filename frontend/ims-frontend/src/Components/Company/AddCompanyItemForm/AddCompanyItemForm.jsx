@@ -69,9 +69,10 @@ const AddCompanyItemForm = (props) => {
           name="project"
           onChange={(event) => console.log(event.target.options.value)}
         >
+          {/* dosen´t work!! */}
           {/* setProject_id(event.target.options.value) */}
           {projectList.map((project, index) => (
-            <option key={index} value="blabla">
+            <option key={index} value={project.id}>
               {project.project_name}{" "}
             </option>
           ))}
