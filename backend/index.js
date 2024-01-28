@@ -399,10 +399,11 @@ app.post("/add_company_item", (req, res) => {
   const item_amount = req.body.item_amount;
   const project_id = req.body.project_id;
   const added_by_user = req.body.added_by_user;
+  const company_id = req.body.company_id;
   // console.log(`req.body on backend  `, req.body);
 
   db.query(
-    "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id, added_by_user) VALUES(?,?,?,?,?,?,?,?,?,?)",
+    "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id, added_by_user,company_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
     [
       item_name,
       item_description,
@@ -414,6 +415,7 @@ app.post("/add_company_item", (req, res) => {
       item_amount,
       project_id,
       added_by_user,
+      company_id,
     ],
     (err, result) => {
       if (err) {
@@ -474,10 +476,11 @@ app.put("/update_company_item/:item_id", (req, res) => {
   const in_stock = req.body.in_stock;
   const notes = req.body.notes;
   const project_id = req.body.project_id;
+  const company_id = req.body.company_id;
   console.log("company item id -->", id);
 
   db.query(
-    "UPDATE company_items SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, project_id= ?, purchased_from= ?,purchased_price= ?, in_stock= ?, notes= ? WHERE id= ?",
+    "UPDATE company_items SET item_name = ?, item_description= ?, item_location= ?, item_amount= ?, project_id= ?, purchased_from= ?,purchased_price= ?, in_stock= ?, notes= ?, company_id =? WHERE id= ?",
     [
       item_name,
       item_description,
@@ -488,6 +491,7 @@ app.put("/update_company_item/:item_id", (req, res) => {
       purchased_price,
       in_stock,
       notes,
+      company_id,
       id,
     ],
     (error, data) => {
@@ -535,10 +539,33 @@ app.delete("/delete_company_items/:project_id", (req, res) => {
   );
 });
 
+//
+//Log Started
+//
+
+//Add Company Project To Log
 app.post("/add_company_project_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
-  const string = "Company Project Created" + JSON.stringify(data);
+  const string = "Project Created" + JSON.stringify(data);
+  db.query(
+    "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
+    [company_id, string],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.status(200).json({ message: "company project added to log" });
+      }
+    }
+  );
+});
+
+//Add Item To Log
+app.post("/add_company_item_to_log", (req, res) => {
+  const data = req.body;
+  const company_id = req.body.company_id;
+  const string = "Item Created" + JSON.stringify(data);
   db.query(
     "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
     [company_id, string],

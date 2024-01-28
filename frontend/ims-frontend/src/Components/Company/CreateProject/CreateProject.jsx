@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import "./CreateProject.css";
-import AddToLog from "../Functions/AddToLog";
+import AddCompanyProjectToLog from "../Functions/AddCompanyProjectToLog";
 
 const CreateProject = (props) => {
   const [project_name, setProject_name] = useState("");
@@ -21,7 +21,7 @@ const CreateProject = (props) => {
       props.getProjectsFunction();
       props.setOpenCreateProject(!props.openCreateProject);
 
-      AddToLog(body);
+      AddCompanyProjectToLog(body);
     });
   };
 

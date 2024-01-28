@@ -1,8 +1,7 @@
 import axios from "axios";
 import { server } from "../../../server";
 
-const AddToLog = async (body) => {
-  const stringToDb = "Company Project Created" + JSON.stringify(body);
+const AddCompanyProjectToLog = async (body) => {
   try {
     await axios.post(`${server}/add_company_project_to_log`, body);
   } catch (error) {
@@ -10,4 +9,4 @@ const AddToLog = async (body) => {
   }
 };
 
-export default AddToLog;
+export default AddCompanyProjectToLog;

@@ -3,7 +3,7 @@ import "./AddCompanyItemForm.css";
 import axios from "axios";
 import { server } from "../../../server";
 import AuthContext from "../../../context/AuthProvider";
-import AddToLog from "../Functions/AddToLog";
+import AddItemToLog from "../Functions/AddItemToLog";
 
 const AddCompanyItemForm = (props) => {
   const { userInfo } = useContext(AuthContext);
@@ -22,6 +22,7 @@ const AddCompanyItemForm = (props) => {
   const [item_amount, setItem_amount] = useState();
   const [project_id, setProject_id] = useState();
   const added_by_user = userInfo.id;
+  const company_id = userInfo.company_id;
 
   const addItem = async () => {
     console.log(
@@ -34,6 +35,7 @@ const AddCompanyItemForm = (props) => {
       inStock,
       notes,
       item_amount,
+      company_id,
       "project id?",
       project_id
     );
@@ -48,10 +50,11 @@ const AddCompanyItemForm = (props) => {
         notes: notes,
         item_amount: item_amount,
         project_id: project_id,
+        company_id: JSON.stringify(company_id),
         added_by_user: JSON.stringify(added_by_user),
       };
       await axios.post(`${server}/add_company_item`, body).then(() => {
-        AddToLog(body);
+        AddItemToLog(body);
       });
     } catch (err) {
       console.log(err);
