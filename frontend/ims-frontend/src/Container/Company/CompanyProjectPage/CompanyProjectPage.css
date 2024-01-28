@@ -44,7 +44,7 @@
 .app__company_project_page-singleitem-buttons {
   width: 130px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .app__company_project_page-singleitem h3 {

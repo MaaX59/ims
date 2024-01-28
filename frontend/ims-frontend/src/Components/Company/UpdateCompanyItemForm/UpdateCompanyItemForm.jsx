@@ -38,7 +38,7 @@ const UpdateCompanyItemForm = (props) => {
   const [item_amount, setItem_amount] = useState();
   const [project_id, setProject_id] = useState();
 
-  const updateItem = () => {
+  const updateItem = async () => {
     console.log(
       "updated items",
       item_id,
@@ -52,7 +52,7 @@ const UpdateCompanyItemForm = (props) => {
       purchased_price,
       purchased_from
     );
-    axios
+    await axios
       .put(`${server}/update_company_item/${item_id}`, {
         item_name: item_name,
         item_description: item_description,

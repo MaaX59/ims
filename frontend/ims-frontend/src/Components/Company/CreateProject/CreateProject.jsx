@@ -8,7 +8,7 @@ const CreateProject = (props) => {
   const [project_name, setProject_name] = useState("");
   const [project_description, setProject_description] = useState("");
 
-  const createProject = () => {
+  const createProject = async () => {
     console.log(project_name);
     console.log("user info -->", props.userId);
     const body = {
@@ -18,7 +18,7 @@ const CreateProject = (props) => {
       created_by_user_id: props.userInfo.id,
     };
 
-    axios.post(`${server}/create_company_project`, body).then((res) => {
+    await axios.post(`${server}/create_company_project`, body).then((res) => {
       AddToLog(body);
       props.getProjectsFunction();
       props.setOpenCreateProject(!props.openCreateProject);
