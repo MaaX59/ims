@@ -17,18 +17,16 @@ const NavBar = (currentPage) => {
         <span>IMS</span>
       </div>
       <div className="app__navbar_options">
-        <Link
-          to="/dashboard"
-          className="link"
+        <div
+          className="app__navbar_options-single-dash link"
           style={{
             background: currentPage.currentPage === "dash" ? "black" : null,
           }}
+          onClick={() => navigate(`/dashboard`)}
         >
-          <div className="app__navbar_options-single-dash">
-            {" "}
-            <Icon.FaChartBar /> <span>Dashboard</span>
-          </div>
-        </Link>
+          {" "}
+          <Icon.FaChartBar /> <span>Dashboard</span>
+        </div>
 
         <div
           className="app__navbar_options-single-inv link"
@@ -40,68 +38,56 @@ const NavBar = (currentPage) => {
           <Icon.FaBox /> <span>Inventory</span>
         </div>
 
-        <Link
-          to="/sales"
-          className="link"
+        <div
+          className="app__navbar_options-single-sales link "
           style={{
             background: currentPage.currentPage === "sales" ? "black" : null,
           }}
+          onClick={() => navigate(`/sales`)}
         >
-          <div className="app__navbar_options-single-sales">
-            <Icon.FaAngleDoubleUp /> <span>Sales</span>
-          </div>
-        </Link>
+          <Icon.FaAngleDoubleUp /> <span>Sales</span>
+        </div>
 
-        <Link
-          to="/purchases"
-          className="link"
+        <div
+          className="app__navbar_options-single-purch link"
           style={{
             background: currentPage.currentPage === "purch" ? "black" : null,
           }}
+          onClick={() => navigate(`/purchases`)}
         >
-          <div className="app__navbar_options-single-purch">
-            <Icon.FaAngleDoubleDown /> <span>Purchases</span>
-          </div>
-        </Link>
+          <Icon.FaAngleDoubleDown /> <span>Purchases</span>
+        </div>
 
-        <Link
-          to="/customers"
-          className="link"
+        <div
+          className="app__navbar_options-single-cust link"
           style={{
             background: currentPage.currentPage === "cust" ? "black" : null,
           }}
+          onClick={() => navigate(`/customers`)}
         >
-          <div className="app__navbar_options-single-cust">
-            <Icon.FaPeopleArrows /> <span>Customers</span>
-          </div>
-        </Link>
+          <Icon.FaPeopleArrows /> <span>Customers</span>
+        </div>
 
-        <Link
-          to="/log"
-          className="link"
+        <div
+          className="app__navbar_options-single-log link"
           style={{
             background: currentPage.currentPage === "log" ? "black" : null,
           }}
+          onClick={() => navigate(`/log`)}
         >
-          {" "}
-          <div className="app__navbar_options-single-log">
-            <Icon.FaList /> <span>Log</span>
-          </div>
-        </Link>
+          <Icon.FaList /> <span>Log</span>
+        </div>
 
-        <Link
-          to="/manage_ims"
-          className="link"
+        <div
+          className="app__navbar_options-single-ims link"
           style={{
             background: currentPage.currentPage === "ims" ? "black" : null,
           }}
+          onClick={() => navigate(`/manage`)}
         >
-          <div className="app__navbar_options-single-ims">
-            {" "}
-            <Icon.FaDatabase />
-            <span>Manage IMS</span>
-          </div>
-        </Link>
+          <Icon.FaDatabase />
+          <span>Manage IMS</span>
+        </div>
       </div>
     </div>
   );

@@ -16,6 +16,8 @@ import {
   Dashboard,
   Inventory,
   Purchases,
+  Log,
+  ManageIMS,
 } from "./Container/index";
 
 function App() {
@@ -38,9 +40,10 @@ function App() {
         />
         <Route path="/sales" element={<SellItems />} />
         <Route path="/purchases" element={<Purchases />} />
-
+        <Route path="/log" element={<Log />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inventory/:id" element={<Inventory />} />
+        <Route path="/manage" element={<ManageIMS />} />
       </Routes>
     </BrowserRouter>
   );

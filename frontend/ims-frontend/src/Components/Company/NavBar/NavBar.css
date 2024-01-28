@@ -27,6 +27,7 @@
   display: flex;
   align-items: center;
   border-radius: 3px;
+  cursor: pointer;
 }
 .link :hover {
   color: white;

@@ -1,0 +1,14 @@
+.app__log {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: var(--color-black);
+  color: rgb(227, 227, 227);
+  width: 100%;
+}
+.app__log-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}

@@ -12,6 +12,8 @@ import SellItems from "./Company/SellItems/SellItems";
 import Dashboard from "./Company/Dashboard/Dashboard";
 import Inventory from "./Company/Inventory/Inventory";
 import Purchases from "./Company/Purchases/Purchases";
+import Log from "./Company/Log/Log";
+import ManageIMS from "./Company/ManageIMS/ManageIMS";
 
 export {
   ViewProject,
@@ -28,4 +30,6 @@ export {
   Dashboard,
   Inventory,
   Purchases,
+  Log,
+  ManageIMS,
 };
