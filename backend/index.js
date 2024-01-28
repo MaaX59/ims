@@ -334,7 +334,7 @@ app.post("/create_company_project", (req, res) => {
   const project_description = req.body.project_description;
   const company_id = req.body.company_id;
   const created_by_user_id = req.body.created_by_user_id;
-  console.log(`req.body on backend  `, req.body);
+  // console.log(`req.body on backend  `, req.body);
 
   db.query(
     "INSERT INTO company_project(project_name, project_description, company_id,created_by_user_id) VALUES(?,?,?,?)",
@@ -371,7 +371,7 @@ app.get("/find_company/:company_id", (req, res) => {
 
 //find company projects
 app.get("/get_company_projects/:company_id", (req, res) => {
-  console.log("req params when find projects-->", req.params.company_id);
+  // console.log("req params when find projects-->", req.params.company_id);
   const company_id = req.params.company_id;
   db.query(
     "SELECT * FROM company_project WHERE `company_id` = ? ",
@@ -380,7 +380,7 @@ app.get("/get_company_projects/:company_id", (req, res) => {
       if (error) {
         console.log(`error when getting projects from db`, error);
       } else {
-        console.log("data from get company projects", data);
+        // console.log("data from get company projects", data);
         res.send(data);
       }
     }
@@ -399,7 +399,7 @@ app.post("/add_company_item", (req, res) => {
   const item_amount = req.body.item_amount;
   const project_id = req.body.project_id;
   const added_by_user = req.body.added_by_user;
-  console.log(`req.body on backend  `, req.body);
+  // console.log(`req.body on backend  `, req.body);
 
   db.query(
     "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id, added_by_user) VALUES(?,?,?,?,?,?,?,?,?,?)",
@@ -530,6 +530,23 @@ app.delete("/delete_company_items/:project_id", (req, res) => {
       } else {
         res.status(200).json({ message: "items deleted successfully" });
         // console.log("Number of records deleted: " + data.affectedRows);
+      }
+    }
+  );
+});
+
+app.post("/add_company_project_to_log", (req, res) => {
+  const data = req.body;
+  const company_id = req.body.company_id;
+  const string = "Company Project Created" + JSON.stringify(data);
+  db.query(
+    "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
+    [company_id, string],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.status(200).json({ message: "company project added to log" });
       }
     }
   );

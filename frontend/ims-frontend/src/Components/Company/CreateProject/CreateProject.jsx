@@ -17,7 +17,6 @@ const CreateProject = (props) => {
       company_id: props.userInfo.company_id,
       created_by_user_id: props.userInfo.id,
     };
-
     await axios.post(`${server}/create_company_project`, body).then((res) => {
       props.getProjectsFunction();
       props.setOpenCreateProject(!props.openCreateProject);
@@ -25,6 +24,7 @@ const CreateProject = (props) => {
       AddToLog(body);
     });
   };
+
   return (
     <div className="form create-project">
       <div className="title">Start Project</div>

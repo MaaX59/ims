@@ -51,7 +51,6 @@ const AddCompanyItemForm = (props) => {
         added_by_user: JSON.stringify(added_by_user),
       };
       await axios.post(`${server}/add_company_item`, body).then(() => {
-        console.log(body, "body in add company item form");
         AddToLog(body);
       });
     } catch (err) {
