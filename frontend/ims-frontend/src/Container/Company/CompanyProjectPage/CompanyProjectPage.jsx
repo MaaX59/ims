@@ -1,16 +1,17 @@
-import { React, useEffect, useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import { React, useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CompanyProjectPage.css";
 import axios from "axios";
 import { server } from "../../../server";
-import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/AddCompanyItemForm";
 import UpdateCompanyItemForm from "../../../Components/Company/UpdateCompanyItemForm/UpdateCompanyItemForm";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
+import DeleteItemToLog from "../../../Components/Company/Functions/DeleteItemToLog";
+// import AuthContext from "../../../context/AuthProvider";
 
 export const CompanyProjectPage = () => {
   const project_id = useParams();
-
+  // const { userInfo } = useContext(AuthContext);
+  // const company_id = userInfo.company_id;
   const [companyItems, setCompanyItems] = useState([]);
   const [itemToUpdate, setItemToUpdate] = useState([]);
   const [update, setUpdate] = useState(false);
@@ -34,14 +35,17 @@ export const CompanyProjectPage = () => {
   };
 
   //delete a single item
-  const deleteItem = async (itemId) => {
+  const deleteItem = async (item) => {
     // console.log(itemId);
+    // const body = { item, company_id };
+    const itemId = item.id;
     try {
       const response = await axios.delete(
         `${server}/delete_company_item/${itemId}`
       );
       if (response.status === 200) {
         getItems();
+        DeleteItemToLog(item);
       }
     } catch (error) {
       console.log(`error deleting item`, error);
@@ -107,7 +111,7 @@ export const CompanyProjectPage = () => {
                   <button
                     className="remove_button"
                     onClick={() => {
-                      deleteItem(item.id);
+                      deleteItem(item);
                     }}
                   >
                     REMOVE

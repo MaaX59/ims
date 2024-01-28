@@ -1,7 +1,6 @@
 import { React, useEffect, useState, useContext } from "react";
 import "./Inventory.css";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
-import { useParams } from "react-router-dom";
 import { DisplayProjects } from "../../../Components/Company/DisplayProjects/DisplayProjects";
 import { MdAddCircle } from "react-icons/md";
 import CreateProject from "../../../Components/Company/CreateProject/CreateProject";

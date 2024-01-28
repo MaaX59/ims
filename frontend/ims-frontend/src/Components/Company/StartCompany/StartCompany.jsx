@@ -12,29 +12,28 @@ const StartCompany = (props) => {
   console.log("props in start company -->", props);
 
   const handleSubmit = async (e) => {
+    const body = {
+      companyName: companyName,
+      password: password,
+      confirmedPassword: confirmedPassword,
+      userId: user_id,
+    };
     e.preventDefault();
     try {
-      await axios
-        .post(`${server}/create_company`, {
-          companyName: companyName,
-          password: password,
-          confirmedPassword: confirmedPassword,
-          userId: user_id,
-        })
-        .then((res) => {
-          //the backend will check for errors before creating user
-          //and also connect company id to user
-          if (res.data === "Company created") {
-            setCompanyName("");
-            setPassword("");
-            setConfirmedPassword("");
-            props.setOpenStartCompany(!props.openStartCompany);
-          } else if (res.data === "no pwd match") {
-            setError("Password and Confirm password need to match!");
-          } else if (res.data === "Name already exist") {
-            setError("Name already exist");
-          }
-        });
+      await axios.post(`${server}/create_company`, body).then((res) => {
+        //the backend will check for errors before creating user
+        //and also connect company id to user
+        if (res.data === "Company created") {
+          setCompanyName("");
+          setPassword("");
+          setConfirmedPassword("");
+          props.setOpenStartCompany(!props.openStartCompany);
+        } else if (res.data === "no pwd match") {
+          setError("Password and Confirm password need to match!");
+        } else if (res.data === "Name already exist") {
+          setError("Name already exist");
+        }
+      });
     } catch (err) {
       console.log(`error creating company`, err);
     }

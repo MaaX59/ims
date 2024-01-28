@@ -578,3 +578,22 @@ app.post("/add_company_item_to_log", (req, res) => {
     }
   );
 });
+
+//Delete Item To Log
+app.delete("/delete_company_item_to_log", (req, res) => {
+  const data = req.body;
+  const company_id = req.body.company_id;
+  const string = "Item Deleted" + JSON.stringify(data);
+  console.log("data item deleted added to log", data);
+  // db.query(
+  //   "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
+  //   [company_id, string],
+  //   (err, result) => {
+  //     if (err) {
+  //       console.log(`error when sending to db`, err);
+  //     } else {
+  //       res.status(200).json({ message: "company project added to log" });
+  //     }
+  //   }
+  // );
+});
