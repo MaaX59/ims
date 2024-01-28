@@ -2,7 +2,7 @@ import React from "react";
 import "./DisplayProjects.css";
 
 export const DisplayProjects = (projects) => {
-  console.log("projects.data", projects.data);
+  // console.log("projects.data", projects.data);
   return (
     <div className="app__display-projects">
       {projects.data.map((project, index) => (
