@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [openStartCompany, setOpenStartCompany] = useState(false);
 
   useEffect(() => {
+    console.log("user from context", userInfo);
     findCompany();
   }, []);
 
