@@ -475,13 +475,13 @@ app.get("/get_company_items/:project_id", (req, res) => {
 
 //delete company item
 app.delete("/delete_company_item/:itemId", (req, res) => {
-  // console.log("delete item req params", req.params.itemId);
+  console.log("delete item req params", req.params.itemId);
   db.query(
     "DELETE FROM company_items WHERE id = ?",
     +req.params.itemId,
     (error, data) => {
-      if (err) {
-        console.log(`error when deleting item`, err);
+      if (error) {
+        console.log(`error when deleting item`, error);
       } else {
         res.status(200).json({ message: "item deleted successfully" });
       }

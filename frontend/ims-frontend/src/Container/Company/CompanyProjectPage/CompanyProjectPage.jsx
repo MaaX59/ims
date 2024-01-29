@@ -36,7 +36,7 @@ export const CompanyProjectPage = () => {
 
   //delete a single item
   const deleteItem = async (item) => {
-    // console.log(itemId);
+    console.log("delete item, item -->", item);
     // const body = { item, company_id };
     const itemId = item.id;
     try {
@@ -74,7 +74,7 @@ export const CompanyProjectPage = () => {
       );
       if (response.status === 200) {
         console.log("project deleted");
-        navigate("/viewuser");
+        navigate("/dashboard");
       }
     } catch (error) {
       console.log(`error deleting items`, error);
