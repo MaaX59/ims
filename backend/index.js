@@ -183,8 +183,35 @@ app.get("/project/:id", (req, res) => {
 });
 
 //
+//
+//
+//
 // Company
 //
+//
+//
+//
+
+//verify jwt
+const verifyJwt = (req, res, next) => {
+  const token = req.headers.authorization;
+  if (token) {
+    jwt.verify(token, "jwtKey", (err, decoded) => {
+      if (err) {
+        res.json("Not Authenticated");
+      } else {
+        req.userId = decoded.id;
+        next();
+      }
+    });
+  } else {
+    return res.json("Token was not found");
+  }
+};
+app.get("/verify", verifyJwt, (req, res) => {
+  console.log("Payload in middleware", req.payload);
+  return res.status(200).json({ user: req.payload });
+});
 
 //createuser aka signup -.-
 app.post("/createuser", (req, res) => {
@@ -264,7 +291,7 @@ app.post("/login", (req, res) => {
           const { id, email, first_name, last_name, company_id } = data[0];
           const userInfo = { id, email, first_name, last_name, company_id };
           // const { id } = data[0].id;
-          const token = jwt.sign(userInfo, "jwtKey", { expiresIn: 500 });
+          const token = jwt.sign(userInfo, "jwtKey", { expiresIn: "6h" });
           return res.status(200).json({ token, userInfo });
         } else {
           return res.json("no match");

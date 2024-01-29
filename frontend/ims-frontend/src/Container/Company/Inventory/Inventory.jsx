@@ -4,7 +4,7 @@ import NavBar from "../../../Components/Company/NavBar/NavBar";
 import { DisplayProjects } from "../../../Components/Company/DisplayProjects/DisplayProjects";
 import { MdAddCircle } from "react-icons/md";
 import CreateProject from "../../../Components/Company/CreateProject/CreateProject";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import GetProjects from "../../../Components/Company/Functions/GetProjects";
 
 const Inventory = () => {

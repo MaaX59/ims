@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import * as Icon from "react-icons/fa";
 import { Link } from "react-router-dom";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const NavBar = (currentPage) => {
   const { userInfo } = useContext(AuthContext);

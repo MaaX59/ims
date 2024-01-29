@@ -1,5 +1,5 @@
 import { React, useState, useContext } from "react";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import { FaArrowLeft } from "react-icons/fa";
 import "./NewCompanyProject.css";
 import axios from "axios";

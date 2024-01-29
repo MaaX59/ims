@@ -3,7 +3,7 @@ import NavBar from "../../../Components/Company/NavBar/NavBar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../../server";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import "./Dashboard.css";
 import StartCompany from "../../../Components/Company/StartCompany/StartCompany";
 

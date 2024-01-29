@@ -2,7 +2,7 @@ import { React, useEffect, useState, useContext } from "react";
 import AddCompanyItemForm from "../../../Components/Company/AddCompanyItemForm/AddCompanyItemForm";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import "./Purchases.css";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import GetProjects from "../../../Components/Company/Functions/GetProjects";
 
 const Purchases = () => {

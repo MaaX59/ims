@@ -4,7 +4,7 @@ import { server } from "../../../server";
 import "./CreateCompany.css";
 import { useNavigate } from "react-router-dom";
 
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const CreateCompany = () => {
   const [companyName, setCompanyName] = useState("");

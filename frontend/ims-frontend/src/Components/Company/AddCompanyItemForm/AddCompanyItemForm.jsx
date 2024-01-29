@@ -2,12 +2,13 @@ import { React, useState, useEffect, useContext } from "react";
 import "./AddCompanyItemForm.css";
 import axios from "axios";
 import { server } from "../../../server";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import AddItemToLog from "../Functions/AddItemToLog";
 
 const AddCompanyItemForm = (props) => {
   const { userInfo } = useContext(AuthContext);
   const projectList = props.projectList;
+
   useEffect(() => {
     console.log(projectList);
   }, []);

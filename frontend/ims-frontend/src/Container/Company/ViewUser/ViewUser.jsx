@@ -2,7 +2,7 @@ import { React, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../../context/AuthProvider";
+import { AuthContext } from "../../../context/AuthProvider";
 import { MdAddCircle } from "react-icons/md";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import "./ViewUser.css";
