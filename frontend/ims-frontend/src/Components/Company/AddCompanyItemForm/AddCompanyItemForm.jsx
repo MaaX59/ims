@@ -21,7 +21,7 @@ const AddCompanyItemForm = (props) => {
   const [inStock, setInStock] = useState(false);
   const [notes, setNotes] = useState("");
   const [item_amount, setItem_amount] = useState();
-  const [project_id, setProject_id] = useState();
+  const [project, setProject] = useState();
   const added_by_user = userInfo.id;
   const company_id = userInfo.company_id;
 
@@ -37,8 +37,9 @@ const AddCompanyItemForm = (props) => {
       notes,
       item_amount,
       company_id,
-      "project id?",
-      project_id
+      "project id and name?",
+      project.project_id,
+      project.project_name
     );
     try {
       const body = {
@@ -50,7 +51,8 @@ const AddCompanyItemForm = (props) => {
         inStock: inStock,
         notes: notes,
         item_amount: item_amount,
-        project_id: project_id,
+        project_id: project.project_id,
+        project_name: project.project_name,
         company_id: JSON.stringify(company_id),
         added_by_user: JSON.stringify(added_by_user),
       };
@@ -79,12 +81,20 @@ const AddCompanyItemForm = (props) => {
         <select
           id="project"
           name="project"
-          onChange={(event) => setProject_id(event.target.value)}
+          onChange={(event) => {
+            setProject(event.target.value);
+          }}
         >
           {/* dosen´t work!! */}
           {/* setProject_id(event.target.value) */}
           {projectList.map((project, index) => (
-            <option key={index} value={project.id}>
+            <option
+              key={index}
+              value={{
+                project_id: project.id,
+                project_name: project.project_name,
+              }}
+            >
               {project.project_name}{" "}
             </option>
           ))}
