@@ -21,11 +21,12 @@ const AddCompanyItemForm = (props) => {
   const [inStock, setInStock] = useState(false);
   const [notes, setNotes] = useState("");
   const [item_amount, setItem_amount] = useState();
-  const [project, setProject] = useState();
+  const [project, setProject] = useState(null);
   const added_by_user = userInfo.id;
   const company_id = userInfo.company_id;
 
   const addItem = async () => {
+    console.log(project);
     console.log(
       "added item",
       item_name,
@@ -38,7 +39,7 @@ const AddCompanyItemForm = (props) => {
       item_amount,
       company_id,
       "project id and name?",
-      project.project_id,
+      project.id,
       project.project_name
     );
     try {
@@ -51,7 +52,7 @@ const AddCompanyItemForm = (props) => {
         inStock: inStock,
         notes: notes,
         item_amount: item_amount,
-        project_id: project.project_id,
+        project_id: project.id,
         project_name: project.project_name,
         company_id: JSON.stringify(company_id),
         added_by_user: JSON.stringify(added_by_user),
@@ -82,20 +83,14 @@ const AddCompanyItemForm = (props) => {
           id="project"
           name="project"
           onChange={(event) => {
-            setProject(event.target.value);
+            setProject(projectList[event.target.value]);
           }}
         >
           {/* dosen´t work!! */}
           {/* setProject_id(event.target.value) */}
-          {projectList.map((project, index) => (
-            <option
-              key={index}
-              value={{
-                project_id: project.id,
-                project_name: project.project_name,
-              }}
-            >
-              {project.project_name}{" "}
+          {projectList.map((singleProject, index) => (
+            <option key={index} value={index}>
+              {singleProject.project_name}{" "}
             </option>
           ))}
         </select>

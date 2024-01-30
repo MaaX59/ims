@@ -428,7 +428,7 @@ app.post("/add_company_item", (req, res) => {
   const project_name = req.body.project_name;
   const added_by_user = req.body.added_by_user;
   const company_id = req.body.company_id;
-  // console.log(`req.body on backend  `, req.body);
+  console.log(`req.body on backend for add items `, req.body);
 
   db.query(
     "INSERT INTO company_items(item_name, item_description, item_location,purchased_from,purchased_price,in_stock,notes,item_amount,project_id, added_by_user,company_id, project_name) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
