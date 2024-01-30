@@ -456,7 +456,7 @@ app.post("/add_company_item", (req, res) => {
   );
 });
 
-//find company project items
+//find items based on company project
 
 app.get("/get_company_items/:project_id", (req, res) => {
   // console.log("req params when find company project items-->", req.params);
@@ -464,6 +464,24 @@ app.get("/get_company_items/:project_id", (req, res) => {
   db.query(
     "SELECT * FROM company_items WHERE `project_id` = ? ",
     project_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting company items from db`, error);
+      } else {
+        // console.log("data from get company project items", data);
+        res.send(data);
+      }
+    }
+  );
+});
+//find all company items
+
+app.get("/get_company_items/:company_id", (req, res) => {
+  // console.log("req params when find company project items-->", req.params);
+  const company_id = req.params.company_id;
+  db.query(
+    "SELECT * FROM company_items WHERE `company_id` = ? ",
+    company_id,
     (error, data) => {
       if (error) {
         console.log(`error when getting company items from db`, error);
