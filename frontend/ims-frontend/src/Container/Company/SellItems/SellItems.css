@@ -8,10 +8,21 @@
 .app__sell_items-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   font-family: "Courier New", Courier, monospace;
   font-weight: 100;
   font-size: 12px;
   height: 100%;
   width: 99%;
+}
+table {
+  margin: 1rem;
+  width: 900px;
+}
+th {
+  border: 1px solid rgb(85, 83, 83);
+}
+td {
+  text-align: center;
+  border: 1px solid rgb(105, 103, 103);
 }
