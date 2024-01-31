@@ -7,8 +7,10 @@ import FilteringData from "../../../Components/Company/Functions/FilteringData";
 
 const SellItems = () => {
   const { userInfo } = useContext(AuthContext);
-  const [items, setItems] = useState([]);
   const company_id = userInfo.company_id;
+
+  const [items, setItems] = useState([]);
+  // const [displayedList, setDisplayedList] = useState(items);
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -17,8 +19,16 @@ const SellItems = () => {
   }, []);
 
   const handleChange = (e) => {
-    //convert input text to lower case
+    // const query = e.target.value;
+    // setSearchInput(query);
+
+    // const filterList = items.filter((item) => {
+    //   return item.item_name.toLowercase().indexOf(query.toLowercase()) !== -1;
+    // });
+    // setDisplayedList(filterList);
+    // convert input text to lower case
     let lowerCase = e.target.value.toLowerCase();
+    console.log("to lover case", lowerCase);
     setSearchInput(lowerCase);
   };
 
@@ -34,9 +44,9 @@ const SellItems = () => {
         <div className="app__sell_items-content-search">
           <input
             type="text"
-            placeholder="Search here"
-            onChange={handleChange}
+            placeholder="Search"
             value={searchInput}
+            onChange={handleChange}
           />
         </div>
         <div className="app__sell_items-content-list">
@@ -52,17 +62,16 @@ const SellItems = () => {
                 <th>Date Added</th>
               </tr>{" "}
             </thead>
-            {items &&
-              items.map((item, index) => (
-                <>
-                  <tr key={index}></tr>
-                  <td>{item.item_name}</td>
-                  <td>{item.purchased_price && item.purchased_price + "$"}</td>
-                  <td>{item.item_amount}</td>
-                  <td>{item.project_name}</td>
-                  <td>{item.date_of_creation}</td>
-                </>
-              ))}
+            {displayedList.map((item, index) => (
+              <>
+                <tr key={index}></tr>
+                <td>{item.item_name}</td>
+                <td>{item.purchased_price && item.purchased_price + "$"}</td>
+                <td>{item.item_amount}</td>
+                <td>{item.project_name}</td>
+                <td>{item.date_of_creation}</td>
+              </>
+            ))}
           </table> */}
         </div>
       </div>

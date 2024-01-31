@@ -1,16 +1,20 @@
 import { React } from "react";
 
 function FilteringData(props) {
+  console.log(props.items);
   //create a new array by filtering the original array
 
   const filteredData = props.items.filter((el) => {
     //if no input the return the original
+    console.log("EL?", el);
+    console.log("props.searchInput?", props.searchInput);
     if (props.searchInput === "") {
+      console.log(el);
       return el;
     }
     //return the item which contains the user searchInput
     else {
-      return el.includes(props.searchInput);
+      return el.item_name.includes(props.searchInput && props.searchInput);
     }
   });
   return (
