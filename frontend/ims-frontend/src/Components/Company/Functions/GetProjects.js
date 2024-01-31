@@ -1,10 +1,6 @@
 import axios from "axios";
 import { server } from "../../../server";
 
-//warning
-//this code dosent work, maybe need to use a promise
-//
-
 const GetProjects = async (props) => {
   // console.log("get projects function is triggered, userinfo-->", props);
   try {

@@ -474,11 +474,15 @@ app.get("/get_company_items/:project_id", (req, res) => {
     }
   );
 });
+
 //find all company items
 
-app.get("/get_company_items/:company_id", (req, res) => {
-  // console.log("req params when find company project items-->", req.params);
-  const company_id = req.params.company_id;
+app.get("/get_all_company_items/:props", (req, res) => {
+  console.log(
+    "req params when find company project items-->",
+    req.params.props
+  );
+  const company_id = req.params.props;
   db.query(
     "SELECT * FROM company_items WHERE `company_id` = ? ",
     company_id,
@@ -486,7 +490,7 @@ app.get("/get_company_items/:company_id", (req, res) => {
       if (error) {
         console.log(`error when getting company items from db`, error);
       } else {
-        // console.log("data from get company project items", data);
+        console.log("data from get company project items", data);
         res.send(data);
       }
     }
