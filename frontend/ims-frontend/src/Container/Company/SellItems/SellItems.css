@@ -29,5 +29,7 @@ td {
 .app__sell_items-content-search {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   margin: 2rem;
+  width: 200px;
 }

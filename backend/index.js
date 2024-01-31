@@ -590,6 +590,20 @@ app.delete("/delete_company_items/:project_id", (req, res) => {
   );
 });
 
+//get single item based on id
+app.get("/get_single_item_by_id/:props", (req, res) => {
+  console.log("req params when get_single_item_by_id-->", req.params);
+  const id = req.params.props;
+  db.query("SELECT * FROM company_items WHERE `id` = ? ", id, (error, data) => {
+    if (error) {
+      console.log(`error when getting company item from db`, error);
+    } else {
+      console.log("data from get company project items", data);
+      res.send(data[0]);
+    }
+  });
+});
+
 //
 //Log Started
 //

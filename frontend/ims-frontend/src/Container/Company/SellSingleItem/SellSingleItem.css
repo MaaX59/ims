@@ -1,0 +1,17 @@
+.app__sell_single_items_page {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-black);
+  color: rgb(227, 227, 227);
+  width: 99%;
+}
+.app__sell_single_items-content {
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 100;
+  font-size: 12px;
+  height: 100%;
+  width: 99%;
+}

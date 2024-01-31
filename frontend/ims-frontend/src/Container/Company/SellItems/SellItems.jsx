@@ -42,6 +42,7 @@ const SellItems = () => {
       <NavBar currentPage="sales" />
       <div className="app__sell_items-content">
         <div className="app__sell_items-content-search">
+          <span>Find Item To Sell</span>
           <input
             type="text"
             placeholder="Search"

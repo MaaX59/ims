@@ -18,6 +18,7 @@ import {
   Purchases,
   Log,
   ManageIMS,
+  SellSingleItem,
 } from "./Container/index";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inventory/:id" element={<Inventory />} />
         <Route path="/manage" element={<ManageIMS />} />
+        <Route path="/sales/:id" element={<SellSingleItem />} />
       </Routes>
     </BrowserRouter>
   );

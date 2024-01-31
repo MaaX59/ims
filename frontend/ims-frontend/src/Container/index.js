@@ -14,6 +14,7 @@ import Inventory from "./Company/Inventory/Inventory";
 import Purchases from "./Company/Purchases/Purchases";
 import Log from "./Company/Log/Log";
 import ManageIMS from "./Company/ManageIMS/ManageIMS";
+import SellSingleItem from "./Company/SellSingleItem/SellSingleItem";
 
 export {
   ViewProject,
@@ -32,4 +33,5 @@ export {
   Purchases,
   Log,
   ManageIMS,
+  SellSingleItem,
 };
