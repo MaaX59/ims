@@ -9,6 +9,11 @@ const SellSingleItem = () => {
   const item_id = params.id;
   const [item, setItem] = useState(null);
 
+  const [sell_price, setSell_price] = useState(null);
+  const [amount_sold, setAmount_sold] = useState(null);
+  const [buyer_name, setBuyer_name] = useState("");
+  const [buyer_street_name, setBuyer_street_name] = useState(null);
+  const [buyer_street_num, setBuyer_street_num] = useState(null);
   useEffect(() => {
     getAllItem();
   }, []);
@@ -35,7 +40,7 @@ const SellSingleItem = () => {
               type="text"
               placeholder=" "
               onChange={(event) => {
-                // setProject_name(event.target.value);
+                setBuyer_name(event.target.value);
               }}
               required
             />
@@ -51,7 +56,7 @@ const SellSingleItem = () => {
               type="text"
               placeholder=" "
               onChange={(event) => {
-                // setSell_price(event.target.value);
+                setSell_price(event.target.value);
               }}
               required
             />
@@ -67,7 +72,7 @@ const SellSingleItem = () => {
               type="number"
               placeholder=" "
               onChange={(event) => {
-                // setSell_amount(event.target.value);
+                setAmount_sold(event.target.value);
               }}
               required
             />
@@ -76,6 +81,58 @@ const SellSingleItem = () => {
               Amount of items sold*
             </label>
           </div>
+
+          <div>
+            {" "}
+            <span>Adress of buyer</span>{" "}
+          </div>
+
+          <div className="input-container-company ic2">
+            <input
+              id="shipping_info_name"
+              className="input"
+              type="number"
+              placeholder=" "
+              onChange={(event) => {
+                setBuyer_street_name(event.target.value);
+              }}
+            />
+
+            <label for="shipping_info_name" className="placeholder">
+              Name
+            </label>
+          </div>
+          <div className="input-container-company ic2">
+            <input
+              id="shipping_info_street"
+              className="input"
+              type="number"
+              placeholder=" "
+              onChange={(event) => {
+                setBuyer_street_name(event.target.value);
+              }}
+            />
+
+            <label for="shipping_info_street" className="placeholder">
+              Street name
+            </label>
+          </div>
+          <div className="input-container-company ic2">
+            <input
+              id="shipping_info_number"
+              className="input"
+              type="number"
+              placeholder=" "
+              onChange={(event) => {
+                setBuyer_street_num(event.target.value);
+              }}
+            />
+
+            <label for="shipping_info_number" className="placeholder">
+              Street number
+            </label>
+          </div>
+          <button className="button"> Submit</button>
         </div>
       </div>
     </div>
