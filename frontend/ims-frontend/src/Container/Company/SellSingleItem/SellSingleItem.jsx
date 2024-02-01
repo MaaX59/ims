@@ -14,6 +14,9 @@ const SellSingleItem = () => {
   const [buyer_name, setBuyer_name] = useState("");
   const [buyer_street_name, setBuyer_street_name] = useState(null);
   const [buyer_street_num, setBuyer_street_num] = useState(null);
+
+  const [openError, setOpenError] = useState(false);
+
   useEffect(() => {
     getAllItem();
   }, []);
@@ -22,6 +25,17 @@ const SellSingleItem = () => {
     GetSingleItemByID({ item_id, setItem });
     console.log("getAllItem is triggered", item_id);
   };
+
+  const checkAmount = (amountSold) => {
+    //check if we are trying to sell more items then we have
+    if (amountSold > item.item_amount) {
+      // console.log("amount too high", amountSold, item.item_amount);
+      setOpenError(!openError);
+    } else {
+      setOpenError(false);
+    }
+  };
+  const handleSubmit = () => {};
 
   return (
     <div className="app__sell_single_items_page">
@@ -72,7 +86,7 @@ const SellSingleItem = () => {
               type="number"
               placeholder=" "
               onChange={(event) => {
-                setAmount_sold(event.target.value);
+                checkAmount(event.target.value);
               }}
               required
             />
@@ -132,7 +146,18 @@ const SellSingleItem = () => {
               Street number
             </label>
           </div>
-          <button className="button"> Submit</button>
+          {
+            <div
+              className="app_sales_error"
+              style={{ visibility: openError ? "true" : "hidden" }}
+            >
+              <span>ERROR</span>{" "}
+            </div>
+          }
+          <button className="submit" onClick={handleSubmit}>
+            {" "}
+            Submit
+          </button>
         </div>
       </div>
     </div>
