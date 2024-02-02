@@ -28,13 +28,13 @@ const SellItems = () => {
     // setDisplayedList(filterList);
     // convert input text to lower case
     let lowerCase = e.target.value.toLowerCase();
-    console.log("to lover case", lowerCase);
+    // console.log("to lover case", lowerCase);
     setSearchInput(lowerCase);
   };
 
   const getAllCompanyItems = () => {
     GetAllItems({ company_id, setItems });
-    console.log("getAllCompanyItems is triggered");
+    // console.log("getAllCompanyItems is triggered");
   };
 
   return (

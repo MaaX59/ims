@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./SellSingleItem.css";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import GetSingleItemByID from "../../../Components/Company/Functions/GetSingleItemByID";
+import SoldItemToLog from "../../../Components/Company/Functions/SoldItemToLog";
 import axios from "axios";
 import { server } from "../../../server";
 
@@ -56,6 +57,14 @@ const SellSingleItem = () => {
           })
           .then(() => {
             //add to log, then navigate to dashboard
+            const body = {
+              item_id: item_id,
+              item_name: item.item_name,
+              sold_to: buyer_name,
+              profit: sell_price - item.purchased_price,
+              item_name: item.item_name,
+            };
+            SoldItemToLog();
             console.log("sales, item updated");
           });
       } catch (err) {

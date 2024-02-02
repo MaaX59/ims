@@ -680,3 +680,22 @@ app.delete("/delete_company_item_to_log", (req, res) => {
   //   }
   // );
 });
+
+//Sold Item To Log
+
+app.post("/sold_company_item_to_log", (req, res) => {
+  const data = req.body;
+  const company_id = req.body.company_id;
+  const string = "Item Sold" + JSON.stringify(data);
+  db.query(
+    "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
+    [company_id, string],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.status(200).json({ message: "Sold item added to log" });
+      }
+    }
+  );
+});
