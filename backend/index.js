@@ -626,6 +626,24 @@ app.get("/get_single_item_by_id/:props", (req, res) => {
 //Log Started
 //
 
+//Get Log to display
+
+app.get("/get_log/:company_id", (req, res) => {
+  const id = req.params.company_id;
+  db.query(
+    "SELECT * FROM company_log WHERE `company_id` = ? ",
+    id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting company item from db`, error);
+      } else {
+        console.log("data from get company log", data);
+        res.send(data);
+      }
+    }
+  );
+});
+
 //Add Company Project To Log
 app.post("/add_company_project_to_log", (req, res) => {
   const data = req.body;

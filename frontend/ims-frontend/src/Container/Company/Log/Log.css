@@ -8,7 +8,14 @@
 }
 .app__log-content {
   display: flex;
-  width: 100%;
+  width: 99%;
   align-items: center;
   flex-direction: column;
+}
+/* .app__log_table {
+  width: 300px;
+} */
+.app__log_table {
+  border-collapse: collapse;
+  width: 95%;
 }

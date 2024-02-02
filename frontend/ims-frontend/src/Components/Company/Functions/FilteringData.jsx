@@ -4,14 +4,10 @@ import { useNavigate } from "react-router-dom";
 function FilteringData(props) {
   const navigate = useNavigate();
   //create a new array by filtering the original array
-  // console.log(props.items);
-  const filteredData = props.items.filter((el) => {
-    // console.log("EL?", el);
-    // console.log("props.searchInput?", props.searchInput);
 
+  const filteredData = props.items.filter((el) => {
     //if no input the return the original
     if (props.searchInput === "") {
-      // console.log(el);
       return el;
     }
     //return the item which contains the user searchInput
@@ -20,7 +16,7 @@ function FilteringData(props) {
     }
   });
   return (
-    <table>
+    <table className="sales_table">
       {" "}
       <thead>
         <tr>
@@ -41,8 +37,16 @@ function FilteringData(props) {
           <td>{item.project_name}</td>
           <td>{item.date_of_creation}</td>
           <td>
-            <button onClick={() => navigate(`/sales/${item.id}`)}>
-              Sell {item.id}
+            <button
+              style={{
+                width: "50px",
+                background: "grey",
+                border: "none",
+                margin: "3px",
+              }}
+              onClick={() => navigate(`/sales/${item.id}`)}
+            >
+              Sell
             </button>
           </td>
         </>

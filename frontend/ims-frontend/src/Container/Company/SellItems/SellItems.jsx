@@ -52,28 +52,6 @@ const SellItems = () => {
         </div>
         <div className="app__sell_items-content-list">
           <FilteringData searchInput={searchInput} items={items} />
-          {/* <table>
-            {" "}
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Purchases $</th>
-                <th>Amount</th>
-                <th>Project Name</th>
-                <th>Date Added</th>
-              </tr>{" "}
-            </thead>
-            {displayedList.map((item, index) => (
-              <>
-                <tr key={index}></tr>
-                <td>{item.item_name}</td>
-                <td>{item.purchased_price && item.purchased_price + "$"}</td>
-                <td>{item.item_amount}</td>
-                <td>{item.project_name}</td>
-                <td>{item.date_of_creation}</td>
-              </>
-            ))}
-          </table> */}
         </div>
       </div>
     </div>
