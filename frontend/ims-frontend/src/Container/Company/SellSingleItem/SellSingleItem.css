@@ -15,3 +15,7 @@
   height: 100%;
   width: 99%;
 }
+.app_sales_error {
+  margin: 1rem;
+  color: red;
+}

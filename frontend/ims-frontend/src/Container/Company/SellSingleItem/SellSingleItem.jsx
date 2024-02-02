@@ -29,8 +29,8 @@ const SellSingleItem = () => {
   const checkAmount = (amountSold) => {
     //check if we are trying to sell more items then we have
     if (amountSold > item.item_amount) {
-      // console.log("amount too high", amountSold, item.item_amount);
-      setOpenError(!openError);
+      console.log("amount too high", amountSold, item.item_amount);
+      setOpenError(true);
     } else {
       setOpenError(false);
     }
@@ -47,61 +47,58 @@ const SellSingleItem = () => {
 
         <div className="form ">
           <div className="title">Sell item</div>
-          <div className="input-container-company ic1">
-            <input
-              id="buyer_name"
-              className="input"
-              type="text"
-              placeholder=" "
-              onChange={(event) => {
-                setBuyer_name(event.target.value);
-              }}
-              required
-            />
+          <div className="form-2inRow">
+            <div className="input-container-company ic1">
+              <input
+                id="sell_amount"
+                className="input"
+                type="number"
+                placeholder=" "
+                onChange={(event) => {
+                  checkAmount(event.target.value);
+                }}
+                style={{ color: openError ? "red" : "white" }}
+                required
+              />
 
-            <label for="buyer_name" className="placeholder">
-              Name of buyer*
-            </label>
-          </div>
-          <div className="input-container-company ic2">
-            <input
-              id="sell_price"
-              className="input"
-              type="text"
-              placeholder=" "
-              onChange={(event) => {
-                setSell_price(event.target.value);
-              }}
-              required
-            />
+              <label for="sell_amount" className="placeholder">
+                Amount of items sold*
+              </label>
+            </div>
+            <div className="input-container-company ic1">
+              <input
+                id="sell_price"
+                className="input"
+                type="text"
+                placeholder=" "
+                onChange={(event) => {
+                  setSell_price(event.target.value);
+                }}
+                required
+              />
 
-            <label for="sell_price" className="placeholder">
-              Sell price per item*
-            </label>
+              <label for="sell_price" className="placeholder">
+                Sell price per item*
+              </label>
+            </div>
           </div>
-          <div className="input-container-company ic2">
-            <input
-              id="sell_amount"
-              className="input"
-              type="number"
-              placeholder=" "
-              onChange={(event) => {
-                checkAmount(event.target.value);
-              }}
-              required
-            />
-
-            <label for="sell_amount" className="placeholder">
-              Amount of items sold*
-            </label>
-          </div>
+          {
+            <div
+              className="app_sales_error"
+              style={{ visibility: openError ? "visible" : "hidden" }}
+            >
+              <span>
+                ERROR - Items sold can not be higher then inventory amount
+              </span>
+            </div>
+          }
 
           <div>
             {" "}
             <span>Adress of buyer</span>{" "}
           </div>
 
-          <div className="input-container-company ic2">
+          <div className="input-container ic1">
             <input
               id="shipping_info_name"
               className="input"
@@ -113,47 +110,43 @@ const SellSingleItem = () => {
             />
 
             <label for="shipping_info_name" className="placeholder">
-              Name
+              Name of buyer
             </label>
           </div>
-          <div className="input-container-company ic2">
-            <input
-              id="shipping_info_street"
-              className="input"
-              type="number"
-              placeholder=" "
-              onChange={(event) => {
-                setBuyer_street_name(event.target.value);
-              }}
-            />
 
-            <label for="shipping_info_street" className="placeholder">
-              Street name
-            </label>
-          </div>
-          <div className="input-container-company ic2">
-            <input
-              id="shipping_info_number"
-              className="input"
-              type="number"
-              placeholder=" "
-              onChange={(event) => {
-                setBuyer_street_num(event.target.value);
-              }}
-            />
+          <div className="form-2inRow">
+            <div className="input-container-company ic2">
+              <input
+                id="shipping_info_street"
+                className="input"
+                type="number"
+                placeholder=" "
+                onChange={(event) => {
+                  setBuyer_street_name(event.target.value);
+                }}
+              />
 
-            <label for="shipping_info_number" className="placeholder">
-              Street number
-            </label>
-          </div>
-          {
-            <div
-              className="app_sales_error"
-              style={{ visibility: openError ? "true" : "hidden" }}
-            >
-              <span>ERROR</span>{" "}
+              <label for="shipping_info_street" className="placeholder">
+                Street name
+              </label>
             </div>
-          }
+            <div className="input-container-company ic2">
+              <input
+                id="shipping_info_number"
+                className="input"
+                type="number"
+                placeholder=" "
+                onChange={(event) => {
+                  setBuyer_street_num(event.target.value);
+                }}
+              />
+
+              <label for="shipping_info_number" className="placeholder">
+                Street number
+              </label>
+            </div>
+          </div>
+
           <button className="submit" onClick={handleSubmit}>
             {" "}
             Submit
