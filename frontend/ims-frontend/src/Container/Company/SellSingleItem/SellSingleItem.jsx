@@ -1,5 +1,7 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
+
 import "./SellSingleItem.css";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import GetSingleItemByID from "../../../Components/Company/Functions/GetSingleItemByID";
@@ -10,6 +12,7 @@ import { server } from "../../../server";
 const SellSingleItem = () => {
   const params = useParams();
   const item_id = params.id;
+  const { userInfo } = useContext(AuthContext);
   const [item, setItem] = useState(null);
 
   const [sell_price, setSell_price] = useState(null);
@@ -60,11 +63,12 @@ const SellSingleItem = () => {
             const body = {
               item_id: item_id,
               item_name: item.item_name,
-              sold_to: buyer_name,
               profit: sell_price - item.purchased_price,
-              item_name: item.item_name,
+              sold_to: buyer_name,
+              sold_by: userInfo.id,
+              company_id: userInfo.company_id,
             };
-            SoldItemToLog();
+            SoldItemToLog(body);
             console.log("sales, item updated");
           });
       } catch (err) {

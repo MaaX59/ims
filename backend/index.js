@@ -687,6 +687,7 @@ app.post("/sold_company_item_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
   const string = "Item Sold" + JSON.stringify(data);
+  console.log("string when sold item to log", string);
   db.query(
     "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
     [company_id, string],
