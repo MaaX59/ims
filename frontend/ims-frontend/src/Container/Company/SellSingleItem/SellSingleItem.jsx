@@ -13,6 +13,7 @@ const SellSingleItem = () => {
   const params = useParams();
   const item_id = params.id;
   const { userInfo } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [item, setItem] = useState(null);
 
   const [sell_price, setSell_price] = useState(null);
@@ -59,17 +60,19 @@ const SellSingleItem = () => {
             amount_left: amount_left,
           })
           .then(() => {
-            //add to log, then navigate to dashboard
+            //add to log, then navigate to sales
             const body = {
               item_id: item_id,
               item_name: item.item_name,
+              items_sold: amount_sold,
               profit: sell_price - item.purchased_price,
               sold_to: buyer_name,
-              sold_by: userInfo.id,
+              sold_by_user: userInfo.id,
               company_id: userInfo.company_id,
             };
             SoldItemToLog(body);
             console.log("sales, item updated");
+            navigate("/sales");
           });
       } catch (err) {
         console.log("error while updateing item in sales", err);
@@ -80,7 +83,19 @@ const SellSingleItem = () => {
         await axios
           .delete(`${server}/delete_company_item/${item_id}`)
           .then(() => {
-            //add to log, then navigate to dashboard
+            //add to log, then navigate to sales
+            const body = {
+              item_id: item_id,
+              item_name: item.item_name,
+              items_sold: amount_sold,
+              profit: sell_price - item.purchased_price,
+              sold_to: buyer_name,
+              sold_by_user: userInfo.id,
+              company_id: userInfo.company_id,
+            };
+            SoldItemToLog(body);
+            console.log("sales, item deleted");
+            navigate("/sales");
           });
       } catch (err) {
         console.log("error while deleting item in sales", err);
