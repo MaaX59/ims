@@ -19,7 +19,7 @@ function FilteringData(props) {
     <table className="sales_table">
       {" "}
       <thead>
-        <tr>
+        <tr className="sales_tr">
           <th>Name</th>
           <th>Purchases $</th>
           <th>Amount</th>
@@ -36,13 +36,20 @@ function FilteringData(props) {
           <td>{item.item_amount}</td>
           <td>{item.project_name}</td>
           <td>{item.date_of_creation}</td>
-          <td>
+          <td
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <button
               style={{
-                width: "50px",
+                width: "40px",
                 background: "grey",
                 border: "none",
                 margin: "3px",
+                borderRadius: "3px",
               }}
               onClick={() => navigate(`/sales/${item.id}`)}
             >

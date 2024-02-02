@@ -637,7 +637,7 @@ app.get("/get_log/:company_id", (req, res) => {
       if (error) {
         console.log(`error when getting company item from db`, error);
       } else {
-        console.log("data from get company log", data);
+        // console.log("data from get company log", data);
         res.send(data);
       }
     }
@@ -648,7 +648,7 @@ app.get("/get_log/:company_id", (req, res) => {
 app.post("/add_company_project_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
-  const string = "Project Created" + JSON.stringify(data);
+  const string = "Project Created " + JSON.stringify(data);
   db.query(
     "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
     [company_id, string],
@@ -666,7 +666,7 @@ app.post("/add_company_project_to_log", (req, res) => {
 app.post("/add_company_item_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
-  const string = "Item Created" + JSON.stringify(data);
+  const string = "Item Created " + JSON.stringify(data);
   db.query(
     "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
     [company_id, string],
@@ -684,7 +684,7 @@ app.post("/add_company_item_to_log", (req, res) => {
 app.delete("/delete_company_item_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
-  const string = "Item Deleted" + JSON.stringify(data);
+  const string = "Item Deleted " + JSON.stringify(data);
   console.log("data item deleted added to log", data);
   // db.query(
   //   "INSERT INTO company_log(company_id, string ) VALUES(?,?)",
@@ -704,7 +704,7 @@ app.delete("/delete_company_item_to_log", (req, res) => {
 app.post("/sold_company_item_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
-  const string = "Item Sold" + JSON.stringify(data);
+  const string = "Item Sold " + JSON.stringify(data);
   // console.log("string when sold item to log", string);
   db.query(
     "INSERT INTO company_log(company_id, string ) VALUES(?,?)",

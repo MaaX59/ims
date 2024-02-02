@@ -12,10 +12,14 @@
   align-items: center;
   flex-direction: column;
 }
-/* .app__log_table {
-  width: 300px;
-} */
 .app__log_table {
-  border-collapse: collapse;
-  width: 95%;
+  width: 90%;
+  margin: 1rem 0 0 1rem;
+}
+.app__log_tr {
+  background-color: rgb(56, 56, 56);
+}
+.app__log_td {
+  display: flex;
+  text-align: start;
 }

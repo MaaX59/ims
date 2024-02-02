@@ -30,7 +30,7 @@ const Log = () => {
       <div className="app__log-content">
         <table className="app__log_table">
           <thead>
-            <tr>
+            <tr className="app__log_tr">
               <th>Date</th>
               <th>Event</th>
             </tr>
@@ -42,7 +42,7 @@ const Log = () => {
               <>
                 <tr key={index}></tr>
                 <td>{entry.date}</td>
-                <td>{entry.string}</td>
+                <td className="app__log_td">{entry.string}</td>
               </>
             ))
           )}
