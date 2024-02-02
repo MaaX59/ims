@@ -8,14 +8,24 @@
 .app__sell_single_items-content {
   display: flex;
   flex-direction: column;
-
   font-family: "Courier New", Courier, monospace;
   font-weight: 100;
   font-size: 12px;
   height: 100%;
   width: 99%;
 }
+/* .sales-form {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 .app_sales_error {
   margin: 1rem;
   color: red;
+}
+.input-container-sales {
+  height: 50px;
+  position: relative;
+  width: 500px;
 }

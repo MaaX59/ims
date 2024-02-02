@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./SellSingleItem.css";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import GetSingleItemByID from "../../../Components/Company/Functions/GetSingleItemByID";
+import axios from "axios";
+import { server } from "../../../server";
 
 const SellSingleItem = () => {
   const params = useParams();
@@ -12,8 +14,11 @@ const SellSingleItem = () => {
   const [sell_price, setSell_price] = useState(null);
   const [amount_sold, setAmount_sold] = useState(null);
   const [buyer_name, setBuyer_name] = useState("");
-  const [buyer_street_name, setBuyer_street_name] = useState(null);
+  const [buyer_street_name, setBuyer_street_name] = useState("");
   const [buyer_street_num, setBuyer_street_num] = useState(null);
+  const [buyer_city, setBuyer_city] = useState("");
+  const [buyer_country, setBuyer_country] = useState("");
+  const [amount_left, setAmount_left] = useState();
 
   const [openError, setOpenError] = useState(false);
 
@@ -33,9 +38,42 @@ const SellSingleItem = () => {
       setOpenError(true);
     } else {
       setOpenError(false);
+      setAmount_sold(amountSold);
+      setAmount_left(item.item_amount - amountSold);
+      // let amountLeft = item.item_amount - amountSold;
+      // console.log(amountLeft);
     }
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    //first check if we are selling all or just some of our stock
+    if (amount_sold < item.item_amount) {
+      //if we are selling only part of out stock we update the existing item,
+      try {
+        console.log("amount left", amount_left);
+        await axios
+          .put(`${server}/update_company_item_sales/${item_id}`, {
+            amount_left: amount_left,
+          })
+          .then(() => {
+            //add to log, then navigate to dashboard
+            console.log("sales, item updated");
+          });
+      } catch (err) {
+        console.log("error while updateing item in sales", err);
+      }
+    } else {
+      //if we are selling all our stock we need to delete the item
+      try {
+        await axios
+          .delete(`${server}/delete_company_item/${item_id}`)
+          .then(() => {
+            //add to log, then navigate to dashboard
+          });
+      } catch (err) {
+        console.log("error while deleting item in sales", err);
+      }
+    }
+  };
 
   return (
     <div className="app__sell_single_items_page">
@@ -45,7 +83,7 @@ const SellSingleItem = () => {
         <span>Item amount {item && item.item_amount}</span>
         <span>Item purchased price {item && item.purchased_price}</span>
 
-        <div className="form ">
+        <div className="form">
           <div className="title">Sell item</div>
           <div className="form-2inRow">
             <div className="input-container-company ic1">
@@ -98,19 +136,20 @@ const SellSingleItem = () => {
             <span>Adress of buyer</span>{" "}
           </div>
 
-          <div className="input-container ic1">
+          <div className="input-container-sales ic1">
             <input
               id="shipping_info_name"
               className="input"
-              type="number"
+              type="text"
               placeholder=" "
               onChange={(event) => {
-                setBuyer_street_name(event.target.value);
+                setBuyer_name(event.target.value);
               }}
+              required
             />
 
             <label for="shipping_info_name" className="placeholder">
-              Name of buyer
+              Name of buyer*
             </label>
           </div>
 
@@ -147,6 +186,39 @@ const SellSingleItem = () => {
             </div>
           </div>
 
+          <div className="form-2inRow">
+            <div className="input-container-company ic2">
+              <input
+                id="shipping_info_street"
+                className="input"
+                type="number"
+                placeholder=" "
+                onChange={(event) => {
+                  setBuyer_city(event.target.value);
+                }}
+              />
+
+              <label for="shipping_info_street" className="placeholder">
+                City
+              </label>
+            </div>
+            <div className="input-container-company ic2">
+              <input
+                id="shipping_info_number"
+                className="input"
+                type="number"
+                placeholder=" "
+                onChange={(event) => {
+                  setBuyer_country(event.target.value);
+                }}
+              />
+
+              <label for="shipping_info_number" className="placeholder">
+                Country
+              </label>
+            </div>
+          </div>
+          <div className="form-required"> * field is required</div>
           <button className="submit" onClick={handleSubmit}>
             {" "}
             Submit

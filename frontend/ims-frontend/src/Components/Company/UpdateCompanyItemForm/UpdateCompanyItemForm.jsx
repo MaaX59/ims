@@ -52,34 +52,39 @@ const UpdateCompanyItemForm = (props) => {
       purchased_price,
       purchased_from
     );
-    const body = {
-      item_name: item_name,
-      item_description: item_description,
-      item_location: item_location,
-      item_amount: item_amount,
-      project_id: project_id,
-      notes: notes,
-      in_stock: in_stock,
-      purchased_price: purchased_price,
-      purchased_from: purchased_from,
-    };
-    await axios
-      .put(`${server}/update_company_item/${item_id}`, body)
-      .then(() => {
-        props.getItems();
-        props.setUpdate(false);
-      });
+    try {
+      const body = {
+        item_name: item_name,
+        item_description: item_description,
+        item_location: item_location,
+        item_amount: item_amount,
+        project_id: project_id,
+        notes: notes,
+        in_stock: in_stock,
+        purchased_price: purchased_price,
+        purchased_from: purchased_from,
+      };
 
-    setItem_id("");
-    setItem_name("");
-    setItem_description("");
-    setItem_location("");
-    setPurchased_from("");
-    setPurchased_price(null);
-    setInStock(false);
-    setNotes("");
-    setItem_amount(null);
-    setProject_id(null);
+      await axios
+        .put(`${server}/update_company_item/${item_id}`, body)
+        .then(() => {
+          props.getItems();
+          props.setUpdate(false);
+        });
+
+      setItem_id("");
+      setItem_name("");
+      setItem_description("");
+      setItem_location("");
+      setPurchased_from("");
+      setPurchased_price(null);
+      setInStock(false);
+      setNotes("");
+      setItem_amount(null);
+      setProject_id(null);
+    } catch (err) {
+      console.log("error while updating item", err);
+    }
   };
 
   return (

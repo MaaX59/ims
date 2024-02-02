@@ -553,6 +553,24 @@ app.put("/update_company_item/:item_id", (req, res) => {
   );
 });
 
+//update amount at sales
+app.put("/update_company_item_sales/:item_id", (req, res) => {
+  const id = req.params.item_id;
+  const amount_left = req.body.amount_left;
+  console.log("req body -->", req.body.amount_left);
+  console.log("company item_amout left -->", req.body.amount_left);
+
+  db.query(
+    "UPDATE company_items SET item_amount= ? WHERE id= ?",
+    [amount_left, id],
+    (error, data) => {
+      error
+        ? console.log("error updating item", error)
+        : res.status(200).json({ message: "sales, item updated successfully" });
+    }
+  );
+});
+
 //delete company project
 app.delete("/delete_company_project/:project_id", (req, res) => {
   console.log("delete company project, params -->", req.params.project_id);
