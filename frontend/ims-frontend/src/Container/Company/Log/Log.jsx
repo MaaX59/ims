@@ -17,6 +17,8 @@ const Log = () => {
     try {
       await axios.get(`${server}/get_log/${company_id}`).then((res) => {
         const data = res.data;
+        // const newString = data.string.replace(/[{"}]/g, "");
+        // console.log(newString);
         setLog(data);
       });
     } catch (err) {
@@ -40,9 +42,11 @@ const Log = () => {
           ) : (
             log.map((entry, index) => (
               <>
-                <tr key={index}></tr>
+                <tr className="app__log_tr" key={index}></tr>
+                <td className="app__log_td">
+                  {entry.string.replace(/[{"}]/g, " ")}
+                </td>{" "}
                 <td>{entry.date}</td>
-                <td className="app__log_td">{entry.string}</td>
               </>
             ))
           )}

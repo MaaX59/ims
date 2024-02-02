@@ -8,7 +8,7 @@
 .app__sell_items-content {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   font-family: "Courier New", Courier, monospace;
   font-weight: 100;
   font-size: 12px;
@@ -17,7 +17,7 @@
 }
 .sales_table {
   margin: 1rem;
-  width: 97%;
+  width: 99%;
 }
 .sales_tr {
   background-color: rgb(56, 56, 56);
@@ -31,8 +31,16 @@ td {
 } */
 .app__sell_items-content-search {
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin: 2rem;
+  font-size: 18px;
   width: 200px;
+}
+.app__sell_items-content-list {
+  width: 99%;
+}
+.app__sell_items-content-search input {
+  width: 200px;
+  margin-top: 1rem;
 }

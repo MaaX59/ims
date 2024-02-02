@@ -9,17 +9,21 @@
 .app__log-content {
   display: flex;
   width: 99%;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 }
 .app__log_table {
-  width: 90%;
+  width: 95%;
   margin: 1rem 0 0 1rem;
 }
 .app__log_tr {
   background-color: rgb(56, 56, 56);
+  margin-bottom: 15px;
 }
 .app__log_td {
-  display: flex;
-  text-align: start;
+  word-break: break-all;
+  border-bottom-width: 1px;
+  border-color: rgb(59, 59, 59);
+  border-bottom-style: solid;
+  margin-bottom: 1rem;
 }
