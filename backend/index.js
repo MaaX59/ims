@@ -622,6 +622,11 @@ app.get("/get_single_item_by_id/:props", (req, res) => {
   });
 });
 
+// Item To sales
+app.post("/add_sales", (req, res) => {
+  console.log("add sales body", req.body);
+});
+
 //
 //Log Started
 //

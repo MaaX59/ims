@@ -6,6 +6,7 @@ import "./SellSingleItem.css";
 import NavBar from "../../../Components/Company/NavBar/NavBar";
 import GetSingleItemByID from "../../../Components/Company/Functions/GetSingleItemByID";
 import SoldItemToLog from "../../../Components/Company/Functions/SoldItemToLog";
+import AddSales from "../../../Components/Company/Functions/AddSales";
 import axios from "axios";
 import { server } from "../../../server";
 
@@ -71,6 +72,7 @@ const SellSingleItem = () => {
               company_id: userInfo.company_id,
             };
             SoldItemToLog(body);
+            AddSales(body);
             console.log("sales, item updated");
             navigate("/sales");
           });
@@ -94,6 +96,7 @@ const SellSingleItem = () => {
               company_id: userInfo.company_id,
             };
             SoldItemToLog(body);
+
             console.log("sales, item deleted");
             navigate("/sales");
           });
