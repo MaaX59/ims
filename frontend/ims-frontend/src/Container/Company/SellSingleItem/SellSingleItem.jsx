@@ -63,6 +63,8 @@ const SellSingleItem = () => {
           .then(() => {
             //add to log, then navigate to sales
             const body = {
+              project_id: item.project_id,
+              project_name: item.project_name,
               item_id: item_id,
               item_name: item.item_name,
               items_sold: amount_sold,

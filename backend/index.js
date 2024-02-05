@@ -625,6 +625,40 @@ app.get("/get_single_item_by_id/:props", (req, res) => {
 // Item To sales
 app.post("/add_sales", (req, res) => {
   console.log("add sales body", req.body);
+  const company_id = req.body.company_id;
+  const item_id = Number(req.body.item_id);
+  const item_name = req.body.item_name;
+  const items_sold = Number(req.body.items_sold);
+  const profit = req.body.profit;
+  const sold_to = req.body.sold_to;
+  const sold_by_user = req.body.sold_by_user;
+  const project_id = req.body.project_id;
+  const project_name = req.body.project_name;
+
+  console.log("project id type", typeof project_id);
+  console.log("item id type", typeof item_id);
+
+  db.query(
+    "INSERT INTO company_sales (item_id, item_name, items_sold, profit, sold_to, sold_by_user, project_name, project_id, company_id) VALUES(?,?,?,?,?,?,?,?,?)",
+    [
+      item_id,
+      item_name,
+      items_sold,
+      profit,
+      sold_to,
+      sold_by_user,
+      project_name,
+      project_id,
+      company_id,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(`error when sending to db`, err);
+      } else {
+        res.send("values sent to db");
+      }
+    }
+  );
 });
 
 //
@@ -686,7 +720,7 @@ app.post("/add_company_item_to_log", (req, res) => {
 });
 
 //Delete Item To Log
-app.delete("/delete_company_item_to_log", (req, res) => {
+app.post("/delete_company_item_to_log", (req, res) => {
   const data = req.body;
   const company_id = req.body.company_id;
   const string = "Item Deleted " + JSON.stringify(data);
