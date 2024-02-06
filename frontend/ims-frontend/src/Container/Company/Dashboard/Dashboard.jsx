@@ -6,18 +6,26 @@ import { server } from "../../../server";
 import { AuthContext } from "../../../context/AuthProvider";
 import "./Dashboard.css";
 import StartCompany from "../../../Components/Company/StartCompany/StartCompany";
+import GetSalesForChart from "../../../Components/Company/Functions/GetSalesForChart";
 
 const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
+  const company_id = userInfo.company_id;
   const navigate = useNavigate();
 
   const [company, setCompany] = useState(null);
   const [openStartCompany, setOpenStartCompany] = useState(false);
+  const [salesDataForChart, setSalesDataForChart] = useState(null);
 
   useEffect(() => {
     console.log("user from context", userInfo);
+    FindChartData();
     findCompany();
   }, []);
+
+  const FindChartData = () => {
+    GetSalesForChart({ setSalesDataForChart, company_id });
+  };
 
   //find company connected to user
   const findCompany = async () => {
@@ -26,9 +34,6 @@ const Dashboard = () => {
       console.log("company id-->", company_id);
       await axios.get(`${server}/find_company/${company_id}`).then((res) => {
         setCompany(res.data[0]);
-        // getProjects();
-        // console.log("this is the company", res.data[0]);
-        // console.log("this is the company", company);
       });
     } catch (error) {
       console.log(`error fetching company`, error);

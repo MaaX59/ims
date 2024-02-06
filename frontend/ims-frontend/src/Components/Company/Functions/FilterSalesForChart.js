@@ -1,4 +1,4 @@
-import GetSales from "./GetSales";
+import GetSales from "./GetSalesForChart";
 import { useEffect, useState } from "react";
 
 export const FilterSalesForChart = (props) => {
