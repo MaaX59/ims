@@ -622,6 +622,23 @@ app.get("/get_single_item_by_id/:props", (req, res) => {
   });
 });
 
+//getting sales
+app.get("/get_sales/:company_id", (req, res) => {
+  const company_id = req.params.company_id;
+  db.query(
+    "SELECT * FROM company_sales WHERE `company_id` = ? ",
+    company_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting sales from db`, error);
+      } else {
+        console.log("data from get company project items", data);
+        res.send(data);
+      }
+    }
+  );
+});
+
 // Item To sales
 app.post("/add_sales", (req, res) => {
   console.log("add sales body", req.body);
