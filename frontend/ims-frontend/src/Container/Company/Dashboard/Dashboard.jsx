@@ -6,26 +6,27 @@ import { server } from "../../../server";
 import { AuthContext } from "../../../context/AuthProvider";
 import "./Dashboard.css";
 import StartCompany from "../../../Components/Company/StartCompany/StartCompany";
-import GetSalesForChart from "../../../Components/Company/Functions/GetSalesForChart";
+// import GetSalesForChart from "../../../Components/Company/Functions/GetSalesForChart";
+import Chart from "../../../Components/Company/Chart/Chart";
 
 const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
-  const company_id = userInfo.company_id;
+  // const company_id = userInfo.company_id;
   const navigate = useNavigate();
 
   const [company, setCompany] = useState(null);
   const [openStartCompany, setOpenStartCompany] = useState(false);
-  const [salesDataForChart, setSalesDataForChart] = useState(null);
+  // const [salesDataForChart, setSalesDataForChart] = useState(null);
 
   useEffect(() => {
     console.log("user from context", userInfo);
-    FindChartData();
+    // FindChartData();
     findCompany();
   }, []);
 
-  const FindChartData = () => {
-    GetSalesForChart({ setSalesDataForChart, company_id });
-  };
+  // const FindChartData = () => {
+  //   GetSalesForChart({ setSalesDataForChart, company_id });
+  // };
 
   //find company connected to user
   const findCompany = async () => {
@@ -53,6 +54,7 @@ const Dashboard = () => {
             {company ? (
               <div className="app__dashboard-company-connected">
                 <span>You are connected to {company.company_name}</span>{" "}
+                <Chart />
               </div>
             ) : (
               <div className="app__dashboard-nocompany">
