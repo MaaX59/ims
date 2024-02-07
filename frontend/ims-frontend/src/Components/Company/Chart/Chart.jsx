@@ -28,7 +28,7 @@ const Chart = () => {
   console.table(salesDataForChart);
 
   return (
-    <ResponsiveContainer width={800} height={400}>
+    <ResponsiveContainer width={900} height={400}>
       <AreaChart data={salesDataForChart}>
         <defs>
           <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
@@ -45,7 +45,7 @@ const Chart = () => {
           axisLine={false}
           tickLine={false}
           tickCount={8}
-          tickFormatter={(number) => `€ ${number.toFixed(0)}`}
+          tickFormatter={(number) => `€${number.toFixed(0)}`}
         />
 
         <Tooltip constent={<CustomTooltip />} />
