@@ -16,6 +16,7 @@
   margin-bottom: 10px;
   border-radius: 5px;
   text-decoration: none;
+  cursor: pointer;
 }
 .app__display-projects-singleproject h1 {
   color: var(--color-white);

@@ -33,8 +33,8 @@ const Log = () => {
         <table className="app__log_table">
           <thead>
             <tr className="app__log_tr">
-              <th>Date</th>
               <th>Event</th>
+              <th>Date</th>
             </tr>
           </thead>
           {!log ? (
@@ -46,7 +46,7 @@ const Log = () => {
                 <td className="app__log_td">
                   {entry.string.replace(/[{"}]/g, " ")}
                 </td>{" "}
-                <td>{entry.date}</td>
+                <td>{entry.date.slice(0, 19)}</td>
               </>
             ))
           )}
