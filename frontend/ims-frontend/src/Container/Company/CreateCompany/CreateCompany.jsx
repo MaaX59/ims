@@ -35,7 +35,7 @@ const CreateCompany = () => {
             setCompanyName("");
             setPassword("");
             setConfirmedPassword("");
-            navigate("/viewuser");
+            navigate("/dashboard");
           } else if (res.data === "no pwd match") {
             setError("Password and Confirm password need to match!");
           } else if (res.data === "Name already exist") {

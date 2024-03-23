@@ -6,6 +6,7 @@ import Login from "./Company/Login/Login";
 import Createuser from "./Company/Createuser/Createuser";
 import ViewUser from "./Company/ViewUser/ViewUser";
 import CreateCompany from "./Company/CreateCompany/CreateCompany";
+import ConnectCompany from "./Company/ConnectCompany/ConnectCompany.jsx";
 import NewCompanyProject from "./Company/NewProject/NewCompanyProject";
 import CompanyProjectPage from "./Company/CompanyProjectPage/CompanyProjectPage";
 import SellItems from "./Company/SellItems/SellItems";
@@ -25,6 +26,7 @@ export {
   Createuser,
   ViewUser,
   CreateCompany,
+  ConnectCompany,
   NewCompanyProject,
   CompanyProjectPage,
   SellItems,

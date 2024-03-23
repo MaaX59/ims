@@ -378,6 +378,49 @@ app.post("/create_company_project", (req, res) => {
   );
 });
 
+//connect user to company
+app.post("/connect_company", (req, res) => {
+  const company_id = req.body.company_id;
+  const passwordFromForm = req.body.password;
+  const user_id = req.body.user_id;
+
+  console.log(`req.body on backend  `, req.body);
+
+  db.query(
+    "SELECT * FROM company WHERE `id` = ?",
+    company_id,
+    (error, data) => {
+      if (error) {
+        console.log(`error when getting companies from db`, error);
+        res.send("no company");
+      } else {
+        console.log("data from get company", data);
+        if (data[0].password === passwordFromForm) {
+          console.log("passwords match");
+          console.log(data);
+          db.query(
+            "UPDATE users SET `company_id` = ? WHERE `id` = ? ",
+            [data[0].id, req.body.user_id],
+            (err, data) => {
+              if (err) {
+                console.log(
+                  `error when updating user with company id to db`,
+                  err
+                );
+              } else {
+                res.send("connected");
+              }
+            }
+          );
+        } else {
+          console.log("passwords don´t match");
+          res.send("no match");
+        }
+      }
+    }
+  );
+});
+
 //find company based on id
 app.get("/find_company/:company_id", (req, res) => {
   console.log("req params-->", req.params.company_id);
