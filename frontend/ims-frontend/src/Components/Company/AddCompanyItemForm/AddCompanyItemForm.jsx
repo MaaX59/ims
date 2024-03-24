@@ -78,7 +78,7 @@ const AddCompanyItemForm = (props) => {
     <div className="app__add-company_item_form">
       <div className="title">Add an item</div>
       <div className="">
-        <label for="project">Choose a project:</label>
+        <label for="project">Choose a project:*</label>
         <select
           id="project"
           name="project"
@@ -91,6 +91,7 @@ const AddCompanyItemForm = (props) => {
               {singleProject.project_name}{" "}
             </option>
           ))}
+          defaultValue={projectList[0].project_name}
         </select>
       </div>
       <div className="form-2inRow">
@@ -159,9 +160,10 @@ const AddCompanyItemForm = (props) => {
             onChange={(event) => {
               setPurchased_price(event.target.value);
             }}
+            required
           />
           <label for="purchased_price" className="placeholder">
-            Price per item
+            Price per item*
           </label>
         </div>
       </div>

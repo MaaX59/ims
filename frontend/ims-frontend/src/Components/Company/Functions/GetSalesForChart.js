@@ -6,14 +6,14 @@ const GetSalesForChart = async (props) => {
     //first we get the data
     await axios.get(`${server}/get_sales/${props.company_id}`).then((res) => {
       //next we filter away everything that´s now date and profit and change the date to just year month and day = 10 chars
-      const data = res.data.map(({ date, profit }) => ({
+      const data = res.data.map(({ date, profit, items_sold }) => ({
         date: date.toString().substr(0, 10),
-        profit,
+        profit: profit * items_sold,
       }));
 
       //add up all profits for each day
       const tempObj = {};
-
+      console.log("test", data);
       data.forEach(function (d) {
         if (tempObj.hasOwnProperty(d.date)) {
           tempObj[d.date] = tempObj[d.date] + d.profit;

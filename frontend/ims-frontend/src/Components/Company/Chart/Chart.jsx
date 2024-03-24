@@ -25,7 +25,7 @@ const Chart = () => {
   const FindChartData = () => {
     GetSalesForChart({ setSalesDataForChart, company_id });
   };
-  // console.table(salesDataForChart);
+  console.table(salesDataForChart);
 
   return (
     <ResponsiveContainer width={900} height={400}>
