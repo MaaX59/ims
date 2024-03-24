@@ -8,6 +8,7 @@ import "./Dashboard.css";
 import StartCompany from "../../../Components/Company/StartCompany/StartCompany";
 // import GetSalesForChart from "../../../Components/Company/Functions/GetSalesForChart";
 import Chart from "../../../Components/Company/Chart/Chart";
+import TopSellers from "../../../Components/Company/TopSellers/TopSellers";
 
 const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
@@ -54,6 +55,7 @@ const Dashboard = () => {
             {company ? (
               <div className="app__dashboard-company-connected">
                 <span>You are connected to {company.company_name}</span>{" "}
+                <span className="app__dashboard-title">Profits</span>
                 <Chart />
               </div>
             ) : (

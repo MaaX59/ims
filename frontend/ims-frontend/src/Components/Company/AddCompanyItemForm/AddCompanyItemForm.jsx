@@ -91,7 +91,6 @@ const AddCompanyItemForm = (props) => {
               {singleProject.project_name}{" "}
             </option>
           ))}
-          defaultValue={projectList[0].project_name}
         </select>
       </div>
       <div className="form-2inRow">
