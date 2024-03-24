@@ -694,12 +694,13 @@ app.post("/add_sales", (req, res) => {
   const sold_by_user = req.body.sold_by_user;
   const project_id = req.body.project_id;
   const project_name = req.body.project_name;
+  const sold_by_user_name = req.body.sold_by_user_name;
 
   console.log("project id type", typeof project_id);
   console.log("item id type", typeof item_id);
 
   db.query(
-    "INSERT INTO company_sales (item_id, item_name, items_sold, profit, sold_to, sold_by_user, project_name, project_id, company_id) VALUES(?,?,?,?,?,?,?,?,?)",
+    "INSERT INTO company_sales (item_id, item_name, items_sold, profit, sold_to, sold_by_user, project_name, project_id, company_id,sold_by_user_name) VALUES(?,?,?,?,?,?,?,?,?,?)",
     [
       item_id,
       item_name,
@@ -710,6 +711,7 @@ app.post("/add_sales", (req, res) => {
       project_name,
       project_id,
       company_id,
+      sold_by_user_name,
     ],
     (err, result) => {
       if (err) {

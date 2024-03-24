@@ -71,6 +71,7 @@ const SellSingleItem = () => {
               profit: sell_price - item.purchased_price,
               sold_to: buyer_name,
               sold_by_user: userInfo.id,
+              sold_by_user_name: userInfo.first_name + " " + userInfo.last_name,
               company_id: userInfo.company_id,
             };
             SoldItemToLog(body);

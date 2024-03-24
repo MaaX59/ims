@@ -12,12 +12,11 @@ import TopSellers from "../../../Components/Company/TopSellers/TopSellers";
 
 const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
-  // const company_id = userInfo.company_id;
+
   const navigate = useNavigate();
 
   const [company, setCompany] = useState(null);
   const [openStartCompany, setOpenStartCompany] = useState(false);
-  // const [salesDataForChart, setSalesDataForChart] = useState(null);
 
   useEffect(() => {
     console.log("user from context", userInfo);
