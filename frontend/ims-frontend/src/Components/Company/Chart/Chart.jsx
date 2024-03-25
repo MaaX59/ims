@@ -28,7 +28,7 @@ const Chart = () => {
   console.table(salesDataForChart);
 
   return (
-    <ResponsiveContainer width={500} height={200}>
+    <ResponsiveContainer width={900} height={200}>
       <AreaChart data={salesDataForChart}>
         <defs>
           <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">

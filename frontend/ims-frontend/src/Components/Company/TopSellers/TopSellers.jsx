@@ -67,17 +67,22 @@ const TopSellers = () => {
         width={300}
         height={150}
         data={topSellers}
-        margin={{
-          top: 15,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
+        // margin={{
+        //   top: 15,
+        //   right: 30,
+        //   left: 20,
+        //   bottom: 5,
+        // }}
       >
-        <XAxis dataKey="sold_by_user_name" />
+        <XAxis dataKey="sold_by_user_name" fontSize={15} />
         <YAxis />
-        <Tooltip />
-        <Bar dataKey="profit" fill="darkred" />
+        <defs>
+          <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="50%" stopColor="#2451B7" stopOpacity={0.8} />
+            <stop offset="100%" stopColor="#2451B7" stopOpacity={0.4} />
+          </linearGradient>
+        </defs>
+        <Bar dataKey="profit" barSize={30} fill="url(#color)" />
       </BarChart>
     </ResponsiveContainer>
   );

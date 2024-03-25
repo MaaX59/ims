@@ -27,6 +27,12 @@
 }
 .single-chart {
   flex-direction: column;
+  background-color: rgb(12, 12, 12);
+  margin: 2rem;
+  border-radius: 5px;
+  box-shadow: 3px -25px 20px -20px rgb(32, 31, 31),
+    25px 0px 20px -20px rgb(32, 31, 31), 0px 25px 20px -20px rgb(32, 31, 31),
+    -25px 0px 20px -20px rgb(32, 31, 31);
 }
 .app__dashboard-company {
   display: flex;
