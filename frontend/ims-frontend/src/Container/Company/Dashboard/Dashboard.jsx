@@ -53,9 +53,17 @@ const Dashboard = () => {
           <div className="app__dashboard-company">
             {company ? (
               <div className="app__dashboard-company-connected">
-                <span>You are connected to {company.company_name}</span>{" "}
-                <span className="app__dashboard-title">Profits</span>
-                <Chart />
+                {/* <span>You are connected to {company.company_name}</span>{" "} */}
+                <div className="app__dashboard-company-connected-charts">
+                  <div className="single-chart">
+                    <span className="app__dashboard-title">Profits</span>
+                    <Chart />
+                  </div>
+                  <div className="single-chart">
+                    <span className="app__dashboard-title">Top Sellers</span>
+                    <TopSellers />
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="app__dashboard-nocompany">

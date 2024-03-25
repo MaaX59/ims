@@ -22,6 +22,12 @@
 .app__dashboard-company-connected {
   font-size: 22px;
 }
+.app__dashboard-company-connected-charts {
+  display: flex;
+}
+.single-chart {
+  flex-direction: column;
+}
 .app__dashboard-company {
   display: flex;
   justify-content: center;
