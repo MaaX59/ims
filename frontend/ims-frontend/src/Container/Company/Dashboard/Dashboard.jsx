@@ -9,6 +9,7 @@ import StartCompany from "../../../Components/Company/StartCompany/StartCompany"
 // import GetSalesForChart from "../../../Components/Company/Functions/GetSalesForChart";
 import Chart from "../../../Components/Company/Chart/Chart";
 import TopSellers from "../../../Components/Company/TopSellers/TopSellers";
+import MostSoldItems from "../../../Components/Company/MostSoldItems/MostSoldItems";
 
 const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
@@ -56,12 +57,21 @@ const Dashboard = () => {
                 {/* <span>You are connected to {company.company_name}</span>{" "} */}
                 <div className="app__dashboard-company-connected-charts">
                   <div className="single-chart">
-                    <span className="app__dashboard-title">Top Sellers</span>
-                    <TopSellers />
-                  </div>
-                  <div className="single-chart">
                     <span className="app__dashboard-title">Profits</span>
                     <Chart />
+                  </div>
+                  <div className="second-chart-row">
+                    <div className="single-chart">
+                      <span className="app__dashboard-title">Top Sellers</span>
+                      <TopSellers />
+                    </div>
+
+                    <div className="single-chart">
+                      <span className="app__dashboard-title">
+                        Most Sold Items
+                      </span>
+                      <MostSoldItems />
+                    </div>
                   </div>
                 </div>
               </div>

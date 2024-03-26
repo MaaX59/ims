@@ -24,15 +24,23 @@
 }
 .app__dashboard-company-connected-charts {
   display: flex;
+  flex-direction: column;
 }
 .single-chart {
   flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   background-color: rgb(12, 12, 12);
   margin: 2rem;
   border-radius: 5px;
   box-shadow: 3px -25px 20px -20px rgb(32, 31, 31),
     25px 0px 20px -20px rgb(32, 31, 31), 0px 25px 20px -20px rgb(32, 31, 31),
     -25px 0px 20px -20px rgb(32, 31, 31);
+}
+.second-chart-row {
+  display: flex;
+  height: 400px;
 }
 .app__dashboard-company {
   display: flex;

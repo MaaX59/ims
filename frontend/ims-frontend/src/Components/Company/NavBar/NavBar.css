@@ -1,7 +1,12 @@
 .app__navbar {
   width: 175px;
   height: 100vh;
-  background: rgb(28, 28, 29);
+  background: linear-gradient(
+    90deg,
+    rgb(27, 27, 27) 80%,
+    rgba(156, 155, 154, 1) 85%,
+    rgb(22, 22, 22) 90%
+  );
 }
 .app__navbar_title {
   display: flex;

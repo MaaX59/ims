@@ -35,7 +35,7 @@ const TopSellers = () => {
             profit: profit * items_sold,
           })
         );
-        console.table("data", data);
+
         //add up profits
         const tempObj = {};
 
@@ -53,7 +53,7 @@ const TopSellers = () => {
         for (var prop in tempObj) {
           newArr.push({ sold_by_user_name: prop, profit: tempObj[prop] });
         }
-        console.table(newArr);
+
         setTopSellers(newArr);
       });
     } catch (err) {
