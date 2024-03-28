@@ -58,7 +58,7 @@ const MostSoldItems = () => {
       console.log("error while getting top sellers", err);
     }
   };
-  const COLORS = ["#2b020f", "#2b022b", "#04061f", "#090f4a"];
+  const COLORS = ["#2b020f", "#2b022b", "#04061f", "#090f4a", "#964006"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
