@@ -44,7 +44,7 @@ const Chart = () => {
           axisLine={false}
           tickLine={false}
           tickCount={8}
-          tickFormatter={(number) => `€${number.toFixed(0)}`}
+          tickFormatter={(number) => `${number.toFixed(0)}`}
         />
         <Tooltip content={<CustomTooltip />} />
         <CartesianGrid opacity={0.1} vertical={false} />
